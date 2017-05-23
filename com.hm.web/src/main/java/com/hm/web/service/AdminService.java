@@ -11,4 +11,5 @@ public interface AdminService {
 	public List<DoctorBean> loadDoctorDetails();
 
 	public DoctorBean editDoctorDetails(DoctorBean dbean);
+	public DoctorBean saveNurseDetails(DoctorBean dbean);
 }

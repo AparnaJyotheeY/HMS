@@ -96,4 +96,49 @@ public class DoctorDAOImpl implements DoctorDAO{
 		return doctor;
 						
 	}
+	public Doctor saveNurseDetails(Doctor doctor){
+		DataSource dataSource = jdbcTemplate.getDataSource();
+		System.out.println("datasource"+dataSource);
+		//System.out.println("regddd"+userDetails.getContactNo()+userDetails.getFamilyDetails()+userDetails.getNoFamilyMembers()+userDetails.getParkingNo());
+			SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(dataSource);
+			System.out.println("jdbc"+jdbcInsert);
+
+			Map<String,Object> recordParameters = new HashMap<String,Object>();
+			recordParameters.put("name", doctor.getName());
+			recordParameters.put("email", doctor.getEmail());
+			recordParameters.put("password",doctor.getPassword());
+			recordParameters.put("phone", doctor.getPhone());
+			
+			
+			recordParameters.put("address", doctor.getAddress());
+			recordParameters.put("addeddate", new Date());
+			recordParameters.put("image", doctor.getImage());
+			
+			jdbcInsert.withTableName("nurse")
+			.usingGeneratedKeyColumns("nurseid");	
+			doctor.setDid(jdbcInsert.executeAndReturnKey(recordParameters).intValue());
+				
+			return doctor;
+	}
+	
+	public Doctor saveNurseCredentials(Doctor doctor){
+		DataSource dataSource = jdbcTemplate.getDataSource();
+		System.out.println("datasource"+dataSource);
+		//System.out.println("regddd"+userDetails.getContactNo()+userDetails.getFamilyDetails()+userDetails.getNoFamilyMembers()+userDetails.getParkingNo());
+			SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(dataSource);
+			System.out.println("jdbc"+jdbcInsert);
+			Map<String,Object> recordParameters = new HashMap<String,Object>();
+			recordParameters.put("email", doctor.getEmail());
+			recordParameters.put("password",doctor.getPassword());
+			recordParameters.put("createddate", new Date());
+			recordParameters.put("designation", "nurse");
+			
+			jdbcInsert.withTableName("login")
+			.usingGeneratedKeyColumns("loginid");	
+			doctor.setDid(jdbcInsert.executeAndReturnKey(recordParameters).intValue());
+			
+			return doctor;
+				
+	}
+	
 }

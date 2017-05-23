@@ -108,5 +108,47 @@ public class AdminController {
 		dlist=adminServiceImpl.loadDoctorDetails();
 		return new ModelAndView("DoctorPdf", "dbean",dlist);
 	}
+	@RequestMapping("/addnurse")
+	public String showAddNurse(HttpServletRequest req){
+		
+		
+		
+		return "addnurse";
+	}
+	@RequestMapping(value="/nursedetails",method=RequestMethod.POST)
+	public String addNurse(@RequestParam("image") MultipartFile file,HttpServletRequest req){
+		
+		DoctorBean dbean=buildNurse(req);
+		try {
+			
+			if (!file.isEmpty()) {
+				byte[] pictureBytes = file.getBytes();					
+			
+					
+					dbean.setImage(pictureBytes);
+			}
+			
+		}catch(Exception e){
+			req.setAttribute("message", "Improper Data");
+			return "addnurse" ;
+		}
+		
+		
+		
+		dbean=adminServiceImpl.saveNurseDetails(dbean);
+		req.setAttribute("successmessage", "doctor details added successfully");
+		return "addnurse";
+	}
+	private DoctorBean buildNurse(HttpServletRequest req){
+		DoctorBean dbean=new DoctorBean();
+		dbean.setName(req.getParameter("name"));
+		dbean.setEmail(req.getParameter("email"));
+		dbean.setPassword(req.getParameter("password"));
+		
+		dbean.setAddress(req.getParameter("address"));
+		dbean.setPhone(req.getParameter("phone"));
+		
+		return dbean;
+	}
 	
 }

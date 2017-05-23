@@ -4,11 +4,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@page import="com.hm.web.model.DoctorBean"%>
 <%@page import="java.util.List"%>
-
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Admin-Doctor</title>
+<title>Admin-Nurse</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Pooled Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -25,7 +24,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel='stylesheet' type='text/css'  href='<c:url value="/static/css/style.css" />'/>
-<link rel="stylesheet" href='<c:url value="/static/css/morris.css"/>' />
+<link rel="stylesheet"  type="text/css" href='<c:url value="/static/css/morris.css"/>' />
 <!--js -->
 <script src='<c:url value="/static/js/jquery.nicescroll.js"/>'></script>
 <script src='<c:url value="/static/js/scripts.js"/>'></script>
@@ -50,19 +49,11 @@ selector:"textarea.tinymce"
     
      border-top: none; 
 }
-th{
-font-weight:700 !important;
-color:black  !important;
-text-align:center  !important; 
-}
-td{
-color:black  !important;
-text-align:center  !important;
-}
 </style>
 <!-- //lined-icons -->
 </head> 
-<%String message=(String) request.getAttribute("message");
+<%
+String message=(String) request.getAttribute("message");
 if(message==null){
 	message="";
 }
@@ -70,8 +61,6 @@ String smessage=(String) request.getAttribute("successmessage");
 if(smessage==null){
 	smessage="";
 }
-List<DoctorBean> dlist=(List) request.getAttribute("doctorlist");
-
 %>
 <body>
    <div class="page-container">
@@ -106,7 +95,10 @@ List<DoctorBean> dlist=(List) request.getAttribute("doctorlist");
 						  <div class="clearfix"> </div>
 						  
 				</div>
-<!--heder end here-->
+
+				
+				
+				<!--heder end here-->
 		<ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<%=request.getContextPath( )%>/">Home</a> <i class="fa fa-angle-right"></i></li>
 				 <li class="breadcrumb-item"><a href="<%=request.getContextPath( )%>/admin">Admin Dashboard</a> <i class="fa fa-angle-right"></i></li>
@@ -131,54 +123,50 @@ List<DoctorBean> dlist=(List) request.getAttribute("doctorlist");
 		<!-- /script-for sticky-nav -->
 <!--inner block start here-->
 
-<div class="col-md-6"><h3> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;&nbsp; Doctor</h3></div>
-<div class="col-md-offset-9 col-md-3"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#add">Add Doctor</button></div>
+<div class="col-md-6"><h3> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;&nbsp; Nurse</h3></div>
+<div class="col-md-offset-9 col-md-3"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#add">Add Nurse</button></div>
                        <span> <h4 style="color:red;text-align:center"><%=message %></h4><h4 style="color:green;text-align:center"><%=smessage %></h4></span>
 
 <div class="btn-toolbar">
-    <button class="btn btn-primary">Copy</button>
+   <button class="btn btn-primary">Copy</button>
     
     <button onclick="location.href='./exportdexcel'" class="btn btn-warning">Excel</button>
     <button onclick="location.href='./exportdpdf'" class="btn btn-danger">PDF</button>
    
 </div>
-<div class="well table-responsive"">
+<div class="well  table-responsive">
      <table id="mytable" class="table table-bordred table-striped">
                    
                    <thead>
-                   <th>pdid</th>
+                   
                    <th>Image </th>
                    <th>Name</th>
                     <th>Email</th>
-                    <th>Adderes</th>
+                    <th>Address</th>
 					<th>Phone</th>
-					<th>Department</th>
-					<th>Profile</th>
 					<th>Options</th>
                      
 					 
                </thead>
     <tbody>
-    <%for(DoctorBean bean:dlist) {%>
+    
     <tr>
-    <td><%=bean.getDid() %></td>
-    <td>	<img id="profileImage" style="height:50px;width:70px" src="<%=bean.getImages() %>"></td>
-    <td><%=bean.getName() %></td>
-    <td><%=bean.getEmail() %></td>
-    <td><%=bean.getAddress() %></td>
-    <td><%=bean.getPhone() %></td>
-    <td><%=bean.getDept() %></td>
-    <td><%=bean.getProfile() %></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
     
     
-    <td><a data-placement="top" data-toggle="tooltip" title="Edit" onclick="opendialog('<%=bean.getDid() %>~<%=bean.getName()%>~<%=bean.getEmail() %>~<td><%=bean.getAddress() %>~<%=bean.getPhone() %>~<%=bean.getDept() %>~<%=bean.getProfile() %>~<%=bean.getImage() %>')"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a>
+    
+    <td><a data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a>
     <a data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></a></td>
     </tr>
-  <%} %>
+  
     </tbody>
         
 </table>
- </div>
+  </div>
 <div class="clearfix"></div>
 <ul class="pagination pull-right">
   <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
@@ -190,7 +178,7 @@ List<DoctorBean> dlist=(List) request.getAttribute("doctorlist");
   <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
 </ul>
                 
-           
+          
             
        
 
@@ -203,64 +191,43 @@ List<DoctorBean> dlist=(List) request.getAttribute("doctorlist");
     <div class="modal-content">
           <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-        <h4 class="modal-title custom_align" id="Heading">Edit Doctor</h4>
+        <h4 class="modal-title custom_align" id="Heading">Edit Nurse</h4>
       </div>
 		  
           <div class="modal-body">
-                  <form:form action="edoctordetails" method="post" class="form-horizontal" enctype="multipart/form-data" modelAttribute="userRegDetails" >
-          
 		  <div class="col-md-offset-1 col-md-10">
-		   <div class="form-group">
-        <input class="form-control " id="did" name="did" type="text" placeholder="did" >
-        </div>
          
 		 <div class="form-group">
-        <input class="form-control " id="ename" name="ename" type="text" placeholder="Name" >
+        <input class="form-control " type="text" placeholder="Name" >
         </div>
 		
         <div class="form-group">
         
-        <input class="form-control " id="eemail" name="eemail" type="text" placeholder="Email">
+        <input class="form-control " type="text" placeholder="Email">
         </div>
-		
+	
 		
 		<div class="form-group">
         
-        <input class="form-control " id="eaddress" name="eaddress" type="text" placeholder="Address">
+        <input class="form-control " type="text" placeholder="Address">
         </div>
 		
       <div class="form-group">
         
-        <input class="form-control " id="ephone" name="ephone" type="text" placeholder="Phone">
+        <input class="form-control " type="text" placeholder="Phone">
         </div>
-		
-		
-		
+
 		<div class="form-group">
-        <select id="edept" name="edept" class="form-control ">
-		<option>Select Department</option>
-		<option>Nephrology</option>
-		<option>Neurology</option>
-		<option>Orthopaediatrics</option>
-		<option>Cardiovascular</option>
-		<option>Urology</option>
-		<option>ENT</option>
-		<option>Fertility</option>
-		
-		</select>
-      
+        <label>Image</label>
+        <input class="form-control " type="file" placeholder="Phone">
         </div>
-    
-		
-		
 		
 		
 	</div>
 	
           <div class="modal-footer" style="text-align:center;">
-        <button type="submit" class="btn btn-warning">Update</button>
+        <button type="button" class="btn btn-warning">Update</button>
       </div>
-      </form:form>
         </div>
     <!-- /.modal-content --> 
   </div>
@@ -299,12 +266,13 @@ List<DoctorBean> dlist=(List) request.getAttribute("doctorlist");
     <div class="modal-content">
           <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-        <h4 class="modal-title custom_align" id="Heading">Add Doctor</h4>
+        <h4 class="modal-title custom_align" id="Heading">Add Nurse</h4>
       </div>
+              <form:form action="nursedetails" method="post" class="form-horizontal" enctype="multipart/form-data" modelAttribute="userRegDetails" >
+      
           <div class="modal-body">
-        <form:form action="doctordetails" method="post" class="form-horizontal" enctype="multipart/form-data" modelAttribute="userRegDetails" >
 		  <div class="col-md-offset-1 col-md-10">
-        
+         
 		 <div class="form-group">
         <input class="form-control " name="name" type="text" placeholder="Name" >
         </div>
@@ -313,14 +281,14 @@ List<DoctorBean> dlist=(List) request.getAttribute("doctorlist");
         
         <input class="form-control " name="email" type="text" placeholder="Email">
         </div>
-		<div class="form-group">
+	
+		 <div class="form-group">
         
         <input class="form-control " name="password" type="password" placeholder="Password">
         </div>
-		
 		<div class="form-group">
         
-        <input class="form-control " name="addr" type="text" placeholder="Address">
+        <input class="form-control " name="address" type="text" placeholder="Address">
         </div>
 		
       <div class="form-group">
@@ -328,28 +296,7 @@ List<DoctorBean> dlist=(List) request.getAttribute("doctorlist");
         <input class="form-control " name="phone" type="text" placeholder="Phone">
         </div>
 		
-		
-		
-		<div class="form-group">
-        <select name="dept" class="form-control ">
-		<option>Select Department</option>
-		<option>Nephrology</option>
-		<option>Neurology</option>
-		<option>Orthopaediatrics</option>
-		<option>Cardiovascular</option>
-		<option>Urology</option>
-		<option>ENT</option>
-		<option>Fertility</option>
-		
-		</select>
-      
-        </div>
-    <div class="form-group">
-        
-       <label>Profile</label>
-	    <textarea name="profile" class="tinymce"></textarea>
-        </div>
-		
+	
 		<div class="form-group">
         <label>Image</label>
         <input class="form-control " name="image" type="file" placeholder="Phone">
@@ -358,12 +305,12 @@ List<DoctorBean> dlist=(List) request.getAttribute("doctorlist");
 		
 		
 	</div>
-	    <div class="modal-footer" style="text-align:center;">
+	
+         <div class="modal-footer" style="text-align:center;">
         <button type="submit" class="btn btn-success"> Submit</button>
-        </form:form>
       </div>
         </div>
-       
+        </form:form>
     <!-- /.modal-content --> 
   </div>
       <!-- /.modal-dialog --> 
@@ -411,23 +358,23 @@ $("#mytable #checkall").click(function () {
 </div>
   <!--//content-inner-->
 			<!--/sidebar-menu-->
-			<div class="sidebar-menu"style="height:1050px; position:absolute;">
+				<div class="sidebar-menu"style="height:1050px; position:absolute;">
 					<header class="logo1">
 						<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> 
 					</header>
 						<div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
                            <div class="menu">
 									<ul id="menu" >
-										<li><a href="<%=request.getContextPath( )%>/admin"><i class="fa fa-desktop"></i> <span>Dashboard</span><div class="clearfix"></div></a></li>
+										<li><a href="admin.html"><i class="fa fa-desktop"></i> <span>Dashboard</span><div class="clearfix"></div></a></li>
 										
 									     <li><a href="addepartment.html"><i class="fa fa-sitemap"></i><span>Department</span><div class="clearfix"></div></a></li>
 										 
 										 
-									    <li class="active" ><a href="<%=request.getContextPath( )%>/addoctor"><i class="fa fa-user-md" aria-hidden="true"></i><span>Doctor</span><div class="clearfix"></div></a></li>
+									    <li id="menu-academico" ><a href="addoctor.html"><i class="fa fa-user-md" aria-hidden="true"></i><span>Doctor</span><div class="clearfix"></div></a></li>
 									 
 									 <li id="menu-academico" ><a href="adpatient.html"><i class="fa fa-user " aria-hidden="true"></i><span> Patient</span> <div class="clearfix"></div></a></li>
 									
-									<li id="menu-academico" ><a href="adnurse.html"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Nurse</span><div class="clearfix"></div></a></li>
+									<li class="active" ><a href="adnurse.html"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Nurse</span><div class="clearfix"></div></a></li>
 									 
 									 <li id="menu-academico" ><a href="adpharmacist.html"><i class="fa fa-medkit" aria-hidden="true"></i><span>Pharmacist</span> <div class="clearfix"></div></a>
 										  
@@ -440,7 +387,7 @@ $("#mytable #checkall").click(function () {
 									</li>
 									
 									<li><a href="adreceptionist.html"><i class="fa fa-plus-square"></i>  <span>Receptionist</span><div class="clearfix"></div></a></li>
-									<li><a href=""><i class="fa fa-cog" aria-hidden="true"></i><span>Monitor Hospital</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
+									<li ><a href=""><i class="fa fa-cog" aria-hidden="true"></i><span>Monitor Hospital</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
 										   <ul id="menu-academico-sub" >
 										   <li id="menu-academico-avaliacoes" ><a href="adpaymenthistory.html">Payment History</a></li>
 											<li id="menu-academico-avaliacoes" ><a href="adbedeallotment.html"> Bed Allotment</a></li>
@@ -450,12 +397,12 @@ $("#mytable #checkall").click(function () {
 											<li id="menu-academico-avaliacoes" ><a href="adoperationreport.html">Operation Report</a></li>
 											<li id="menu-academico-avaliacoes" ><a href="adbirth.html">Birth Report</a></li>
 											<li id="menu-academico-avaliacoes" ><a href="addeath.html">Death Report</a></li>
-											
-											<li id="menu-academico-avaliacoes" ><a href="adambavailablity.html">
+												<li id="menu-academico-avaliacoes" ><a href="adambavailablity.html">
 											Ambulance Availablity</a></li>
 											
 											<li id="menu-academico-avaliacoes" ><a href="adambfuel.html">
 											Ambulance Fuel Exepenses</a></li>
+											
 										  </ul>
 										</li>
 									
@@ -488,7 +435,7 @@ $("#mytable #checkall").click(function () {
 								</div>
 							  </div>
 								  <div class="clearfix"></div>		
-								  <div class="clearfix"></div>		
+							  <div class="clearfix"></div>		
 							</div>
 						<script>
 							var toggle = true;
@@ -521,19 +468,4 @@ $("#mytable #checkall").click(function () {
 </div>	
 <!--COPY rights end here-->
 </body>
-<script>
-function opendialog(valueString){
-	var values = valueString.split("~");
-	$("#did").val(values[0]);
-	$("#ename").val(values[1]);
-	$("#eemail").val(values[2]);
-	$("#eaddress").val(values[3]);
-	$("#ephone").val(values[4]);
-	$("#edept").val(values[5]);	
-	$('#eprofile').val(values[6]);
-	
-	$("#eimage").val(values[7]);
-	$("#edit").dialog("open");
-}
-</script>
 </html>

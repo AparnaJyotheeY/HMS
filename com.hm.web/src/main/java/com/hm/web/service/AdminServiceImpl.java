@@ -59,5 +59,12 @@ public class AdminServiceImpl implements AdminService{
 		
 		return dbean;
 	}
+	public DoctorBean saveNurseDetails(DoctorBean dbean){
+		Doctor doctor=doctorBuilder.buildDocotor(dbean);
+		doctor=doctorFunctionsFacade.saveNurseDetails(doctor);
+		dbean=doctorBuilder.buildDocotorBean(doctor);
+		
+		return dbean;
+	}
 
 }

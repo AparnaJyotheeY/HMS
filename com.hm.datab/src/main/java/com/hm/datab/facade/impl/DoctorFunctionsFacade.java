@@ -20,6 +20,11 @@ public class DoctorFunctionsFacade implements DoctorFunctions{
 		doc=doctorDAOImpl.saveDoctorCredentials(doctor);
 		return doctorDAOImpl.saveDoctorDetails(doctor);
 	}
+	public Doctor saveNurseDetails(Doctor doctor){
+		Doctor doc=null;
+		doc=doctorDAOImpl.saveNurseCredentials(doctor);
+		return doctorDAOImpl.saveNurseDetails(doctor);
+	}
 	
 	public List<Doctor> loadDoctorDetails(){
 		return doctorDAOImpl.loadDoctorDetails();
