@@ -32,4 +32,10 @@ public class DoctorFunctionsFacade implements DoctorFunctions{
 	public Doctor editDoctorDetails(Doctor doctor){
 		return doctorDAOImpl.editDoctorDetails(doctor);
 	}
+<<<<<<< HEAD
+=======
+	public List<Doctor> loadNurseDetails(){
+		return doctorDAOImpl.loadNurseDetails();
+	}
+>>>>>>> branch 'master' of https://github.com/AparnaJyotheeY/HMS
 }

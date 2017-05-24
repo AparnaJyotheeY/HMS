@@ -11,6 +11,16 @@
 	   	class="com.hm.web.pdfs.DoctorDetailsPdfGenerator">
 	</bean>
 	
+<<<<<<< HEAD
+=======
+	<bean id="NurseExcel"
+	   	class="com.hm.web.files.NurseDetailsXLGenerator">
+	</bean>
+	
+	<bean id="NursePdf"
+	   	class="com.hm.web.pdfs.NurseDetailsPdfGenerator">
+	</bean>
+>>>>>>> branch 'master' of https://github.com/AparnaJyotheeY/HMS
 	
 	
 </beans>

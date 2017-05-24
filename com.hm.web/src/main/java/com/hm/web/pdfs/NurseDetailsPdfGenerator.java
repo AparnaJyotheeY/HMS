@@ -19,7 +19,7 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
-public class DoctorDetailsPdfGenerator extends AbstractPdfView{
+public class NurseDetailsPdfGenerator extends AbstractPdfView{
 
 
 		@Override
@@ -28,11 +28,7 @@ public class DoctorDetailsPdfGenerator extends AbstractPdfView{
 		   HttpServletResponse resp) throws Exception {
 			
 			
-<<<<<<< HEAD
-			Paragraph header = new Paragraph(new Chunk("Doctor Details",FontFactory.getFont(FontFactory.HELVETICA, 30)));
-=======
 			Paragraph header = new Paragraph(new Chunk("Details",FontFactory.getFont(FontFactory.HELVETICA, 30)));
->>>>>>> branch 'master' of https://github.com/AparnaJyotheeY/HMS
 			  document.add(header);
 			 
 

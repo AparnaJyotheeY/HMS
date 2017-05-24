@@ -12,4 +12,10 @@ public interface AdminService {
 
 	public DoctorBean editDoctorDetails(DoctorBean dbean);
 	public DoctorBean saveNurseDetails(DoctorBean dbean);
+<<<<<<< HEAD
+=======
+	
+	public List<DoctorBean> loadNurseDetails();
+	
+>>>>>>> branch 'master' of https://github.com/AparnaJyotheeY/HMS
 }
