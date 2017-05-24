@@ -11,6 +11,13 @@
 	   	class="com.hm.web.pdfs.DoctorDetailsPdfGenerator">
 	</bean>
 	
+	<bean id="NurseExcel"
+	   	class="com.hm.web.files.NurseDetailsXLGenerator">
+	</bean>
+	
+	<bean id="NursePdf"
+	   	class="com.hm.web.pdfs.NurseDetailsPdfGenerator">
+	</bean>
 	
 	
 </beans>

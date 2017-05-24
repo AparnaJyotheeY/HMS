@@ -111,7 +111,8 @@ public class AdminController {
 	@RequestMapping("/addnurse")
 	public String showAddNurse(HttpServletRequest req){
 		
-		
+		List<DoctorBean> dbean=adminServiceImpl.loadNurseDetails();
+		req.setAttribute("nurselist",dbean);
 		
 		return "addnurse";
 	}
@@ -149,6 +150,19 @@ public class AdminController {
 		dbean.setPhone(req.getParameter("phone"));
 		
 		return dbean;
+	}
+	@RequestMapping("/exportnexcel")
+	public ModelAndView getNExcel(HttpServletRequest req,Model model){
+		List<DoctorBean> dlist=null;
+		dlist=adminServiceImpl.loadNurseDetails();
+		return new ModelAndView("NurseExcel", "nurse",dlist);
+	}
+
+	@RequestMapping("/exportnpdf")
+	public ModelAndView getNPdf(HttpServletRequest req,Model model){
+		List<DoctorBean> dlist=null;
+		dlist=adminServiceImpl.loadNurseDetails();
+		return new ModelAndView("NursePdf", "dbean",dlist);
 	}
 	
 }

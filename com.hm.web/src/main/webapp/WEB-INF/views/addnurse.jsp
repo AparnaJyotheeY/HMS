@@ -61,6 +61,7 @@ String smessage=(String) request.getAttribute("successmessage");
 if(smessage==null){
 	smessage="";
 }
+List<DoctorBean> dlist=(List) request.getAttribute("nurselist");
 %>
 <body>
    <div class="page-container">
@@ -130,8 +131,8 @@ if(smessage==null){
 <div class="btn-toolbar">
    <button class="btn btn-primary">Copy</button>
     
-    <button onclick="location.href='./exportdexcel'" class="btn btn-warning">Excel</button>
-    <button onclick="location.href='./exportdpdf'" class="btn btn-danger">PDF</button>
+    <button onclick="location.href='./exportnexcel'" class="btn btn-warning">Excel</button>
+    <button onclick="location.href='./exportnpdf'" class="btn btn-danger">PDF</button>
    
 </div>
 <div class="well  table-responsive">
@@ -149,20 +150,20 @@ if(smessage==null){
 					 
                </thead>
     <tbody>
-    
+    <%for(DoctorBean dbean:dlist){ %>
     <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td><img id="profileImage" style="height:50px;width:70px" src="<%=dbean.getImages() %>"></td>
+    <td><%=dbean.getName() %></td>
+    <td><%=dbean.getEmail() %></td>
+    <td><%=dbean.getAddress() %></td>
+    <td><%=dbean.getPhone() %></td>
     
     
     
     <td><a data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a>
     <a data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></a></td>
     </tr>
-  
+  <%} %>
     </tbody>
         
 </table>

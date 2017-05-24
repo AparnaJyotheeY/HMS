@@ -12,4 +12,5 @@ public interface DoctorDAO {
 	public Doctor editDoctorDetails(Doctor doctor);
 	public Doctor saveNurseDetails(Doctor doctor);
 	public Doctor saveNurseCredentials(Doctor doctor);
+	public List<Doctor> loadNurseDetails();
 }

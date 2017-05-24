@@ -10,5 +10,5 @@ public interface DoctorFunctions {
 	public List<Doctor> loadDoctorDetails();
 	public Doctor editDoctorDetails(Doctor doctor);
 	public Doctor saveNurseDetails(Doctor doctor);
-	
+	public List<Doctor> loadNurseDetails();
 }

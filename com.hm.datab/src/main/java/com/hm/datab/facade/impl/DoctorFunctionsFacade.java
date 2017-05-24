@@ -32,4 +32,7 @@ public class DoctorFunctionsFacade implements DoctorFunctions{
 	public Doctor editDoctorDetails(Doctor doctor){
 		return doctorDAOImpl.editDoctorDetails(doctor);
 	}
+	public List<Doctor> loadNurseDetails(){
+		return doctorDAOImpl.loadNurseDetails();
+	}
 }

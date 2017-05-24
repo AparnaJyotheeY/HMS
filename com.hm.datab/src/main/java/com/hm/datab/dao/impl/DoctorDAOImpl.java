@@ -1,6 +1,5 @@
 package com.hm.datab.dao.impl;
 
-import java.security.Security;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -8,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +17,7 @@ import org.springframework.stereotype.Repository;
 import com.hm.datab.beans.Doctor;
 import com.hm.datab.dao.DoctorDAO;
 import com.hm.datab.impls.mappers.DoctorDetailsRowMapper;
+import com.hm.datab.impls.mappers.NurseDetailsRowMapper;
 import com.hm.datab.impls.stmtsetter.DoctorDetailsStmtSetter;
 import com.hm.datab.util.DBConstants;
 
@@ -139,6 +137,14 @@ public class DoctorDAOImpl implements DoctorDAO{
 			
 			return doctor;
 				
+	}
+public List<Doctor> loadNurseDetails(){
+		
+		List<Doctor> dbean = new ArrayList<Doctor>();
+		String loadNurseDetailsQuery = dbProps.getProperty(DBConstants.LOAD_NURSE_DETAILS );
+		dbean = jdbcTemplate.query(loadNurseDetailsQuery, new NurseDetailsRowMapper());
+		
+		return dbean;
 	}
 	
 }

@@ -67,4 +67,26 @@ public class AdminServiceImpl implements AdminService{
 		return dbean;
 	}
 
+public List<DoctorBean> loadNurseDetails(){
+		
+		List<Doctor> dlist=doctorFunctionsFacade.loadNurseDetails();
+		List<DoctorBean> dbean=new ArrayList<DoctorBean>();
+		for(Doctor doc:dlist){
+			DoctorBean bean=new DoctorBean();
+			bean.setDid(doc.getDid());
+			bean.setName(doc.getName());
+			bean.setEmail(doc.getEmail());
+			
+			bean.setPhone(doc.getPhone());
+			bean.setAddress(doc.getAddress());
+			
+			StringBuilder sb = new StringBuilder();
+			sb.append("data:image/jpeg;base64,");
+			sb.append(Base64Utils.encodeToString(doc.getImage()));
+			
+			bean.setImages(sb.toString());
+			dbean.add(bean);
+		}
+		return dbean;
+	}
 }

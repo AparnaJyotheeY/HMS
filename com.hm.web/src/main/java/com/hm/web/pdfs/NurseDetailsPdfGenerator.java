@@ -19,7 +19,7 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
-public class DoctorDetailsPdfGenerator extends AbstractPdfView{
+public class NurseDetailsPdfGenerator extends AbstractPdfView{
 
 
 		@Override
