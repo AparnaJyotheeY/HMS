@@ -84,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div></a>
 					</div>
 					<div class="col-md-3 four-grid">
-						<a href="adpatient.html"><div class="four-agileinfo">
+						<a href="<%=request.getContextPath( )%>/addpatient"><div class="four-agileinfo">
 						<div class="icon">
 								<i class="fa fa-user" aria-hidden="true"></i>
 							</div>
@@ -289,7 +289,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										 
 									    <li id="menu-academico" ><a href="<%=request.getContextPath( )%>/addoctor"><i class="fa fa-user-md" aria-hidden="true"></i><span>Doctor</span><div class="clearfix"></div></a></li>
 									 
-									 <li id="menu-academico" ><a href="adpatient.html"><i class="fa fa-user " aria-hidden="true"></i><span> Patient</span> <div class="clearfix"></div></a></li>
+									 <li id="menu-academico" ><a href="<%=request.getContextPath( )%>/addpatient"><i class="fa fa-user " aria-hidden="true"></i><span> Patient</span> <div class="clearfix"></div></a></li>
 									
 									<li id="menu-academico" ><a href="<%=request.getContextPath( )%>/adnurse"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Nurse</span><div class="clearfix"></div></a></li>
 									 

@@ -40,4 +40,40 @@ public DoctorBean buildDocotorBean(Doctor dbean){
 		return doctor;
 		
 	}
+
+public Doctor buildPatient(DoctorBean dbean)
+{
+	Doctor doctor=new Doctor();
+	doctor.setPid(dbean.getPid());
+	doctor.setName(dbean.getName());
+	doctor.setEmail(dbean.getEmail());
+	doctor.setAddress(dbean.getAddress());
+	doctor.setPassword(dbean.getPassword());
+	doctor.setPhone(dbean.getPhone());
+	doctor.setImage(dbean.getImage());
+	doctor.setGender(dbean.getGender());
+	doctor.setBloodgroup(dbean.getBloodgroup());
+	doctor.setDob(dbean.getDob());
+	doctor.setAge(dbean.getAge());
+	doctor.setAddeddate(dbean.getAddeddate());
+
+	return doctor;
+}
+public DoctorBean buildPatientBean(Doctor dbean){
+ 
+	DoctorBean doctor=new DoctorBean();
+	doctor.setPid(dbean.getPid());
+	doctor.setName(dbean.getName());
+	doctor.setEmail(dbean.getEmail());
+	doctor.setAddress(dbean.getAddress());
+	doctor.setPassword(dbean.getPassword());
+	doctor.setPhone(dbean.getPhone());
+	doctor.setImage(dbean.getImage());
+	doctor.setGender(dbean.getGender());
+	doctor.setBloodgroup(dbean.getBloodgroup());
+	doctor.setDob(dbean.getDob());
+	doctor.setAge(dbean.getAge());
+	doctor.setAddeddate(dbean.getAddeddate());
+  return doctor;	
+}
 }

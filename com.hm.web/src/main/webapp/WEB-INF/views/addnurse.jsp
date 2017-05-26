@@ -61,7 +61,7 @@ String smessage=(String) request.getAttribute("successmessage");
 if(smessage==null){
 	smessage="";
 }
-<<<<<<< HEAD
+List<DoctorBean> dlist=(List) request.getAttribute("doctorlist");
 %>
 <body>
    <div class="page-container">
@@ -268,7 +268,7 @@ List<DoctorBean> dlist=(List) request.getAttribute("nurselist");
     <a data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></a></td>
     </tr>
   <%} %>
->>>>>>> branch 'master' of https://github.com/AparnaJyotheeY/HMS
+
     </tbody>
         
 </table>
