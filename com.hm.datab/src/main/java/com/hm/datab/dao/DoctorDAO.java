@@ -12,8 +12,16 @@ public interface DoctorDAO {
 	public Doctor editDoctorDetails(Doctor doctor);
 	public Doctor saveNurseDetails(Doctor doctor);
 	public Doctor saveNurseCredentials(Doctor doctor);
-<<<<<<< HEAD
-=======
 	public List<Doctor> loadNurseDetails();
->>>>>>> branch 'master' of https://github.com/AparnaJyotheeY/HMS
+	public Doctor savePatientDetails(Doctor doctor);
+	public Doctor savePatientCredentials(Doctor doctor);
+	public List<Doctor> loadPatientDetails();
+	public Doctor editPatientDetails(Doctor doctor);
+	public String deletePatientRecord(String email);
+	public Doctor saveLaboratoristDetails(Doctor doctor);
+	public Doctor saveLaboratoristCredentials(Doctor doctor);
+	public List<Doctor> loadLaboratoristDetails();
+	public Doctor editLaboratoristDetails(Doctor doctor);
+	public String deleteLaboratoristRecord(String email);
+
 }
