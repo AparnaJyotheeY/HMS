@@ -7,6 +7,16 @@ public class LoginBean {
 	private String email;
 	private String password;
 	private Date createdDate;
+	private String designation;
+	
+	
+	
+	public String getDesignation() {
+		return designation;
+	}
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -27,10 +37,9 @@ public class LoginBean {
 	}
 	@Override
 	public String toString() {
-		return "LoginBean [email=" + email + ", password=" + password + ", createdDate=" + createdDate + "]";
+		return "LoginBean [email=" + email + ", password=" + password + ", createdDate=" + createdDate
+				+ ", designation=" + designation + "]";
 	}
-	
-	
 	
 	
 }

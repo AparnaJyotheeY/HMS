@@ -17,9 +17,11 @@ import org.springframework.stereotype.Repository;
 
 import com.hm.datab.beans.Doctor;
 import com.hm.datab.dao.DoctorDAO;
+import com.hm.datab.impls.mappers.AccountantDetailsRowMapper;
 import com.hm.datab.impls.mappers.DoctorDetailsRowMapper;
 import com.hm.datab.impls.mappers.NurseDetailsRowMapper;
 import com.hm.datab.impls.mappers.PharmacistDetailsRowMapper;
+import com.hm.datab.impls.stmtsetter.AccountantDetailsStmtSetter;
 import com.hm.datab.impls.stmtsetter.DoctorDetailsStmtSetter;
 import com.hm.datab.impls.stmtsetter.NurseDetailsStmtSetter;
 import com.hm.datab.impls.stmtsetter.PharmacistDetailsStmtSetter;
