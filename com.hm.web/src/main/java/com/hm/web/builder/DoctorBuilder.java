@@ -11,7 +11,8 @@ public class DoctorBuilder {
 	public Doctor buildDocotor(DoctorBean dbean){
 		
 		Doctor doctor=new Doctor();
-		
+		doctor.setNurseid(dbean.getNurseid());
+		doctor.setPharmacistid(dbean.getPharmacistid());
 		doctor.setName(dbean.getName());
 		doctor.setEmail(dbean.getEmail());
 		doctor.setPassword(dbean.getPassword());
@@ -27,7 +28,8 @@ public class DoctorBuilder {
 public DoctorBean buildDocotorBean(Doctor dbean){
 		
 		DoctorBean doctor=new DoctorBean();
-		
+		doctor.setNurseid(dbean.getNurseid());
+		doctor.setPharmacistid(dbean.getPharmacistid());
 		doctor.setName(dbean.getName());
 		doctor.setEmail(dbean.getEmail());
 		doctor.setPassword(dbean.getPassword());

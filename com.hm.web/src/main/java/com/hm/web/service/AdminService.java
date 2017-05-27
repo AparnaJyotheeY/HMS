@@ -12,10 +12,14 @@ public interface AdminService {
 
 	public DoctorBean editDoctorDetails(DoctorBean dbean);
 	public DoctorBean saveNurseDetails(DoctorBean dbean);
-<<<<<<< HEAD
-=======
+
 	
 	public List<DoctorBean> loadNurseDetails();
-	
->>>>>>> branch 'master' of https://github.com/AparnaJyotheeY/HMS
+	public DoctorBean editNurseDetails(DoctorBean dbean);
+	public String deleteNurseDetails(String email);
+	public DoctorBean savePhramacistDetails(DoctorBean dbean);
+
+	public List<DoctorBean> loadPhramacistDetails();
+	public DoctorBean editPhramacistDetails(DoctorBean dbean);
+	public String deletePhramacistDetails(String email);
 }

@@ -32,10 +32,47 @@ public class DoctorFunctionsFacade implements DoctorFunctions{
 	public Doctor editDoctorDetails(Doctor doctor){
 		return doctorDAOImpl.editDoctorDetails(doctor);
 	}
-<<<<<<< HEAD
-=======
+
+
 	public List<Doctor> loadNurseDetails(){
 		return doctorDAOImpl.loadNurseDetails();
 	}
->>>>>>> branch 'master' of https://github.com/AparnaJyotheeY/HMS
+	public Doctor editNurseDetails(Doctor doctor){
+		return doctorDAOImpl.editNurseDetails(doctor);
+	}
+	public String deleteNurseDetails(String email){
+		return doctorDAOImpl.deleteNurseDetails(email);
+	}
+	public Doctor savePhramacisDetails(Doctor doctor){
+		Doctor doc=null;
+		doc=doctorDAOImpl.savePhramacisCredentials(doctor);
+		return doctorDAOImpl.savePhramacisDetails(doctor);
+	}
+
+	public List<Doctor> loadPhramacisDetails(){
+		return doctorDAOImpl.loadPhramacisDetails();
+	}
+	public Doctor editPhramacisDetails(Doctor doctor){
+		return doctorDAOImpl.editPhramacisDetails(doctor);
+	}
+	public String deletePhramacisDetails(String email){
+		return doctorDAOImpl.deletePhramacisDetails(email);
+	}
+	
+	public Doctor saveAccountantDetails(Doctor doctor){
+		Doctor doc=null;
+		doc=doctorDAOImpl.saveAccountantCredentials(doctor);
+		return doctorDAOImpl.saveAccountantDetails(doctor);
+	}
+
+	public List<Doctor> loadAccountantDetails(){
+		return doctorDAOImpl.loadAccountantDetails();
+	}
+	public Doctor editAccountantDetails(Doctor doctor){
+		return doctorDAOImpl.editAccountantDetails(doctor);
+	}
+	public String deleteAccountantDetails(String email){
+		return doctorDAOImpl.deleteAccountantDetails(email);
+	}
+
 }

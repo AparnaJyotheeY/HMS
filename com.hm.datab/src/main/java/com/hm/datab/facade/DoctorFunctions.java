@@ -10,9 +10,25 @@ public interface DoctorFunctions {
 	public List<Doctor> loadDoctorDetails();
 	public Doctor editDoctorDetails(Doctor doctor);
 	public Doctor saveNurseDetails(Doctor doctor);
-<<<<<<< HEAD
+
 	
-=======
+
 	public List<Doctor> loadNurseDetails();
->>>>>>> branch 'master' of https://github.com/AparnaJyotheeY/HMS
+	public Doctor editNurseDetails(Doctor doctor);
+	public String deleteNurseDetails(String email);
+public Doctor savePhramacisDetails(Doctor doctor);
+
+	
+
+	public List<Doctor> loadPhramacisDetails();
+	public Doctor editPhramacisDetails(Doctor doctor);
+	public String deletePhramacisDetails(String email);
+	
+public Doctor saveAccountantDetails(Doctor doctor);
+
+	
+
+	public List<Doctor> loadAccountantDetails();
+	public Doctor editAccountantDetails(Doctor doctor);
+	public String deleteAccountantDetails(String email);
 }

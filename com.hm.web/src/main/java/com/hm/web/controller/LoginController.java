@@ -54,14 +54,27 @@ public class LoginController {
 					String email=request.getParameter("email");
 					
 					request.getSession().setAttribute("uName",email);
+					List<LoginBean> dbean=hotelServiceImpl.loadLoginDetails(email);
+					for(LoginBean login:dbean){
+						String desig=login.getDesignation();
+						if(desig.equals("admin")){
+							resultPage="admin";
+						}
+						else if(desig.equals("doctor")){
+							resultPage="doctor";
+						}
+						else{
+							request.getSession().setAttribute("message", "Please Enter Correct Credentials");
+						}
+					}
 					
-					resultPage="admin";
+					
 					request.getSession().setAttribute(ApplicationConstants.LOGIN_BEAN, user);
 					
 					
 				}
 			}catch(LoginExceptions loginException){
-				resultPage = "login";
+				resultPage = "login.jsp";
 				request.setAttribute("message", loginException.getMessage());
 			
 

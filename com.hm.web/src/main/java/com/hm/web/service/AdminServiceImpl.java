@@ -67,15 +67,14 @@ public class AdminServiceImpl implements AdminService{
 		return dbean;
 	}
 
-<<<<<<< HEAD
-=======
+
 public List<DoctorBean> loadNurseDetails(){
 		
 		List<Doctor> dlist=doctorFunctionsFacade.loadNurseDetails();
 		List<DoctorBean> dbean=new ArrayList<DoctorBean>();
 		for(Doctor doc:dlist){
 			DoctorBean bean=new DoctorBean();
-			bean.setDid(doc.getDid());
+			bean.setNurseid(doc.getNurseid());
 			bean.setName(doc.getName());
 			bean.setEmail(doc.getEmail());
 			
@@ -91,5 +90,107 @@ public List<DoctorBean> loadNurseDetails(){
 		}
 		return dbean;
 	}
->>>>>>> branch 'master' of https://github.com/AparnaJyotheeY/HMS
+public DoctorBean editNurseDetails(DoctorBean dbean){
+	Doctor doctor=doctorBuilder.buildDocotor(dbean);
+	doctor=doctorFunctionsFacade.editNurseDetails(doctor);
+	dbean=doctorBuilder.buildDocotorBean(doctor);
+	
+	return dbean;
+}
+public String deleteNurseDetails(String email){
+	
+	String nemail=doctorFunctionsFacade.deleteNurseDetails(email);
+	
+	
+	return nemail;
+}
+public DoctorBean savePhramacistDetails(DoctorBean dbean){
+	Doctor doctor=doctorBuilder.buildDocotor(dbean);
+	doctor=doctorFunctionsFacade.savePhramacisDetails(doctor);
+	dbean=doctorBuilder.buildDocotorBean(doctor);
+	
+	return dbean;
+}
+
+
+public List<DoctorBean> loadPhramacistDetails(){
+	
+	List<Doctor> dlist=doctorFunctionsFacade.loadPhramacisDetails();
+	List<DoctorBean> dbean=new ArrayList<DoctorBean>();
+	for(Doctor doc:dlist){
+		DoctorBean bean=new DoctorBean();
+		bean.setPharmacistid(doc.getPharmacistid());
+		bean.setName(doc.getName());
+		bean.setEmail(doc.getEmail());
+		
+		bean.setPhone(doc.getPhone());
+		bean.setAddress(doc.getAddress());
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("data:image/jpeg;base64,");
+		sb.append(Base64Utils.encodeToString(doc.getImage()));
+		
+		bean.setImages(sb.toString());
+		dbean.add(bean);
+	}
+	return dbean;
+}
+public DoctorBean editPhramacistDetails(DoctorBean dbean){
+Doctor doctor=doctorBuilder.buildDocotor(dbean);
+doctor=doctorFunctionsFacade.editPhramacisDetails(doctor);
+dbean=doctorBuilder.buildDocotorBean(doctor);
+
+return dbean;
+}
+public String deletePhramacistDetails(String email){
+
+String pemail=doctorFunctionsFacade.deletePhramacisDetails(email);
+
+
+return pemail;
+}
+public DoctorBean saveAccountantDetails(DoctorBean dbean){
+	Doctor doctor=doctorBuilder.buildDocotor(dbean);
+	doctor=doctorFunctionsFacade.saveAccountantetails(doctor);
+	dbean=doctorBuilder.buildDocotorBean(doctor);
+	
+	return dbean;
+}
+
+public List<DoctorBean> loadAccountantDetails(){
+	
+	List<Doctor> dlist=doctorFunctionsFacade.loadAccountantDetails();
+	List<DoctorBean> dbean=new ArrayList<DoctorBean>();
+	for(Doctor doc:dlist){
+		DoctorBean bean=new DoctorBean();
+		bean.setAccountantid(doc.getAccountantid());
+		bean.setName(doc.getName());
+		bean.setEmail(doc.getEmail());
+		
+		bean.setPhone(doc.getPhone());
+		bean.setAddress(doc.getAddress());
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("data:image/jpeg;base64,");
+		sb.append(Base64Utils.encodeToString(doc.getImage()));
+		
+		bean.setImages(sb.toString());
+		dbean.add(bean);
+	}
+	return dbean;
+}
+public DoctorBean editAccountantDetails(DoctorBean dbean){
+Doctor doctor=doctorBuilder.buildDocotor(dbean);
+doctor=doctorFunctionsFacade.editAccountantDetails(doctor);
+dbean=doctorBuilder.buildDocotorBean(doctor);
+
+return dbean;
+}
+public String deleteAccountantDetails(String email){
+
+String pemail=doctorFunctionsFacade.deleteAccountantDetails(email);
+
+
+return pemail;
+}
 }

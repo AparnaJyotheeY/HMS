@@ -10,6 +10,8 @@ public class Doctor {
 
 
 		private int did;
+		private int nurseid;
+		private int pharmacistid;
 		private String name;
 		private String email;
 		private String password;
@@ -27,6 +29,21 @@ public class Doctor {
 		}
 		public void setDid(int did) {
 			this.did = did;
+		}
+		
+		
+		public int getNurseid() {
+			return nurseid;
+		}
+		public void setNurseid(int nurseid) {
+			this.nurseid = nurseid;
+		}
+		
+		public int getPharmacistid() {
+			return pharmacistid;
+		}
+		public void setPharmacistid(int pharmacistid) {
+			this.pharmacistid = pharmacistid;
 		}
 		public String getName() {
 			return name;
@@ -91,10 +108,12 @@ public class Doctor {
 		}
 		@Override
 		public String toString() {
-			return "Doctor [did=" + did + ", name=" + name + ", email=" + email + ", password=" + password
-					+ ", address=" + address + ", phone=" + phone + ", dept=" + dept + ", profile=" + profile
-					+ ", image=" + Arrays.toString(image) + ", addeddate=" + addeddate + ", desig=" + desig + "]";
+			return "Doctor [did=" + did + ", nurseid=" + nurseid + ", pharmacistid=" + pharmacistid + ", name=" + name
+					+ ", email=" + email + ", password=" + password + ", address=" + address + ", phone=" + phone
+					+ ", dept=" + dept + ", profile=" + profile + ", image=" + Arrays.toString(image) + ", addeddate="
+					+ addeddate + ", desig=" + desig + "]";
 		}
+		
 		
 	}
 
