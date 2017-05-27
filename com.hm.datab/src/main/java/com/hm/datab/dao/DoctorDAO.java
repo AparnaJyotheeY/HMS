@@ -12,6 +12,9 @@ public interface DoctorDAO {
 	public Doctor editDoctorDetails(Doctor doctor);
 	public Doctor saveNurseDetails(Doctor doctor);
 	public Doctor saveNurseCredentials(Doctor doctor);
+
+
+
 	public List<Doctor> loadNurseDetails();
 	public Doctor savePatientDetails(Doctor doctor);
 	public Doctor savePatientCredentials(Doctor doctor);
@@ -23,5 +26,19 @@ public interface DoctorDAO {
 	public List<Doctor> loadLaboratoristDetails();
 	public Doctor editLaboratoristDetails(Doctor doctor);
 	public String deleteLaboratoristRecord(String email);
+	public Doctor editNurseDetails(Doctor doctor);
+	public String deleteNurseDetails(String email);
+	public Doctor savePhramacisDetails(Doctor doctor);
+	public Doctor savePhramacisCredentials(Doctor doctor);
 
+
+	public List<Doctor> loadPhramacisDetails();
+	public Doctor editPhramacisDetails(Doctor doctor);
+	public String deletePhramacisDetails(String email);
+	
+	public Doctor saveAccountantCredentials(Doctor doctor);
+
+
+	public List<Doctor> loadAccountantDetails();
+	public Doctor editAccountantDetails(Doctor doctor);
 }
