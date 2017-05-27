@@ -135,7 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--four-grids here-->
 		<div class="four-grids">
 					<div class="col-md-3 four-grid">
-					<a href="adlaboratoris.html">	<div class="four-agileits">
+					<a href="<%=request.getContextPath( )%>/addlaboratorist">	<div class="four-agileits">
 						<div class="icon">
 								<i class="fa fa-flask" aria-hidden="true"></i>
 							</div>
@@ -296,7 +296,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									 <li id="menu-academico" ><a href="adpharmacist.html"><i class="fa fa-medkit" aria-hidden="true"></i><span>Pharmacist</span> <div class="clearfix"></div></a>
 										  
 										</li>
-									 <li><a href="adlaboratoris.html"><i class="fa fa-flask" aria-hidden="true"></i>  <span>Laboratorist</span><div class="clearfix"></div></a></li>
+									 <li><a href="<%=request.getContextPath( )%>/addlaboratorist"><i class="fa fa-flask" aria-hidden="true"></i>  <span>Laboratorist</span><div class="clearfix"></div></a></li>
 									
 							       
 									<li><a href="adaccount.html"><i class="fa fa-money" aria-hidden="true"></i><span>Accountant</span> <div class="clearfix"></div></a>

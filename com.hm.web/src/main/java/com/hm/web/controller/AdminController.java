@@ -311,8 +311,8 @@ public class AdminController {
 		req.setAttribute("patientlist",dlist);
 		
 		dbean=adminServiceImpl.editLaboratoristDetails(dbean);
-		req.setAttribute("successmessage", "doctor details updated successfully");
-		return "addpatient";
+		req.setAttribute("successmessage", "laboratorist details updated successfully");
+		return "addlaboratorist";
 	}
 	
 	public DoctorBean buildEditLaboratoristDetails(HttpServletRequest req)
@@ -343,10 +343,10 @@ public class AdminController {
 	@RequestMapping("/deletelaboratorist")
 	public String deleteLaboratoristRecord(HttpServletRequest req)
 	{
-		String email=req.getParameter("lemail");
+		String email=req.getParameter("demail");
+		adminServiceImpl.deleteLaboratoristRecord(email);
 		List<DoctorBean> dlist=adminServiceImpl.loadLaboratoristDetails();
 		req.setAttribute("laboratoristlist",dlist);
-		adminServiceImpl.deleteLaboratoristRecord(email);
 		
 		return "addlaboratorist";
 		

@@ -147,7 +147,7 @@ public DoctorBean saveLaboratoristDetails(DoctorBean dbean){
 
 public List<DoctorBean> loadLaboratoristDetails(){
 	
-	List<Doctor> dlist=doctorFunctionsFacade.loadDoctorDetails();
+	List<Doctor> dlist=doctorFunctionsFacade.loadLaboratoristDetails();
 	List<DoctorBean> dbean=new ArrayList<DoctorBean>();
 	for(Doctor doc:dlist){
 		DoctorBean bean=new DoctorBean();

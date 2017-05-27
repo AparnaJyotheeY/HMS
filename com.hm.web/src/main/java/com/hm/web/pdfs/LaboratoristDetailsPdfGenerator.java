@@ -39,13 +39,13 @@ public class LaboratoristDetailsPdfGenerator extends AbstractPdfView {
 			List<DoctorBean> dlist = (List<DoctorBean>) model.get("Laboratorist");
 			
 			
-		 PdfPTable table = new PdfPTable(7); // 3 columns.
+		 PdfPTable table = new PdfPTable(5); // 3 columns.
 	        table.setWidthPercentage(100); //Width 100%
 	        table.setSpacingBefore(20f); //Space before table
 	        table.setSpacingAfter(10f); //Space after table
 	 
 	        //Set Column widths
-	        float[] columnWidths = {1f, 1f, 1f, 1f, 1f, 1f, 1f};
+	        float[] columnWidths = {1f, 1f, 1f, 1f, 1f};
 	        table.setWidths(columnWidths);
 	        
 	        
@@ -59,6 +59,8 @@ public class LaboratoristDetailsPdfGenerator extends AbstractPdfView {
 	        
 	     
 	        
+	        cell.setPhrase(new Phrase("LABORATORIST ID"));
+	        table.addCell(cell);
 	        
 	        cell.setPhrase(new Phrase("NAME"));
 	        table.addCell(cell);
@@ -81,9 +83,7 @@ public class LaboratoristDetailsPdfGenerator extends AbstractPdfView {
 	    	
 	    	rowcell.setPhrase(new Phrase(bean.getLid()));
 	        table.addCell(rowcell);
-	        
-	        
-	        
+	    
 	        rowcell.setPhrase(new Phrase(bean.getName()));
 	        table.addCell(rowcell);
 	        

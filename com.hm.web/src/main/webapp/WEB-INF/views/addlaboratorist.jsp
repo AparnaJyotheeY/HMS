@@ -232,8 +232,8 @@ List<DoctorBean> dlist=(List) request.getAttribute("laboratoristlist");
         <div class="modal-footer ">
         <form:form action="deletelaboratorist">
         <div>
-        <input type="text" id="lemail" name="lemail">
-        <button type="button" class="btn btn-success" onclick="location.href='deletepatient'" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+        <input type="text" id="demail" name="demail">
+        <button type="submit" class="btn btn-success" onclick="location.href='deletelaboratorist'" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
        </div>
         </form:form>
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
@@ -253,7 +253,7 @@ List<DoctorBean> dlist=(List) request.getAttribute("laboratoristlist");
         <h4 class="modal-title custom_align" id="Heading">Add Laboratorist</h4>
       </div>
           <div class="modal-body">
-           <form:form action="addlaboratorist" method="post" class="form-horizontal" enctype="multipart/form-data" modelAttribute="userRegDetails" >
+           <form:form action="laboratoristdetails" method="post" class="form-horizontal" enctype="multipart/form-data" modelAttribute="userRegDetails" >
 		  <div class="col-md-offset-1 col-md-10">
          
 		 <div class="form-group">
@@ -361,16 +361,16 @@ $("#mytable #checkall").click(function () {
 									     <li><a href="addepartment.html"><i class="fa fa-sitemap"></i><span>Department</span><div class="clearfix"></div></a></li>
 										 
 										 
-									    <li id="menu-academico" ><a href="addoctor.html"><i class="fa fa-user-md" aria-hidden="true"></i><span>Doctor</span><div class="clearfix"></div></a></li>
+									    <li id="menu-academico" ><a href="<%=request.getContextPath( )%>/addoctor"><i class="fa fa-user-md" aria-hidden="true"></i><span>Doctor</span><div class="clearfix"></div></a></li>
 									 
-									 <li id="menu-academico" ><a href="adpatient.html"><i class="fa fa-user " aria-hidden="true"></i><span> Patient</span> <div class="clearfix"></div></a></li>
+									 <li id="menu-academico" ><a href="<%=request.getContextPath( )%>/addpatient"><i class="fa fa-user " aria-hidden="true"></i><span> Patient</span> <div class="clearfix"></div></a></li>
 									
 									<li id="menu-academico" ><a href="adnurse.html"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Nurse</span><div class="clearfix"></div></a></li>
 									 
 									 <li id="menu-academico" ><a href="adpharmacist.html"><i class="fa fa-medkit" aria-hidden="true"></i><span>Pharmacist</span> <div class="clearfix"></div></a>
 										  
 										</li>
-									 <li class="active"><a href="adlaboratoris.html"><i class="fa fa-flask" aria-hidden="true"></i>  <span>Laboratorist</span><div class="clearfix"></div></a></li>
+									 <li class="active"><a href="<%=request.getContextPath( )%>/addlaboratorist"><i class="fa fa-flask" aria-hidden="true"></i>  <span>Laboratorist</span><div class="clearfix"></div></a></li>
 									
 							       
 									<li><a href="adaccount.html"><i class="fa fa-money" aria-hidden="true"></i><span>Accountant</span> <div class="clearfix"></div></a>
@@ -463,7 +463,7 @@ function opendialog(valueString){
 }
 function deldialog(valueString){
 	var values = valueString.split("~");
-	$("#lemail").val(values[0]);
+	$("#demail").val(values[0]);
 	
 	}
 </script>
