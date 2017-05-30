@@ -60,7 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div></a>
 					</div>
 					<div class="col-md-3 four-grid">
-						<a href="log"><div class="four-agileinfo">
+						<a href="login.jsp"><div class="four-agileinfo">
 						<div class="icon">
 								<i class="fa fa-user-md fa-3x" aria-hidden="true"></i>
 							</div>

@@ -70,7 +70,7 @@ public class AccountantDetailsXLGenerator  extends AbstractExcelView {
         
             HSSFRow aRow = sheet.createRow(rowCount++);
            
-            aRow.createCell(0).setCellValue(dlist.getAccountantid());
+            aRow.createCell(0).setCellValue(dlist.getAccountatid());
          
             aRow.createCell(1).setCellValue(dlist.getImages());
           

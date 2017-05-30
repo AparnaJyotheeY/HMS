@@ -81,7 +81,7 @@ public class AccountantDetailsPdfGenerator extends AbstractPdfView{
 	    	rowcell.setHorizontalAlignment(Element.ALIGN_CENTER);
 	    	rowcell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 	    	
-	    	rowcell.setPhrase(new Phrase(bean.getAccountantid()));
+	    	rowcell.setPhrase(new Phrase(bean.getAccountatid()));
 	        table.addCell(rowcell);
 	        
 	        

@@ -12,6 +12,7 @@ public class Doctor {
 		private int did;
 		private int nurseid;
 		private int pharmacistid;
+		private int accountantid;
 		private String name;
 		private String email;
 		private String password;
@@ -22,8 +23,48 @@ public class Doctor {
 		private byte[] image;
 		private Date addeddate;
 		private String desig;
-		
-		
+		private int age;
+		private String gender;
+		private Date dob;
+		private int pid;
+		private int lid;
+		private String bloodgroup;
+		public String getBloodgroup() {
+			return bloodgroup;
+		}
+		public void setBloodgroup(String bloodgroup) {
+			this.bloodgroup = bloodgroup;
+		}
+		public int getAge() {
+			return age;
+		}
+		public void setAge(int age) {
+			this.age = age;
+		}
+		public String getGender() {
+			return gender;
+		}
+		public void setGender(String gender) {
+			this.gender = gender;
+		}
+		public Date getDob() {
+			return dob;
+		}
+		public void setDob(Date dob) {
+			this.dob = dob;
+		}
+		public int getPid() {
+			return pid;
+		}
+		public void setPid(int pid) {
+			this.pid = pid;
+		}
+		public int getLid() {
+			return lid;
+		}
+		public void setLid(int lid) {
+			this.lid = lid;
+		}
 		public int getDid() {
 			return did;
 		}
@@ -106,12 +147,21 @@ public class Doctor {
 		public void setDesig(String desig) {
 			this.desig = desig;
 		}
+		
+		public int getAccountantid() {
+			return accountantid;
+		}
+		public void setAccountantid(int accountantid) {
+			this.accountantid = accountantid;
+		}
 		@Override
 		public String toString() {
-			return "Doctor [did=" + did + ", nurseid=" + nurseid + ", pharmacistid=" + pharmacistid + ", name=" + name
-					+ ", email=" + email + ", password=" + password + ", address=" + address + ", phone=" + phone
-					+ ", dept=" + dept + ", profile=" + profile + ", image=" + Arrays.toString(image) + ", addeddate="
-					+ addeddate + ", desig=" + desig + "]";
+			return "Doctor [did=" + did + ", nurseid=" + nurseid + ", pharmacistid=" + pharmacistid + ", accountantid="
+					+ accountantid + ", name=" + name + ", email=" + email + ", password=" + password + ", address="
+					+ address + ", phone=" + phone + ", dept=" + dept + ", profile=" + profile + ", image="
+					+ Arrays.toString(image) + ", addeddate=" + addeddate + ", desig=" + desig + ", age=" + age
+					+ ", gender=" + gender + ", dob=" + dob + ", pid=" + pid + ", lid=" + lid + ", bloodgroup="
+					+ bloodgroup + "]";
 		}
 		
 		

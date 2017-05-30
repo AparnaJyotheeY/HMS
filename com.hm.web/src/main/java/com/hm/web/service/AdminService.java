@@ -22,4 +22,15 @@ public interface AdminService {
 	public List<DoctorBean> loadPhramacistDetails();
 	public DoctorBean editPhramacistDetails(DoctorBean dbean);
 	public String deletePhramacistDetails(String email);
+	
+	public DoctorBean savePatientDetails(DoctorBean dbean);
+	public List<DoctorBean> loadPatientDetails();
+	public DoctorBean editPatientDetails(DoctorBean dbean);
+	public String deletePatientRecord(String email);
+	public DoctorBean saveLaboratoristDetails(DoctorBean dbean);
+	public List<DoctorBean> loadLaboratoristDetails();
+	public DoctorBean editLaboratoristDetails(DoctorBean dbean);
+	public String deleteLaboratoristRecord(String email);
+	
+
 }

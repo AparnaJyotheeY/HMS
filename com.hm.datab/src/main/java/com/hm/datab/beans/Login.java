@@ -8,6 +8,15 @@ public class Login {
 	private String email;
 	private String password;
 	private Date createdDate;
+	private String desig;
+	
+	
+	public String getDesig() {
+		return desig;
+	}
+	public void setDesig(String desig) {
+		this.desig = desig;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -28,7 +37,8 @@ public class Login {
 	}
 	@Override
 	public String toString() {
-		return "LoginBean [email=" + email + ", password=" + password + ", createdDate=" + createdDate + "]";
+		return "Login [email=" + email + ", password=" + password + ", createdDate=" + createdDate + ", desig=" + desig
+				+ "]";
 	}
 	
 	

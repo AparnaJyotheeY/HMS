@@ -1,5 +1,6 @@
 package com.hm.web.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hm.web.model.DoctorBean;
 import com.hm.web.service.AdminServiceImpl;
+import com.ibm.icu.text.DateFormat;
+import com.ibm.icu.text.SimpleDateFormat;
 
 @Controller
 public class AdminController {
@@ -250,14 +253,14 @@ public class AdminController {
 		
 		return dbean;
 	}
-	@RequestMapping("/exportpexcel")
+	@RequestMapping("/exportpharmaexcel")
 	public ModelAndView getPharmacistExcel(HttpServletRequest req,Model model){
 		List<DoctorBean> dlist=null;
 		dlist=adminServiceImpl.loadPhramacistDetails();
 		return new ModelAndView("pharmacistExcel", "pharmacist",dlist);
 	}
 
-	@RequestMapping("/exportppdf")
+	@RequestMapping("/exportpharmapdf")
 	public ModelAndView getPharmacistPdf(HttpServletRequest req,Model model){
 		List<DoctorBean> dlist=null;
 		dlist=adminServiceImpl.loadPhramacistDetails();
@@ -399,4 +402,202 @@ public class AdminController {
 		req.setAttribute("successmessage", "Accountant details deleted successfully");
 		return "addaccountant";
 	}
+	@RequestMapping("/addpatient")
+	public String showPatient(HttpServletRequest req)
+	{
+		List<DoctorBean> dbean=adminServiceImpl.loadPatientDetails();
+		req.setAttribute("patientlist",dbean);
+		return "addpatient";	
+	}
+	
+	@RequestMapping(value="/patientdetails",method=RequestMethod.POST)
+	public String addPatient(@RequestParam("image") MultipartFile file,HttpServletRequest req) throws Exception
+	{
+		DoctorBean dbean=buildPatient(req);
+     try {
+			
+			if (!file.isEmpty()) {
+				byte[] pictureBytes = file.getBytes();					
+			
+					
+					dbean.setImage(pictureBytes);
+			}
+			
+		}catch(Exception e){
+			req.setAttribute("message", "Improper Data");
+			return "addpatient" ;
+		}
+	 
+     List<DoctorBean> dlist=adminServiceImpl.loadPatientDetails();
+     req.setAttribute("patientlist",dlist);
+		
+     dbean=adminServiceImpl.savePatientDetails(dbean);
+     req.setAttribute("successmessage", "patient details added successfully");
+     return "addpatient" ;
+	}
+	public DoctorBean buildPatient(HttpServletRequest req) throws Exception
+	{
+		DoctorBean dbean =new DoctorBean();
+		dbean.setName(req.getParameter("name"));
+		dbean.setEmail(req.getParameter("email"));
+		dbean.setPassword(req.getParameter("password"));
+		dbean.setAddress(req.getParameter("address"));
+		dbean.setPhone(req.getParameter("phoneno"));
+		dbean.setGender(req.getParameter("gender"));
+		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		dbean.setDob(format.parse(req.getParameter("dob")));
+		dbean.setAge(Integer.parseInt(req.getParameter("age")));
+		dbean.setBloodgroup(req.getParameter("bloodgroup"));
+		dbean.setAddeddate(new Date());
+		return dbean;
+		
+	}
+	@RequestMapping(value="/epatientdetails",method=RequestMethod.POST)
+	public String editPatientDetails(HttpServletRequest req)
+	{
+		DoctorBean dbean=buildEditpatientDetails(req);
+		
+		List<DoctorBean> dlist=adminServiceImpl.loadPatientDetails();
+		req.setAttribute("patientlist",dlist);
+		
+		dbean=adminServiceImpl.editPatientDetails(dbean);
+		req.setAttribute("successmessage", "doctor details updated successfully");
+		return "addpatient";
+	}
+	
+	public DoctorBean buildEditpatientDetails(HttpServletRequest req)
+	{
+		DoctorBean dbean=new DoctorBean();
+		dbean.setPid(Integer.valueOf(req.getParameter("pid")));
+		dbean.setName(req.getParameter("pname"));
+		dbean.setEmail(req.getParameter("pemail"));
+		dbean.setAge(Integer.parseInt(req.getParameter("page")));
+		dbean.setBloodgroup(req.getParameter("bloodgroup"));
+		dbean.setAddress(req.getParameter("paddress"));
+		dbean.setPhone(req.getParameter("pphone"));
+		return dbean;
+	}
+	
+	@RequestMapping("/exportpexcel")
+	public ModelAndView getPatientExcel(HttpServletRequest req,Model model){
+		List<DoctorBean> dlist=null;
+		dlist=adminServiceImpl.loadPatientDetails();
+		return new ModelAndView("PatientExcel", "patient",dlist);
+	}
+
+	@RequestMapping("/exportppdf")
+	public ModelAndView getpatientpdf(HttpServletRequest req,Model model){
+		List<DoctorBean> dlist=null;
+		dlist=adminServiceImpl.loadPatientDetails();
+		return new ModelAndView("PatientPdf", "patient",dlist);
+	}
+	
+	@RequestMapping("/deletepatient")
+	public String deletePatientRecord(HttpServletRequest req)
+	{
+		String email=req.getParameter("demail");
+		List<DoctorBean> dlist=adminServiceImpl.loadPatientDetails();
+		req.setAttribute("patientlist",dlist);
+		adminServiceImpl.deletePatientRecord(email);
+		
+		return "addpatient";
+		
+	}
+	
+	@RequestMapping("/addlaboratorist")
+	public String showLaboratorist(HttpServletRequest req)
+	{
+		List<DoctorBean> dbean=adminServiceImpl.loadLaboratoristDetails();;
+		req.setAttribute("laboratoristlist",dbean);
+		return "addlaboratorist";	
+	}
+	
+	@RequestMapping(value="/laboratoristdetails",method=RequestMethod.POST)
+	public String addLaboratorist(@RequestParam("image") MultipartFile file,HttpServletRequest req) throws Exception
+	{
+		DoctorBean dbean=buildLaboratorist(req);
+     try {
+			
+			if (!file.isEmpty()) {
+				byte[] pictureBytes = file.getBytes();					
+			
+					
+					dbean.setImage(pictureBytes);
+			}
+			
+		}catch(Exception e){
+			req.setAttribute("message", "Improper Data");
+			return "addlaboratorist" ;
+		}
+	 
+     List<DoctorBean> dlist=adminServiceImpl.loadLaboratoristDetails();
+     req.setAttribute("laboratoristlist",dlist);
+		
+     dbean=adminServiceImpl.saveLaboratoristDetails(dbean);
+     req.setAttribute("successmessage", "laboratorist details added successfully");
+     return "addlaboratorist" ;
+	}
+	public DoctorBean buildLaboratorist(HttpServletRequest req) throws Exception
+	{
+		DoctorBean dbean =new DoctorBean();
+		dbean.setName(req.getParameter("name"));
+		dbean.setEmail(req.getParameter("email"));
+		dbean.setPassword(req.getParameter("password"));
+		dbean.setAddress(req.getParameter("address"));
+		dbean.setPhone(req.getParameter("phoneno"));
+		dbean.setAddeddate(new Date());
+		return dbean;
+		
+	}
+	
+	@RequestMapping(value="/elaboratoristdetails",method=RequestMethod.POST)
+	public String editLaboratoristDetails(HttpServletRequest req)
+	{
+		DoctorBean dbean=buildEditLaboratoristDetails(req);
+		
+		List<DoctorBean> dlist=adminServiceImpl.loadLaboratoristDetails();
+		req.setAttribute("patientlist",dlist);
+		
+		dbean=adminServiceImpl.editLaboratoristDetails(dbean);
+		req.setAttribute("successmessage", "laboratorist details updated successfully");
+		return "addlaboratorist";
+	}
+	
+	public DoctorBean buildEditLaboratoristDetails(HttpServletRequest req)
+	{
+		DoctorBean dbean=new DoctorBean();
+		dbean.setPid(Integer.valueOf(req.getParameter("lid")));
+		dbean.setName(req.getParameter("lname"));
+		dbean.setEmail(req.getParameter("lemail"));
+		dbean.setAddress(req.getParameter("laddress"));
+		dbean.setPhone(req.getParameter("lphoneno"));
+		return dbean;
+	}
+	
+	@RequestMapping("/exportlexcel")
+	public ModelAndView getLaboratoristExcel(HttpServletRequest req,Model model){
+		List<DoctorBean> dlist=null;
+		dlist=adminServiceImpl.loadLaboratoristDetails();
+		return new ModelAndView("LaboratoristtExcel", "Laboratorist",dlist);
+	}
+
+	@RequestMapping("/exportlpdf")
+	public ModelAndView getLaboratoristpdf(HttpServletRequest req,Model model){
+		List<DoctorBean> dlist=null;
+		dlist=adminServiceImpl.loadLaboratoristDetails();
+		return new ModelAndView("LaboratoristPdf", "Laboratorist",dlist);
+	}
+	
+	@RequestMapping("/deletelaboratorist")
+	public String deleteLaboratoristRecord(HttpServletRequest req)
+	{
+		String email=req.getParameter("demail");
+		adminServiceImpl.deleteLaboratoristRecord(email);
+		List<DoctorBean> dlist=adminServiceImpl.loadLaboratoristDetails();
+		req.setAttribute("laboratoristlist",dlist);
+		
+		return "addlaboratorist";
+		
+	}
+
 }

@@ -40,7 +40,7 @@ public class LoginDAOImpl implements LoginDAO{
 	public List<Login> loadLoginDetails(String email){
 		List<Login> dbean = new ArrayList<Login>();
 		String loadLoginDetailsQuery = dbProps.getProperty(DBConstants.LOAD_LOGIN_DETAILS );
-		dbean = jdbcTemplate.query(loadLoginDetailsQuery, new LoginDetailsRowMapper());
+		dbean = jdbcTemplate.query(loadLoginDetailsQuery,new Object[] {email}, new LoginDetailsRowMapper());
 		
 		return dbean;
 	}

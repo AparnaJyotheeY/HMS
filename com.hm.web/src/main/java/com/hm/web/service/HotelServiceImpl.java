@@ -40,9 +40,9 @@ public class HotelServiceImpl {
 	public List<LoginBean> loadLoginDetails(String email){
 		List<Login> login=hotelFunctionsFacade.loadLoginDetails(email);
 		List<LoginBean> lbean= new ArrayList<LoginBean>();
-		for(LoginBean bean: lbean){
+		for(Login bean: login){
 			LoginBean log=new LoginBean();
-			log.setDesignation(bean.getDesignation());
+			log.setDesignation(bean.getDesig());
 			lbean.add(log);
 		}
 		return lbean;

@@ -61,7 +61,7 @@ public class LoginController {
 							resultPage="admin";
 						}
 						else if(desig.equals("doctor")){
-							resultPage="doctor";
+							resultPage="doctordashboard";
 						}
 						else{
 							request.getSession().setAttribute("message", "Please Enter Correct Credentials");
