@@ -12,8 +12,6 @@ public interface DoctorFunctions {
 	public Doctor editDoctorDetails(Doctor doctor);
 	public Doctor saveNurseDetails(Doctor doctor);
 
-	
-
 	public List<Doctor> loadNurseDetails();
 	public Doctor editNurseDetails(Doctor doctor);
 	public String deleteNurseDetails(String email);
@@ -32,6 +30,7 @@ public Doctor saveAccountantDetails(Doctor doctor);
 	public List<Doctor> loadAccountantDetails();
 	public Doctor editAccountantDetails(Doctor doctor);
 	public String deleteAccountantDetails(String email);
+
 	
 	public Doctor savePatientDetails(Doctor doctor);
 	public List<Doctor> loadPatientDetails();
@@ -42,5 +41,6 @@ public Doctor saveAccountantDetails(Doctor doctor);
 	public Doctor editLaboratoristDetails(Doctor doctor);
 	public String deleteLaboratoristDetails(String email);
 	
+
 
 }

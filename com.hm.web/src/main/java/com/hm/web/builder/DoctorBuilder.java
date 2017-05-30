@@ -42,6 +42,8 @@ public DoctorBean buildDocotorBean(Doctor dbean){
 		return doctor;
 		
 	}
+
+
 public Doctor buildPatient(DoctorBean dbean)
 {
 	Doctor doctor=new Doctor();

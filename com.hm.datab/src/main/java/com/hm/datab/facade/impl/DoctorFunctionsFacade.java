@@ -39,6 +39,7 @@ public class DoctorFunctionsFacade implements DoctorFunctions{
 	public List<Doctor> loadNurseDetails(){
 		return doctorDAOImpl.loadNurseDetails();
 	}
+
 	public Doctor editNurseDetails(Doctor doctor){
 		return doctorDAOImpl.editNurseDetails(doctor);
 	}
@@ -76,6 +77,7 @@ public class DoctorFunctionsFacade implements DoctorFunctions{
 	public String deleteAccountantDetails(String email){
 		return doctorDAOImpl.deleteAccountantDetails(email);
 	}
+
 	public Doctor savePatientDetails(Doctor doctor)
 	{
 		Doctor doc=null;
@@ -125,4 +127,5 @@ public class DoctorFunctionsFacade implements DoctorFunctions{
 		
 	}
 	
+
 }

@@ -1,6 +1,7 @@
 package com.hm.datab.dao.impl;
 
 
+
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -32,6 +33,9 @@ import com.hm.datab.impls.stmtsetter.NurseDetailsStmtSetter;
 import com.hm.datab.impls.stmtsetter.PatientDetailsStmtSetter;
 import com.hm.datab.impls.stmtsetter.PharmacistDetailsStmtSetter;
 import com.hm.datab.util.DBConstants;
+
+
+
 
 @Repository
 public class DoctorDAOImpl implements DoctorDAO{
@@ -159,6 +163,7 @@ public List<Doctor> loadNurseDetails(){
 		
 		return dbean;
 	}
+
 public Doctor editNurseDetails(Doctor doctor) {
 	
 	String updateQuery = dbProps.getProperty(DBConstants.EDIT_NURSE_DETAILS);
@@ -312,6 +317,7 @@ int numberRecordsUpdated = jdbcTemplate.update(deleteQuery, new Object[]{email})
 return email;
 				
 }
+
 public Doctor savePatientDetails(Doctor doctor)
 {
 	DataSource dataSource = jdbcTemplate.getDataSource();
@@ -450,5 +456,7 @@ public String deleteLaboratoristRecord(String email)
 	
 return email;
 }
-	
+
 }
+
+

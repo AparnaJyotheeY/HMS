@@ -48,4 +48,6 @@ public class HotelServiceImpl {
 		return lbean;
 	}
 
+	
+
 }

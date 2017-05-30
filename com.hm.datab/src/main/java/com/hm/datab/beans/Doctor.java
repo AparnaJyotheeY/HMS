@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class Doctor {
 
 
+
 		private int did;
 		private int nurseid;
 		private int pharmacistid;
@@ -165,5 +166,6 @@ public class Doctor {
 		}
 		
 		
+
 	}
 

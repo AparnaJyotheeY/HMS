@@ -31,7 +31,6 @@ public class AdminServiceImpl implements AdminService{
 			e.printStackTrace();
 		}
 		dbean=doctorBuilder.buildDocotorBean(doctor);
-		
 		return dbean;
 	}
 	
@@ -96,6 +95,7 @@ public List<DoctorBean> loadNurseDetails(){
 		}
 		return dbean;
 	}
+
 public DoctorBean editNurseDetails(DoctorBean dbean){
 	Doctor doctor=doctorBuilder.buildDocotor(dbean);
 	doctor=doctorFunctionsFacade.editNurseDetails(doctor);
@@ -199,6 +199,7 @@ String pemail=doctorFunctionsFacade.deleteAccountantDetails(email);
 
 return pemail;
 }
+
 public DoctorBean savePatientDetails(DoctorBean dbean)
 {
     Doctor doctor=doctorBuilder.buildPatient(dbean);
@@ -288,4 +289,5 @@ public String deleteLaboratoristRecord(String email){
 
 	return email;
 }
+
 }

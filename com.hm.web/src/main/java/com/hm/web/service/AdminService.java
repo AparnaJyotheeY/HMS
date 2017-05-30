@@ -9,12 +9,11 @@ public interface AdminService {
 	
 	public DoctorBean saveDoctorDetails(DoctorBean dbean);
 	public List<DoctorBean> loadDoctorDetails();
-
 	public DoctorBean editDoctorDetails(DoctorBean dbean);
 	public DoctorBean saveNurseDetails(DoctorBean dbean);
 
-	
 	public List<DoctorBean> loadNurseDetails();
+
 	public DoctorBean editNurseDetails(DoctorBean dbean);
 	public String deleteNurseDetails(String email);
 	public DoctorBean savePhramacistDetails(DoctorBean dbean);
@@ -22,6 +21,7 @@ public interface AdminService {
 	public List<DoctorBean> loadPhramacistDetails();
 	public DoctorBean editPhramacistDetails(DoctorBean dbean);
 	public String deletePhramacistDetails(String email);
+
 	
 	public DoctorBean savePatientDetails(DoctorBean dbean);
 	public List<DoctorBean> loadPatientDetails();
@@ -31,6 +31,7 @@ public interface AdminService {
 	public List<DoctorBean> loadLaboratoristDetails();
 	public DoctorBean editLaboratoristDetails(DoctorBean dbean);
 	public String deleteLaboratoristRecord(String email);
+
 	
 
 }

@@ -2,7 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<%@page import="com.hm.web.model.DoctorBean"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -59,6 +60,7 @@ String smessage=(String) request.getAttribute("successmessage");
 if(smessage==null){
 	smessage="";
 }
+List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
 %>
 <body>
    <div class="page-container">
@@ -132,7 +134,7 @@ if(smessage==null){
      <table id="mytable" class="table table-bordred table-striped">
                    
                    <thead>
-                   
+                   <th>Pid</th>
                    <th>Image </th>
                    <th>Name</th>
                     <th>Email</th>
@@ -147,23 +149,23 @@ if(smessage==null){
 					 
                </thead>
     <tbody>
-    
+   <%for(DoctorBean bean:dlist) {%>
     <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td><%=bean.getPid() %></td>
+    <td>	<img id="profileImage" style="height:50px;width:70px" src="<%=bean.getImages() %>"></td>
+    <td><%=bean.getName() %></td>
+    <td><%=bean.getEmail() %></td>
+    <td><%=bean.getAddress() %></td>
+    <td><%=bean.getPhone() %></td>
+    <td><%=bean.getGender() %></td>
+    <td><%=bean.getDob() %></td>
+    <td><%=bean.getAge() %></td>
+    <td><%=bean.getBloodgroup() %></td>
     
-    
-    <td><a data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a>
-    <a data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></a></td>
+    <td><a data-placement="top" data-toggle="tooltip" title="Edit" onclick="opendialog('<%=bean.getPid() %>~<%=bean.getName()%>~<%=bean.getEmail() %>~<%=bean.getAddress() %>~<%=bean.getPhone() %>~<%=bean.getGender() %>~<%=bean.getDob() %>~<%=bean.getAge() %>~<%=bean.getImage()%>~<%=bean.getBloodgroup() %>')"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a>
+    <a data-placement="top" data-toggle="tooltip" title="Delete" onclick="deldialog('<%=bean.getEmail() %>')"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></a></td>
     </tr>
-  
+  <%} %>
     </tbody>
         
 </table>
@@ -196,6 +198,7 @@ if(smessage==null){
       </div>
 		  
           <div class="modal-body">
+          <form:form action="epatientdetails" method="post" class="form-horizontal" enctype="multipart/form-data" modelAttribute="userRegDetails" >
 		  <div class="col-md-offset-1 col-md-10">
            <div class="form-group">
         <input class="form-control " id="pid" name="pid" type="text" placeholder="pid" >
@@ -247,16 +250,9 @@ if(smessage==null){
         
         <input class="form-control " id="page" name="page" type="number" placeholder="Age">
         </div>
-		
-		
-    
+        
 		<div class="form-group">
-        <label>Image</label>
-        <input class="form-control " id="pimage" name="pimage" type="file" placeholder="Phone">
-        </div>
-		
-		<div class="form-group">
-        <select class="form-control " id="bloodgroup" name="bloodgroup">
+        <select class="form-control " id="pbloodgroup" name="bloodgroup">
 		<option>Blood Group</option>
 		<option>A+</option>
 		<option>A-</option>
@@ -273,8 +269,9 @@ if(smessage==null){
 	</div>
 	
           <div class="modal-footer" style="text-align:center;">
-        <button type="button" class="btn btn-warning">Update</button>
+        <button type="submit" class="btn btn-warning">Update</button>
       </div>
+      </form:form>
         </div>
     <!-- /.modal-content --> 
   </div>
@@ -298,7 +295,13 @@ if(smessage==null){
        
       </div>
         <div class="modal-footer ">
-        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+        <form:form action="deletepatient">
+        <div>
+        <input type="text" id="demail" name="demail">
+        <button type="button" class="btn btn-success" onclick="location.href='deletepatient'" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+       </div>
+        </form:form>
+        </div>
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
       </div>
         </div>
@@ -315,7 +318,9 @@ if(smessage==null){
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         <h4 class="modal-title custom_align" id="Heading">Add Patient</h4>
       </div>
+       <form:form action="patientdetails" method="post" class="form-horizontal" enctype="multipart/form-data" modelAttribute="userRegDetails" >
           <div class="modal-body">
+          
 		  <div class="col-md-offset-1 col-md-10">
          
 		 <div class="form-group">
@@ -326,7 +331,10 @@ if(smessage==null){
         
         <input class="form-control " name="email" type="text" placeholder="Email">
         </div>
-	
+	<div class="form-group">
+        
+        <input class="form-control " name="password" type="password" placeholder="Password">
+        </div>
 		
 		<div class="form-group">
         
@@ -362,7 +370,7 @@ if(smessage==null){
   </script>
     <div class="form-group">
         
-        <input class="form-control "name="age" type="number" placeholder="Age">
+        <input class="form-control " name="age" type="number" placeholder="Age">
         </div>
 		
 		
@@ -370,7 +378,7 @@ if(smessage==null){
 		
 		<div class="form-group">
         <label>Image</label>
-        <input class="form-control " name="phone" type="file" placeholder="Phone">
+        <input class="form-control " name="image" type="file" placeholder="Phone">
         </div>
 		
 		<div class="form-group">
@@ -391,9 +399,12 @@ if(smessage==null){
 	</div>
 	
          <div class="modal-footer" style="text-align:center;">
-        <button type="button" class="btn btn-success"> Submit</button>
+        <button type="submit" class="btn btn-success"> Submit</button>
+       
       </div>
+     
         </div>
+         </form:form>
     <!-- /.modal-content --> 
   </div>
       <!-- /.modal-dialog --> 
@@ -563,9 +574,14 @@ function opendialog(valueString){
 	$("#pgender").val(values[5]);	
 	$('#pdob').val(values[6]);
 	$("#page").val(values[7]);
-	$("#pimage").val(values[8]);
-	$("#pbloodgroup").val(values[7]);
+	$("#pbloodgroup").val(values[8]);
 	$("#edit").dialog("open");
 }
+function deldialog(valueString){
+	var values = valueString.split("~");
+	$("#demail").val(values[0]);
+	
+	}
+
 </script>
 </html>

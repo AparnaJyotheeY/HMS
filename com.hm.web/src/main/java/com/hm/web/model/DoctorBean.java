@@ -26,6 +26,7 @@ public class DoctorBean {
 	private int pid;
 	private String bloodgroup;
 	private int lid;
+
 	
 	public String getBloodgroup() {
 		return bloodgroup;
@@ -38,7 +39,16 @@ public class DoctorBean {
 	}
 	public void setLid(int lid) {
 		this.lid = lid;
+
 	}
+	private int accountantid;
+	public int getAccountantid() {
+		return accountantid;
+	}
+	public void setAccountantid(int accountantid) {
+		this.accountantid = accountantid;
+	}
+	
 	public int getPid() {
 		return pid;
 	}
@@ -159,13 +169,13 @@ public class DoctorBean {
 	}
 	@Override
 	public String toString() {
+
 		return "DoctorBean [did=" + did + ", nurseid=" + nurseid + ", pharmacistid=" + pharmacistid + ", accountatid="
 				+ accountatid + ", name=" + name + ", email=" + email + ", password=" + password + ", address="
 				+ address + ", phone=" + phone + ", dept=" + dept + ", profile=" + profile + ", image="
 				+ Arrays.toString(image) + ", addeddate=" + addeddate + ", desig=" + desig + ", images=" + images
 				+ ", age=" + age + ", gender=" + gender + ", dob=" + dob + ", pid=" + pid + ", bloodgroup=" + bloodgroup
 				+ ", lid=" + lid + "]";
+
 	}
-	
-	
 }
