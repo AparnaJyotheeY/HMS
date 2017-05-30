@@ -84,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div></a>
 					</div>
 					<div class="col-md-3 four-grid">
-						<a href="adpatient.html"><div class="four-agileinfo">
+						<a href="<%=request.getContextPath( )%>/addpatient"><div class="four-agileinfo">
 						<div class="icon">
 								<i class="fa fa-user" aria-hidden="true"></i>
 							</div>
@@ -135,7 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--four-grids here-->
 		<div class="four-grids">
 					<div class="col-md-3 four-grid">
-					<a href="adlaboratoris.html">	<div class="four-agileits">
+					<a href="<%=request.getContextPath( )%>/addlaboratorist">	<div class="four-agileits">
 						<div class="icon">
 								<i class="fa fa-flask" aria-hidden="true"></i>
 							</div>
@@ -289,14 +289,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										 
 									    <li id="menu-academico" ><a href="<%=request.getContextPath( )%>/addoctor"><i class="fa fa-user-md" aria-hidden="true"></i><span>Doctor</span><div class="clearfix"></div></a></li>
 									 
-									 <li id="menu-academico" ><a href="adpatient.html"><i class="fa fa-user " aria-hidden="true"></i><span> Patient</span> <div class="clearfix"></div></a></li>
+									 <li id="menu-academico" ><a href="<%=request.getContextPath( )%>/addpatient"><i class="fa fa-user " aria-hidden="true"></i><span> Patient</span> <div class="clearfix"></div></a></li>
 									
 									<li id="menu-academico" ><a href="<%=request.getContextPath( )%>/adnurse"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Nurse</span><div class="clearfix"></div></a></li>
 									 
 									 <li id="menu-academico" ><a href="adpharmacist.html"><i class="fa fa-medkit" aria-hidden="true"></i><span>Pharmacist</span> <div class="clearfix"></div></a>
 										  
 										</li>
-									 <li><a href="adlaboratoris.html"><i class="fa fa-flask" aria-hidden="true"></i>  <span>Laboratorist</span><div class="clearfix"></div></a></li>
+									 <li><a href="<%=request.getContextPath( )%>/addlaboratorist"><i class="fa fa-flask" aria-hidden="true"></i>  <span>Laboratorist</span><div class="clearfix"></div></a></li>
 									
 							       
 									<li><a href="adaccount.html"><i class="fa fa-money" aria-hidden="true"></i><span>Accountant</span> <div class="clearfix"></div></a>

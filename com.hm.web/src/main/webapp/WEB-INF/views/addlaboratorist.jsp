@@ -232,6 +232,7 @@ List<DoctorBean> dlist=(List) request.getAttribute("laboratoristlist");
         <div class="modal-footer ">
         <form:form action="deletelaboratorist">
         <div>
+
         <input type="text" id="lemail" name="lemail">
         <button type="button" class="btn btn-success" onclick="location.href='deletepatient'" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
        </div>
@@ -464,7 +465,7 @@ function opendialog(valueString){
 function deldialog(valueString){
 	var values = valueString.split("~");
 	$("#lemail").val(values[0]);
-	
+
 	}
 </script>
 </html>

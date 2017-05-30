@@ -1,5 +1,8 @@
 package com.hm.web.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +35,17 @@ public class HotelServiceImpl {
 		}
 
 		return userBean;
+	}
+
+	public List<LoginBean> loadLoginDetails(String email){
+		List<Login> login=hotelFunctionsFacade.loadLoginDetails(email);
+		List<LoginBean> lbean= new ArrayList<LoginBean>();
+		for(Login bean: login){
+			LoginBean log=new LoginBean();
+			log.setDesignation(bean.getDesig());
+			lbean.add(log);
+		}
+		return lbean;
 	}
 
 }

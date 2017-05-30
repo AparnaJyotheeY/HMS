@@ -5,4 +5,5 @@ import com.hm.web.model.LoginBean;
 
 public interface HotelService {
 	public LoginBean authenticateUser(LoginBean userBean) throws LoginExceptions;
+	public LoginBean loadLoginDetails(String email);
 }

@@ -126,8 +126,8 @@ List<DoctorBean> dlist=(List) request.getAttribute("pharmacistlist");
 <div class="btn-toolbar">
     <button class="btn btn-primary">Copy</button>
     
-    <button onclick="location.href='./exportpexcel'" class="btn btn-warning">Excel</button>
-    <button onclick="location.href='./exportppdf'" class="btn btn-danger">PDF</button>
+    <button onclick="location.href='./exportpharmaexcel'" class="btn btn-warning">Excel</button>
+    <button onclick="location.href='./exportpharmapdf'" class="btn btn-danger">PDF</button>
                           <span> <h4 style="color:red;text-align:center"><%=message %></h4><h4 style="color:green;text-align:center"><%=smessage %></h4></span>
    
 </div>

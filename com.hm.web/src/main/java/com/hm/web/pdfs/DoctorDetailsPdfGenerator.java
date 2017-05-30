@@ -28,11 +28,10 @@ public class DoctorDetailsPdfGenerator extends AbstractPdfView{
 		   HttpServletResponse resp) throws Exception {
 			
 			
-<<<<<<< HEAD
+
 			Paragraph header = new Paragraph(new Chunk("Doctor Details",FontFactory.getFont(FontFactory.HELVETICA, 30)));
-=======
-			Paragraph header = new Paragraph(new Chunk("Details",FontFactory.getFont(FontFactory.HELVETICA, 30)));
->>>>>>> branch 'master' of https://github.com/AparnaJyotheeY/HMS
+
+		
 			  document.add(header);
 			 
 

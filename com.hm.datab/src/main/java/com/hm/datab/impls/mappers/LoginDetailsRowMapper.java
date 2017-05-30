@@ -15,7 +15,7 @@ public class LoginDetailsRowMapper implements RowMapper<Login> {
 			
 		user.setEmail(rs.getString("email"));	
 		user.setPassword(rs.getString("password"));
-		
+		user.setDesig(rs.getString("designation"));
 		return user;
 	}
 

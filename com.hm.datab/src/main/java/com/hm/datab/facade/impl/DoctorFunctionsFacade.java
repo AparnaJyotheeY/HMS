@@ -37,6 +37,7 @@ public class DoctorFunctionsFacade implements DoctorFunctions{
 	public List<Doctor> loadNurseDetails(){
 		return doctorDAOImpl.loadNurseDetails();
 	}
+
 	public Doctor editNurseDetails(Doctor doctor){
 		return doctorDAOImpl.editNurseDetails(doctor);
 	}
@@ -74,5 +75,56 @@ public class DoctorFunctionsFacade implements DoctorFunctions{
 	public String deleteAccountantDetails(String email){
 		return doctorDAOImpl.deleteAccountantDetails(email);
 	}
+
+	
+	public Doctor savePatientDetails(Doctor doctor)
+	{
+		Doctor doc=null;
+		doc=doctorDAOImpl.savePatientCredentials(doctor);
+		return doctorDAOImpl.savePatientDetails(doctor);
+		
+	}
+	
+	public List<Doctor> loadPatientDetails()
+	{
+		
+		return doctorDAOImpl.loadPatientDetails();
+	}
+	
+	public Doctor editPatientDetails(Doctor doctor)
+	{
+		
+		return doctorDAOImpl.editPatientDetails(doctor);
+		
+	}
+	public String deletepatientDetails(String email)
+	{
+		
+		return doctorDAOImpl.deletePatientRecord(email);
+		
+	}
+	
+	public Doctor saveLaboratoristDetails(Doctor doctor){
+		Doctor doc=null;
+		doc=doctorDAOImpl.saveLaboratoristCredentials(doctor);
+		return doctorDAOImpl.saveLaboratoristDetails(doctor);
+	}
+	
+	public List<Doctor> loadLaboratoristDetails(){
+		return doctorDAOImpl.loadLaboratoristDetails();
+	}
+	public Doctor editLaboratoristDetails(Doctor doctor)
+	{
+		
+		return doctorDAOImpl.editLaboratoristDetails(doctor);
+		
+	}
+	public String deleteLaboratoristDetails(String email)
+	{
+		
+		return doctorDAOImpl.deleteLaboratoristRecord(email);
+		
+	}
+	
 
 }

@@ -61,112 +61,9 @@ String smessage=(String) request.getAttribute("successmessage");
 if(smessage==null){
 	smessage="";
 }
-<<<<<<< HEAD
-%>
-<body>
-   <div class="page-container">
-   <!--/content-inner-->
-<div class="left-content">
-	   <div class="mother-grid-inner">
-             <!--header start here-->
-<div class="header-main">
-					<div class="col-md-3 logo-w3-agile">
-								<h1><a href="<%=request.getContextPath( )%>/">HMS</a></h1>
-							</div>
-						<div class=" col-md-offset-6 col-md-3 profile_details w3l">		
-								<ul>
-									<li class="dropdown profile_details_drop">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-											<div class="profile_img">	
-												<span class="prfil-img"><img src="images/" alt="img"> </span> 
-												<div class="user-name">
-													<p>Name</p>
-												</div>
-												<i class="fa fa-angle-down"></i>
-												<i class="fa fa-angle-up"></i>
-												<div class="clearfix"></div>	
-											</div>	
-										</a>
-										<ul class="dropdown-menu drp-mnu">
-											<li> <a href="login.jsp"><i class="fa fa-sign-out"></i> Logout</a> </li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-						  <div class="clearfix"> </div>
-						  
-				</div>
-
-				
-				
-				<!--heder end here-->
-		<ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<%=request.getContextPath( )%>/">Home</a> <i class="fa fa-angle-right"></i></li>
-				 <li class="breadcrumb-item"><a href="<%=request.getContextPath( )%>/admin">Admin Dashboard</a> <i class="fa fa-angle-right"></i></li>
-				   
-            </ol>
-			<!-- script-for sticky-nav -->
-			
-		<script>
-		$(document).ready(function() {
-			 var navoffeset=$(".header-main").offset().top;
-			 $(window).scroll(function(){
-				var scrollpos=$(window).scrollTop(); 
-				if(scrollpos >=navoffeset){
-					$(".header-main").addClass("fixed");
-				}else{
-					$(".header-main").removeClass("fixed");
-				}
-			 });
-			 
-		});
-		</script>
-		<!-- /script-for sticky-nav -->
-<!--inner block start here-->
-
-<div class="col-md-6"><h3> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;&nbsp; Nurse</h3></div>
-<div class="col-md-offset-9 col-md-3"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#add">Add Nurse</button></div>
-                       <span> <h4 style="color:red;text-align:center"><%=message %></h4><h4 style="color:green;text-align:center"><%=smessage %></h4></span>
-
-<div class="btn-toolbar">
-   <button class="btn btn-primary">Copy</button>
-    
-    <button onclick="location.href='./exportdexcel'" class="btn btn-warning">Excel</button>
-    <button onclick="location.href='./exportdpdf'" class="btn btn-danger">PDF</button>
-   
-</div>
-<div class="well  table-responsive">
-     <table id="mytable" class="table table-bordred table-striped">
-                   
-                   <thead>
-                   
-                   <th>Image </th>
-                   <th>Name</th>
-                    <th>Email</th>
-                    <th>Address</th>
-					<th>Phone</th>
-					<th>Options</th>
-                     
-					 
-               </thead>
-    <tbody>
-    
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    
-    
-    
-    <td><a data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a>
-    <a data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></a></td>
-    </tr>
-  
-=======
 List<DoctorBean> dlist=(List) request.getAttribute("nurselist");
 %>
+
 <body>
    <div class="page-container">
    <!--/content-inner-->
@@ -268,7 +165,7 @@ List<DoctorBean> dlist=(List) request.getAttribute("nurselist");
     <a data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></a></td>
     </tr>
   <%} %>
->>>>>>> branch 'master' of https://github.com/AparnaJyotheeY/HMS
+
     </tbody>
         
 </table>

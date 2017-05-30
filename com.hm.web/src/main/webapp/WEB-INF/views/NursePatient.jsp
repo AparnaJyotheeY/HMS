@@ -7,7 +7,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Admin-Patient</title>
+<title>Nurse-Patient</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Pooled Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -24,12 +24,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel='stylesheet' type='text/css'  href='<c:url value="/static/css/style.css" />'/>
-<link rel="stylesheet" href='<c:url value="/static/css/morris.css"/>' />
+<link rel="stylesheet"  type="text/css" href='<c:url value="/static/css/morris.css"/>' />
 <!--js -->
 <script src='<c:url value="/static/js/jquery.nicescroll.js"/>'></script>
 <script src='<c:url value="/static/js/scripts.js"/>'></script>
 <!-- Bootstrap Core JavaScript -->
-   <script src='<c:url value="/static/js/raphael-min.js"/>'></script>
+    <script src='<c:url value="/static/js/raphael-min.js"/>'></script>
    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.js"></script>
 
@@ -37,22 +37,67 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    <link href='<c:url value="/static/css/jquery-ui.css"/>' >
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.css">
    <script src='<c:url value="/static/tinymce/tinymce.min.js"/>'></script>
-<script>
-tinymce.init({
-selector:"textarea.tinymce"
-});
-
-</script>
+   
 
 <style>
 .modal-footer {
     
      border-top: none; 
 }
+<style>
+/* Style The Dropdown Button */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+</style>
+
 </style>
 <!-- //lined-icons -->
 </head> 
-<%String message=(String) request.getAttribute("message");
+<%
+String message=(String) request.getAttribute("message");
 if(message==null){
 	message="";
 }
@@ -60,7 +105,7 @@ String smessage=(String) request.getAttribute("successmessage");
 if(smessage==null){
 	smessage="";
 }
-List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
+List<DoctorBean> dlist=(List) request.getAttribute("nurselist");
 %>
 <body>
    <div class="page-container">
@@ -68,9 +113,9 @@ List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
 <div class="left-content">
 	   <div class="mother-grid-inner">
              <!--header start here-->
-<div class="header-main">
+	<div class="header-main">
 					<div class="col-md-3 logo-w3-agile">
-								<h1><a href="<%=request.getContextPath( )%>/">HMS</a></h1>
+								<h1><a href="<%=request.getContextPath( )%>/">HMS">HMS</a></h1>
 							</div>
 						<div class=" col-md-offset-6 col-md-3 profile_details w3l">		
 								<ul>
@@ -94,13 +139,10 @@ List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
 							</div>
 						  <div class="clearfix"> </div>
 						  
-				</div>
-
-				<!--heder end here-->
+				</div><!--heder end here-->
 		<ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<%=request.getContextPath( )%>/">Home</a> <i class="fa fa-angle-right"></i></li>
-				  <li class="breadcrumb-item"><a href="<%=request.getContextPath( )%>/admin">Admin Dashboard</a> <i class="fa fa-angle-right"></i></li>
-				  
+				 <li class="breadcrumb-item"><a href="<%=request.getContextPath( )%>/admin">Dashboard</a> <i class="fa fa-angle-right"></i></li>
             </ol>
 			<!-- script-for sticky-nav -->
 			
@@ -121,19 +163,20 @@ List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
 		<!-- /script-for sticky-nav -->
 <!--inner block start here-->
 
-<div class="col-md-6"><h3> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;&nbsp; Patient</h3></div>
+<div class="col-md-6"><h3> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;&nbsp;Patient</h3></div>
 <div class="col-md-offset-9 col-md-3"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#add">Add Patient</button></div>
 <span> <h4 style="color:red;text-align:center"><%=message %></h4><h4 style="color:green;text-align:center"><%=smessage %></h4></span>
+
 <div class="btn-toolbar">
     <button class="btn btn-primary">Copy</button>
-    
-    <button onclick="location.href='./exportdexcel'" class="btn btn-warning">Excel</button>
+     <button onclick="location.href='./exportdexcel'" class="btn btn-warning">Excel</button>
     <button onclick="location.href='./exportdpdf'" class="btn btn-danger">PDF</button>
 </div>
-<div class="well  table-responsive">
+<div class="well table-responsive">
      <table id="mytable" class="table table-bordred table-striped">
                    
                    <thead>
+                  
                    <th>Pid</th>
                    <th>Image </th>
                    <th>Name</th>
@@ -146,10 +189,11 @@ List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
 					<th>Blood Group</th>
 					<th>Options</th>
                      
-					 
                </thead>
     <tbody>
-   <%for(DoctorBean bean:dlist) {%>
+    
+    <tr>
+     <%for(DoctorBean bean:dlist) {%>
     <tr>
     <td><%=bean.getPid() %></td>
     <td>	<img id="profileImage" style="height:50px;width:70px" src="<%=bean.getImages() %>"></td>
@@ -162,14 +206,15 @@ List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
     <td><%=bean.getAge() %></td>
     <td><%=bean.getBloodgroup() %></td>
     
-    <td><a data-placement="top" data-toggle="tooltip" title="Edit" onclick="opendialog('<%=bean.getPid() %>~<%=bean.getName()%>~<%=bean.getEmail() %>~<%=bean.getAddress() %>~<%=bean.getPhone() %>~<%=bean.getGender() %>~<%=bean.getDob() %>~<%=bean.getAge() %>~<%=bean.getImage()%>~<%=bean.getBloodgroup() %>')"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a>
+   <td><a data-placement="top" data-toggle="tooltip" title="Edit" onclick="opendialog('<%=bean.getPid() %>~<%=bean.getName()%>~<%=bean.getEmail() %>~<%=bean.getAddress() %>~<%=bean.getPhone() %>~<%=bean.getGender() %>~<%=bean.getDob() %>~<%=bean.getAge() %>~<%=bean.getImage()%>~<%=bean.getBloodgroup() %>')"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a>
     <a data-placement="top" data-toggle="tooltip" title="Delete" onclick="deldialog('<%=bean.getEmail() %>')"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></a></td>
     </tr>
   <%} %>
     </tbody>
         
 </table>
-</div>
+ </div>
+            
 <div class="clearfix"></div>
 <ul class="pagination pull-right">
   <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
@@ -181,8 +226,7 @@ List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
   <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
 </ul>
                 
-            
-            
+           
        
 
 <div class="clear"></div>
@@ -197,37 +241,35 @@ List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
         <h4 class="modal-title custom_align" id="Heading">Edit Patient</h4>
       </div>
 		  
-          <div class="modal-body">
-          <form:form action="epatientdetails" method="post" class="form-horizontal" enctype="multipart/form-data" modelAttribute="userRegDetails" >
-		  <div class="col-md-offset-1 col-md-10">
-           <div class="form-group">
-        <input class="form-control " id="pid" name="pid" type="text" placeholder="pid" >
+         <div class="modal-body">
+		   <div class="col-md-offset-1 col-md-10">
+          <div class="form-group">
+        <input class="form-control " id="npdate " type="text" placeholder="Date" id="datepicker1">
         </div>
-         
-		 <div class="form-group">
-        <input class="form-control " id="pname" name="pname" type="text" placeholder="Name" >
+			 <div class="form-group">
+        <input class="form-control " id="npname" name="pname" type="text" placeholder="Name" >
         </div>
 		
         <div class="form-group">
         
-        <input class="form-control " id="pemail" name="pemail" type="text" placeholder="Email">
+        <input class="form-control " id="npemail" name="pemail" type="text" placeholder="Email">
         </div>
 	
 		
 		<div class="form-group">
         
-        <input class="form-control " id="paddress" name="paddress" type="text" placeholder="Address">
+        <input class="form-control " id="npaddress" name="paddress" type="text" placeholder="Address">
         </div>
 		
       <div class="form-group">
         
-        <input class="form-control " id="pphone" name="pphone" type="text" placeholder="Phone">
+        <input class="form-control " id="npphone" name="pphone" type="text" placeholder="Phone">
         </div>
 		
 		
 		
 		<div class="form-group">
-        <select class="form-control " id="pgender" name="pgender">
+        <select class="form-control " id="npgender" name="pgender">
 		<option>Gender</option>
 		<option>Male</option>
 		<option>Female</option>
@@ -238,7 +280,7 @@ List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
         </div>
 		
 		 <div class="form-group">
-        <input class="form-control " id="pdob" name="pdob" type="text" placeholder="Birth Date" id="datepicker1">
+        <input class="form-control " id="npdob" name="pdob" type="text" placeholder="Birth Date" id="datepicker1">
         </div>
 		<script>
   $( function() {
@@ -248,11 +290,11 @@ List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
   </script>
     <div class="form-group">
         
-        <input class="form-control " id="page" name="page" type="number" placeholder="Age">
+        <input class="form-control " id="npage" name="page" type="number" placeholder="Age">
         </div>
         
 		<div class="form-group">
-        <select class="form-control " id="pbloodgroup" name="bloodgroup">
+        <select class="form-control " id="npbloodgroup" name="bloodgroup">
 		<option>Blood Group</option>
 		<option>A+</option>
 		<option>A-</option>
@@ -265,15 +307,12 @@ List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
 		</select>
       
         </div>
-		
-	</div>
-	
-          <div class="modal-footer" style="text-align:center;">
-        <button type="submit" class="btn btn-warning">Update</button>
       </div>
-      </form:form>
+          <div class="modal-footer" style="text-align:center;">
+        <button type="submit" class="btn btn-success">Update</button>
+      </div>
         </div>
-    <!-- /.modal-content --> 
+ <!-- /.modal-content --> 
   </div>
       <!-- /.modal-dialog --> 
     </div>
@@ -295,13 +334,7 @@ List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
        
       </div>
         <div class="modal-footer ">
-        <form:form action="deletepatient">
-        <div>
-        <input type="text" id="demail" name="demail">
-        <button type="button" class="btn btn-success" onclick="location.href='deletepatient'" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
-       </div>
-        </form:form>
-        </div>
+        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
       </div>
         </div>
@@ -318,100 +351,175 @@ List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         <h4 class="modal-title custom_align" id="Heading">Add Patient</h4>
       </div>
-       <form:form action="patientdetails" method="post" class="form-horizontal" enctype="multipart/form-data" modelAttribute="userRegDetails" >
           <div class="modal-body">
-          
-		  <div class="col-md-offset-1 col-md-10">
-         
-		 <div class="form-group">
-        <input class="form-control " name="name" type="text" placeholder="Name" >
+		   <div class="col-md-offset-1 col-md-10">
+          <div class="form-group">
+        <input class="form-control "  name="npadddate" type="text" placeholder="Date" id="datepicker2">
         </div>
-		
+		<script>
+  $( function() {
+    $( "#datepicker2" ).datepicker();
+	$("#datepicker2").datepicker({ minDate: 0 });
+  } );
+  </script>
+		 <div class="form-group">
+        <input class="form-control " type="text" placeholder="Name">
+        </div>
+		<div class="form-group">
+        <input class="form-control " type="text" placeholder="Email">
+        </div>
+		<div class="form-group">
+        <input class="form-control " type="text" placeholder="password">
+        </div>
+		<div class="form-group">
+        <input class="form-control " type="text" placeholder="Address">
+        </div>
+		 <div class="form-group">
+        <input class="form-control " type="text" placeholder="Phone Number">
+        </div>
         <div class="form-group">
         
-        <input class="form-control " name="email" type="text" placeholder="Email">
-        </div>
-	<div class="form-group">
-        
-        <input class="form-control " name="password" type="password" placeholder="Password">
-        </div>
-		
-		<div class="form-group">
-        
-        <input class="form-control " name="address" type="text" placeholder="Address">
-        </div>
-		
-      <div class="form-group">
-        
-        <input class="form-control " name="phoneno" type="text" placeholder="Phone">
-        </div>
-		
-		
-		
-		<div class="form-group">
-        <select class="form-control " name="gender">
+        <select class="form-control ">
 		<option>Gender</option>
 		<option>Male</option>
 		<option>Female</option>
 		
-		
 		</select>
-      
         </div>
 		
-		 <div class="form-group">
-        <input class="form-control "  name="dob" type="text" placeholder="Birth Date" id="datepicker1">
+		<div class="form-group">
+        <input class="form-control " type="text" placeholder="Birthdate" id="datepicker">
         </div>
-		<script>
+			<script>
   $( function() {
-    $( "#datepicker1" ).datepicker();
-	$("#datepicker1").datepicker({ minDate: 0 });
+    $( "#datepicker" ).datepicker();
+	$("#datepicker").datepicker({ minDate: 0 });
   } );
   </script>
-    <div class="form-group">
+  <div class="form-group">
+        <input class="form-control " type="text" placeholder="Age" id="datepicker">
+        </div>
+		<div class="form-group">
         
-        <input class="form-control " name="age" type="number" placeholder="Age">
-        </div>
-		
-		
-    
-		
-		<div class="form-group">
-        <label>Image</label>
-        <input class="form-control " name="image" type="file" placeholder="Phone">
-        </div>
-		
-		<div class="form-group">
-        <select class="form-control " name="bloodgroup">
+        <select class="form-control ">
 		<option>Blood Group</option>
 		<option>A+</option>
 		<option>A-</option>
+		<option>B+</option>
+		<option>B-</option>
 		<option>AB+</option>
 		<option>AB-</option>
 		<option>o+</option>
 		<option>o-</option>
 		
-		
 		</select>
-      
         </div>
+       <div class="form-group">
+        <label>Upload Image</label>
+        <input type="file">
 		
-	</div>
-	
-         <div class="modal-footer" style="text-align:center;">
-        <button type="submit" class="btn btn-success"> Submit</button>
-       
-      </div>
-     
         </div>
-         </form:form>
+      </div>
+          <div class="modal-footer" style="text-align:center;">
+        <button type="button" class="btn btn-success"> Submit</button>
+      </div>
+        </div>
     <!-- /.modal-content --> 
   </div>
       <!-- /.modal-dialog --> 
     </div>
     </div>
+    <!---model for profile---->
+	<div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title custom_align" id="Heading">Profile</h4>
+      </div>
+		  
+         <div class="modal-body">
+		   <div class="col-md-offset-1 col-md-10">
+          <table class="table">
+                   
+                   
+    <tbody>
     
+    <tr>
+    
+    <td>Email:</td>
+    <td></td>
+    
+   
+    </tr>
+	<tr>
+	 <td>Address:</td>
+    <td></td>
+    
+	</tr>
+	<tr>
+	 <td>Phone:</td>
+    <td></td>
+    
+	</tr>
+	<tr>
+	 <td>Gender:</td>
+    <td></td>
+    
+	</tr>
 	
+	<tr>
+	 <td>Birthdate:</td>
+    <td></td>
+    
+	</tr>
+	<tr>
+	 <td>Age:</td>
+    <td></td>
+    
+	</tr>
+	<tr>
+	 <td>Blood Group:</td>
+    <td></td>
+    
+	</tr>
+	
+	</tbody></table>
+      </div>
+          <div class="modal-footer" style="text-align:center;">
+        <button type="button" class="btn btn-success">Update</button>
+      </div>
+        </div>
+ <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
+    </div>
+   
+    
+    <!----Model for Delete---->
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+      </div>
+          <div class="modal-body">
+       
+       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
+       
+      </div>
+        <div class="modal-footer ">
+        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+      </div>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
+
 	
 	<script>$(document).ready(function(){
 $("#mytable #checkall").click(function () {
@@ -452,85 +560,45 @@ $("#mytable #checkall").click(function () {
 </div>
   <!--//content-inner-->
 			<!--/sidebar-menu-->
-			<div class="sidebar-menu"style="height:1050px; position:absolute;">
+					<div class="sidebar-menu">
 					<header class="logo1">
 						<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> 
 					</header>
 						<div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
                            <div class="menu">
 									<ul id="menu" >
-										<li><a href="admin.html"><i class="fa fa-desktop"></i> <span>Dashboard</span><div class="clearfix"></div></a></li>
-										
-									     <li><a href="addepartment.html"><i class="fa fa-sitemap"></i><span>Department</span><div class="clearfix"></div></a></li>
-										 
-										 
-									    <li id="menu-academico" ><a href="<%=request.getContextPath( )%>/addoctor"><i class="fa fa-user-md" aria-hidden="true"></i><span>Doctor</span><div class="clearfix"></div></a></li>
+										<li ><a href="nursedashboard.html"><i class="fa fa-home"></i> <span>Dashboard</span><div class="clearfix"></div></a></li>
 									 
-									 <li class="active"><a href="<%=request.getContextPath( )%>/addpatient"><i class="fa fa-user " aria-hidden="true"></i><span> Patient</span> <div class="clearfix"></div></a></li>
-									
-									<li id="menu-academico" ><a href="adnurse.html"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Nurse</span><div class="clearfix"></div></a></li>
+									 <li class="active"><a href="nursepatient.html"><i class="fa fa-wheelchair"></i><span>Patient</span><div class="clearfix"></div></a></li> 
 									 
-									 <li id="menu-academico" ><a href="adpharmacist.html"><i class="fa fa-medkit" aria-hidden="true"></i><span>Pharmacist</span> <div class="clearfix"></div></a>
-										  
-										</li>
-									 <li><a href="adlaboratoris.html"><i class="fa fa-flask" aria-hidden="true"></i>  <span>Laboratorist</span><div class="clearfix"></div></a></li>
-									
-							       
-									<li><a href="adaccount.html"><i class="fa fa-money" aria-hidden="true"></i><span>Accountant</span> <div class="clearfix"></div></a>
-									  
-									</li>
-									
-									<li><a href="adreceptionist.html"><i class="fa fa-plus-square"></i>  <span>Receptionist</span><div class="clearfix"></div></a></li>
-									<li ><a href=""><i class="fa fa-cog" aria-hidden="true"></i><span>Monitor Hospital</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
+									  <li><a href="#"><i class="fa fa-bed" aria-hidden="true"></i><span> Bed/Ward</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
 										   <ul id="menu-academico-sub" >
-										   <li id="menu-academico-avaliacoes" ><a href="adpaymenthistory.html">Payment History</a></li>
-											<li id="menu-academico-avaliacoes" ><a href="adbedeallotment.html"> Bed Allotment</a></li>
-											<li id="menu-academico-avaliacoes" ><a href="adbloodbank.html">BloodBank</a></li>
-											<li id="menu-academico-avaliacoes" ><a href="adblooddonor.html">Blood Donor</a></li>
-											<li id="menu-academico-avaliacoes" ><a href="admedicine.html">Medicine</a></li>
-											<li id="menu-academico-avaliacoes" ><a href="adoperationreport.html">Operation Report</a></li>
-											<li id="menu-academico-avaliacoes" ><a href="adbirth.html">Birth Report</a></li>
-											<li id="menu-academico-avaliacoes" ><a href="addeath.html">Death Report</a></li>
-											<li id="menu-academico-avaliacoes" ><a href="adambavailablity.html">
-											Ambulance Availablity</a></li>
-											
-											<li id="menu-academico-avaliacoes" ><a href="adambfuel.html">
-											Ambulance Fuel Exepenses</a></li>
-											
+										   <li id="menu-academico-avaliacoes" ><a href="nursemanagebed.html">Manage Bed</a></li>
+											<li id="menu-academico-avaliacoes" ><a href="nursebedallotment.html">Bed Allotment</a></li>
 											
 										  </ul>
 										</li>
-									
-									<li id="menu-academico" ><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><span>Payroll</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
+									 
+									 <li><a href="#"><i class="fa fa-tint" aria-hidden="true"></i><span> Blood Bank</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
 										   <ul id="menu-academico-sub" >
-										   <li id="menu-academico-avaliacoes" ><a href="adcreatepayroll.html">Create Payroll</a></li>
-											<li id="menu-academico-avaliacoes" ><a href="adpayrolllist.html">Payroll List</a></li>
-											
-											
+										   <li id="menu-academico-avaliacoes" ><a href="managebloodbank.html">Manage  Blood Bank</a></li>
+											<li id="menu-academico-avaliacoes" ><a href="nurseblooddonor.html">Blood Donor</a></li>
 											
 										  </ul>
 										</li>
+									 <li><a href="nursereport.html"><i class="fa fa-file"></i><span>Report</span><div class="clearfix"></div></a></li>
+									  <li><a href="nurseoperationtheaters.html"><i class="fa fa-hospital-o"></i><span>Operation Theatre List</span><div class="clearfix"></div></a></li> 
 									
+									 
+									 <li><a href="nursepayroll.html"><i class="fa fa-money"></i><span>Payroll</span><div class="clearfix"></div></a></li>
 									
-									<li><a href="adnoticeboard.html"><i class="fa fa-file-text-o" aria-hidden="true"></i>  <span>Noticeboard</span><div class="clearfix"></div></a></li>
+									<li id="menu-academico" ><a href="nurseprofile.html"><i class="fa fa-lock"></i><span>Profile</span>
+									<div class="clearfix"></div></a></li>
 									
-									<li id="menu-academico" ><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span>Settings</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
-									
-										   <ul id="menu-academico-sub" >
-										   <li id="menu-academico-avaliacoes" ><a href="adsystemsettings.html">System Settings</a></li>
-										
-											<li id="menu-academico-avaliacoes" ><a href="adsms.html">SMS Settings</a></li>
-											
-											
-											
-										  </ul>
-										</li>
-										<li><a href="adprofile.html"><i class="fa fa-medkit"></i>  <span>Account</span><div class="clearfix"></div></a></li>
 								  </ul>
 								</div>
 							  </div>
-								  <div class="clearfix"></div>		
-								  <div class="clearfix"></div>		
+						  <div class="clearfix"></div>		
 							</div>
 						<script>
 							var toggle = true;
@@ -563,25 +631,4 @@ $("#mytable #checkall").click(function () {
 </div>	
 <!--COPY rights end here-->
 </body>
-<script>
-function opendialog(valueString){
-	var values = valueString.split("~");
-	$("#pid").val(values[0]);
-	$("#pname").val(values[1]);
-	$("#pemail").val(values[2]);
-	$("#paddress").val(values[3]);
-	$("#pphone").val(values[4]);
-	$("#pgender").val(values[5]);	
-	$('#pdob').val(values[6]);
-	$("#page").val(values[7]);
-	$("#pbloodgroup").val(values[8]);
-	$("#edit").dialog("open");
-}
-function deldialog(valueString){
-	var values = valueString.split("~");
-	$("#demail").val(values[0]);
-	
-	}
-
-</script>
 </html>

@@ -1,5 +1,7 @@
 package com.hm.datab.facade.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,4 +21,7 @@ public class HotelFunctionsFacade implements HotelFunctions{
 		return user;
 	}
 
+	public List<Login> loadLoginDetails(String email){
+		return loginDAOImpl.loadLoginDetails(email);
+	}
 }

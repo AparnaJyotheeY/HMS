@@ -23,6 +23,27 @@ public class DoctorBean {
 	private String gender;
 	private Date dob;
 	private int pid;
+	private String bloodgroup;
+	private int lid;
+	private int accountantid;
+	public int getAccountantid() {
+		return accountantid;
+	}
+	public void setAccountantid(int accountantid) {
+		this.accountantid = accountantid;
+	}
+	public int getLid() {
+		return lid;
+	}
+	public void setLid(int lid) {
+		this.lid = lid;
+	}
+	public String getBloodgroup() {
+		return bloodgroup;
+	}
+	public void setBloodgroup(String bloodgroup) {
+		this.bloodgroup = bloodgroup;
+	}
 	public int getPid() {
 		return pid;
 	}
@@ -136,12 +157,11 @@ public class DoctorBean {
 	}
 	@Override
 	public String toString() {
-		return "DoctorBean [did=" + did + ", nurseid=" + nurseid + ", pharmacistid=" + pharmacistid + ", name=" + name
+		return "Doctor [did=" + did + ", nurseid=" + nurseid + ", pharmacistid=" + pharmacistid + ", name=" + name
 				+ ", email=" + email + ", password=" + password + ", address=" + address + ", phone=" + phone
 				+ ", dept=" + dept + ", profile=" + profile + ", image=" + Arrays.toString(image) + ", addeddate="
 				+ addeddate + ", desig=" + desig + ", images=" + images + ", age=" + age + ", gender=" + gender
-				+ ", dob=" + dob + ", pid=" + pid + "]";
+				+ ", dob=" + dob + ", pid=" + pid + ", bloodgroup=" + bloodgroup + ", lid=" + lid + ", accountantid="
+				+ accountantid + "]";
 	}
-	
-	
 }
