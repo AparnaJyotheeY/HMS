@@ -1,5 +1,8 @@
 package com.hm.web.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +35,22 @@ public class ReceptionistServiceImpl implements ReceptionistService {
 		
 		
 		return anumber;
+	}
+	public List<ReceptionistBean> loadRAmbulanceDetails(){
+		
+		List<Receptionist> ralist=receptionistFunctionsFacade.loadRAmbulanceDetails();
+		List<ReceptionistBean> rbean=new ArrayList<ReceptionistBean>();
+		for(Receptionist list:ralist){
+			ReceptionistBean bean=new ReceptionistBean();
+			bean.setAmbulanceid(list.getAmbulanceid());
+			bean.setAmbulancenumber(list.getAmbulancenumber());
+			bean.setDriver(list.getDriver());
+			bean.setIntime(list.getIntime());
+			bean.setOuttime(list.getOuttime());
+			bean.setStatus(list.getStatus());
+			rbean.add(bean);
+		}
+		return rbean;
 	}
 
 	

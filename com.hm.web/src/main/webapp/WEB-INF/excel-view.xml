@@ -50,5 +50,13 @@
            class="com.hm.web.pdfs.LaboratoristDetailsPdfGenerator">
     </bean>
     
+    <bean id="RAmbulanceExcel"
+           class="com.hm.web.files.RAmbulanceDetailsXLGenerator">
+    </bean>
+    
+    <bean id="RAmbulancePdf"
+           class="com.hm.web.pdfs.RAmbulanceDetailsPdfGenerator">
+    </bean>
+    
 	
 </beans>

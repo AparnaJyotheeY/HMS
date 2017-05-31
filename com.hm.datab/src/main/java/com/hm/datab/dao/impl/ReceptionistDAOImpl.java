@@ -3,8 +3,10 @@ package com.hm.datab.dao.impl;
 import java.io.UnsupportedEncodingException;
 import java.sql.Types;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hm.datab.beans.Receptionist;
 import com.hm.datab.dao.ReceptionistDAO;
+import com.hm.datab.impls.mappers.RAmbulanceDetailsRowMapper;
 import com.hm.datab.util.DBConstants;
 
 @Repository
@@ -43,7 +46,7 @@ public class ReceptionistDAOImpl implements ReceptionistDAO{
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 recordParameters.put("outtime", sdf.format(new Date()));
 			recordParameters.put("status", "engaged");
-		
+			recordParameters.put("addeddate", new Date());
 			
 			jdbcInsert.withTableName("ambulancedetails")
 			.usingGeneratedKeyColumns("ambulanceid");	
@@ -54,12 +57,20 @@ recordParameters.put("outtime", sdf.format(new Date()));
 
 	public String saveRAmbulanceOutDetails(String anumber) throws UnsupportedEncodingException{
 		String saveOutTimeQuery = dbProps.getProperty(DBConstants.SAVE_OUTTIME);
-		String status="available";
-		 Object[] params = {anumber,status};
-		 int[] types = {Types.VARCHAR,Types.VARCHAR};
+		
+		 Object[] params = {anumber};
+		 int[] types = {Types.VARCHAR};
 		
 		int numberRecordsUpdated = jdbcTemplate.update(saveOutTimeQuery,params,types);
 		return anumber;
+	}
+public List<Receptionist> loadRAmbulanceDetails(){
+		
+		List<Receptionist> rbean = new ArrayList<Receptionist>();
+		String loadReceptionistDetailsQuery = dbProps.getProperty(DBConstants.LOAD_RAMBULANCE_DETAILS );
+		rbean = jdbcTemplate.query(loadReceptionistDetailsQuery, new RAmbulanceDetailsRowMapper());
+		
+		return rbean;
 	}
 	
 }

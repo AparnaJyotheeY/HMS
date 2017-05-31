@@ -8,6 +8,7 @@ public interface ReceptionistService {
 
 	public ReceptionistBean saveRAmbulanceDetails(ReceptionistBean dbean);
 	public String saveRAmbulanceOutDetails(String anumber);
+	public List<ReceptionistBean> loadRAmbulanceDetails();
 
 
 	

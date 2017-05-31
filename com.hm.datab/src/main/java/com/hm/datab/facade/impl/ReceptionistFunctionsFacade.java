@@ -1,6 +1,7 @@
 package com.hm.datab.facade.impl;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -36,6 +37,10 @@ public class ReceptionistFunctionsFacade implements ReceptionistFunctions{
 			e.printStackTrace();
 		}
 		return anumber;
+	}
+	
+	public List<Receptionist> loadRAmbulanceDetails(){
+		return receptionistDAOImpl.loadRAmbulanceDetails();
 	}
 
 }

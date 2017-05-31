@@ -28,5 +28,7 @@ public class DBConstants {
     public final static String LOAD_LABORATORIST_DETAILS="LOAD_LABORATORIST_DETAILS";
     public final static String EDIT_LABORATORIST_DETAILS="EDIT_LABORATORIST_DETAILS";
     public final static String DELETE_LABORATORIST_DETAILS="DELETE_LABORATORIST_DETAILS";
-
+    
+    
+    public final static String LOAD_RAMBULANCE_DETAILS="LOAD_RAMBULANCE_DETAILS";
 }
