@@ -22,6 +22,12 @@ public interface AdminService {
 	public DoctorBean editPhramacistDetails(DoctorBean dbean);
 	public String deletePhramacistDetails(String email);
 
+	public DoctorBean saveAccountantDetails(DoctorBean dbean);
+
+	public List<DoctorBean> loadAccountantDetails();
+	public DoctorBean editAccountantDetails(DoctorBean dbean);
+	public String deleteAccountantDetails(String email);
+
 	
 	public DoctorBean savePatientDetails(DoctorBean dbean);
 	public List<DoctorBean> loadPatientDetails();

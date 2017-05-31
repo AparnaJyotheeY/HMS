@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
              <!--header start here-->
 <div class="header-main">
 					<div class="col-md-3 logo-w3-agile">
-								<h1><a href="index.html">HMS</a></h1>
+								<h1><a href="<%=request.getContextPath( )%>/">HMS</a></h1>
 							</div>
 						<div class=" col-md-offset-6 col-md-3 profile_details w3l">		
 								<ul>
@@ -53,7 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</div>	
 										</a>
 										<ul class="dropdown-menu drp-mnu">
-											<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+											<li> <a href="login.jsp"><i class="fa fa-sign-out"></i> Logout</a> </li>
 										</ul>
 									</li>
 								</ul>
@@ -149,7 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div></a>
 					</div>
 					<div class="col-md-3 four-grid">
-						<a href="adaccount.html"><div class="four-agileinfo">
+						<a href="<%=request.getContextPath( )%>/addaccountant"><div class="four-agileinfo">
 						<div class="icon">
 								<i class="fa fa-money" aria-hidden="true"></i>
 							</div>

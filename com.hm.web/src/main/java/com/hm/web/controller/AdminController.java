@@ -601,6 +601,6 @@ public class AdminController {
 		
 		return "addlaboratorist";
 		
-	}
-
+	}	
+	
 }

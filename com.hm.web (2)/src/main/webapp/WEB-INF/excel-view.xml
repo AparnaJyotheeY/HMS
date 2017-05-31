@@ -1,0 +1,54 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+ 	<bean id="DoctorExcel"
+	   	class="com.hm.web.files.DoctorDetailsXLGenerator">
+	</bean>
+	
+	<bean id="DoctorPdf"
+	   	class="com.hm.web.pdfs.DoctorDetailsPdfGenerator">
+	</bean>
+	
+
+	<bean id="NurseExcel"
+	   	class="com.hm.web.files.NurseDetailsXLGenerator">
+	</bean>
+	
+	<bean id="NursePdf"
+	   	class="com.hm.web.pdfs.NurseDetailsPdfGenerator">
+	</bean>
+	
+	  <bean id="pharmacistExcel"
+           class="com.hm.web.files.PharmacistDetailsXLGenerator">
+    </bean>
+    
+    <bean id="pharmacistPdf"
+           class="com.hm.web.pdfs.PharmacistDetailsPdfGenerator">
+    </bean>
+    <bean id="AccountantExcel"
+           class="com.hm.web.files.AccountantDetailsXLGenerator">
+    </bean>
+    
+    <bean id="AccountantPdf"
+           class="com.hm.web.pdfs.AccountantDetailsPdfGenerator">
+    </bean>
+	
+    <bean id="PatientExcel"
+           class="com.hm.web.files.PatientDetailsXLGenerator">
+    </bean>
+    
+    <bean id="PatientPdf"
+           class="com.hm.web.pdfs.PatientDetailsPdfGenerator">
+    </bean>
+    <bean id="LaboratoristtExcel"
+           class="com.hm.web.files.LaboratoristDetailsXLGenerator">
+    </bean>
+    
+    <bean id="LaboratoristPdf"
+           class="com.hm.web.pdfs.LaboratoristDetailsPdfGenerator">
+    </bean>
+    
+	
+</beans>

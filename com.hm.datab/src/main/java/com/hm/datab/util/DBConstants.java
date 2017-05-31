@@ -4,6 +4,7 @@ public class DBConstants {
 
 	public final static String LOAD_USER_LOGIN = "LOAD_USER_LOGIN";
 	public final static String LOAD_LOGIN_DETAILS = "LOAD_LOGIN_DETAILS";
+	public final static String SAVE_OUTTIME = "SAVE_OUTTIME";
 	public final static String LOAD_DOCTOR_DETAILS = "LOAD_DOCTOR_DETAILS";
 	public final static String EDIT_DOCTOR_DETAILS = "EDIT_DOCTOR_DETAILS";
 
