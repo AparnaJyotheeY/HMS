@@ -500,7 +500,7 @@ function opendeldialog(valueString){
 	$("#demail").val(values[0]);
 	
 	
-	$("#edit").dialog("open");
+	$("#edelete").dialog("open");
 }
 </script>
 </html>

@@ -42,6 +42,8 @@ public class ReceptionistController {
 		
 		ReceptionistBean rbean=buildRAmbulance(req);
 		String anumber=rbean.getAmbulancenumber();
+		List<ReceptionistBean> abean=receptionistServiceImpl.loadRAmbulanceDetails();
+		req.setAttribute("rambulancelist",abean);
 		if(req.getParameter("time").equals("out")){
 		
 		rbean=receptionistServiceImpl.saveRAmbulanceDetails(rbean);
@@ -77,6 +79,43 @@ public class ReceptionistController {
 		List<ReceptionistBean> rlist=null;
 		rlist=receptionistServiceImpl.loadRAmbulanceDetails();
 		return new ModelAndView("RAmbulancePdf", "rbean",rlist);
+	}
+	
+	@RequestMapping(value="/erambulancedetails")
+	public String editRAmbulance(HttpServletRequest req){
+		
+		ReceptionistBean rbean=buildeRAmbulance(req);
+		String eanumber=rbean.getAmbulancenumber();
+		List<ReceptionistBean> abean=receptionistServiceImpl.loadRAmbulanceDetails();
+		req.setAttribute("rambulancelist",abean);
+		
+		
+		rbean=receptionistServiceImpl.editRAmbulanceDetails(rbean);
+		req.setAttribute("successmessage", "Ambulance details updated successfully");
+	
+		return "ramubulance";
+	}
+	private ReceptionistBean buildeRAmbulance(HttpServletRequest req){
+		ReceptionistBean rbean=new ReceptionistBean();
+		rbean.setAmbulanceid(Integer.valueOf(req.getParameter("eaid")));
+		rbean.setAmbulancenumber(req.getParameter("eanumber"));
+		rbean.setDriver(req.getParameter("edriver"));
+		rbean.setIntime(req.getParameter("etime"));
+		
+		return rbean;
+	}
+	@RequestMapping("/deleterambulance")
+	public String deleteRAmbulanceRecord(HttpServletRequest req)
+	{
+		
+		List<ReceptionistBean> abean=receptionistServiceImpl.loadRAmbulanceDetails();
+		req.setAttribute("rambulancelist",abean);
+		int aid=Integer.valueOf(req.getParameter("aid"));
+		receptionistServiceImpl.deleteLaboratoristRecord(aid);
+	
+		
+		return "addlaboratorist";
+		
 	}
 	
 }

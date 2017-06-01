@@ -471,4 +471,28 @@ $("#mytable #checkall").click(function () {
 </div>	
 <!--COPY rights end here-->
 </body>
+<script>
+function opendialog(valueString){
+	var values = valueString.split("~");
+	$("#enid").val(values[0]);
+	$("#ename").val(values[1]);
+	$("#eemail").val(values[2]);
+	$("#eaddr").val(values[3]);
+	$("#ephone").val(values[4]);
+	
+	
+	$("#eimage").val(values[5]);
+	$("#edit").dialog("open");
+}
+function opendeldialog(valueString){
+	var values = valueString.split("~");
+	
+
+	$("#demail").val(values[0]);
+	
+	
+	$("#edit").dialog("open");
+}
+</script>
+
 </html>

@@ -17,9 +17,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
+import com.hm.datab.beans.Doctor;
 import com.hm.datab.beans.Receptionist;
 import com.hm.datab.dao.ReceptionistDAO;
 import com.hm.datab.impls.mappers.RAmbulanceDetailsRowMapper;
+import com.hm.datab.impls.stmtsetter.RAmbulanceDetailsStmtSetter;
 import com.hm.datab.util.DBConstants;
 
 @Repository
@@ -72,5 +74,23 @@ public List<Receptionist> loadRAmbulanceDetails(){
 		
 		return rbean;
 	}
+public Receptionist editRAmbulanceDetails(Receptionist recep) {
 	
+	String updateQuery = dbProps.getProperty(DBConstants.EDIT_RAMBULANCE_DETAILS);
+	int numberRecordsUpdated = jdbcTemplate.update(updateQuery, new RAmbulanceDetailsStmtSetter(recep));
+	
+	return recep;
+					
+}
+
+
+public int deleteRAmbulanceRecord(int aid)
+{
+	Doctor doc=null;
+	String deleteQuery=dbProps.getProperty(DBConstants.DELETE_RAMBULANCE_DETAILS );
+	
+	int norecdeleted=jdbcTemplate.update(deleteQuery,new Object[]{aid});
+	
+return norecdeleted;
+}	
 }

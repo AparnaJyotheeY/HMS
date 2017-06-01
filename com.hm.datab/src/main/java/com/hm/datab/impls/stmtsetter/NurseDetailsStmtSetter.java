@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.PreparedStatementSetter;
 import com.hm.datab.beans.Doctor;
 
 public class NurseDetailsStmtSetter implements PreparedStatementSetter {
-	;
+	
 	Doctor nurse = null;
 	public NurseDetailsStmtSetter(Doctor nurse){
 		this.nurse = nurse;

@@ -195,9 +195,8 @@ List<ReceptionistBean> rlist=(List) request.getAttribute("rambulancelist");
     <td><%=list.getIntime() %></td>
     <td><%=list.getStatus() %></td>
     
-    <td><a data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a>
-    <a data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></a></td>
-    
+    <td><a data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" onclick="opendialog('<%=list.getAmbulanceid() %>~<%=list.getAmbulancenumber() %>~<td><%=list.getDriver() %>')" ><span class="glyphicon glyphicon-pencil"></span></button></a>
+    <a data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" onclick="opendeldialog('<%=list.getAmbulanceid() %>')"><span class="glyphicon glyphicon-trash"></span></button></a></td>
     
    
     </tr>
@@ -232,29 +231,28 @@ List<ReceptionistBean> rlist=(List) request.getAttribute("rambulancelist");
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         <h4 class="modal-title custom_align" id="Heading">Edit  Ambulance  Scheduling</h4>
       </div>
-		  
+		  <form:form action="erambulancedetails" method="get">
          <div class="modal-body">
 		   <div class="col-md-offset-1 col-md-10">
           
+          <div class="form-group">
+        <input class="form-control " id="eaid" name="eaid" type="text" placeholder=" Ambulance  Id" readonly>
+        </div>
 		 <div class="form-group">
-        <input class="form-control " type="text" placeholder=" Ambulance  Number">
+        <input class="form-control " id="eanumber" name="eanumber" type="text" placeholder=" Ambulance  Number">
         </div>
 		<div class="form-group">
-        <input class="form-control " type="text" placeholder="Driver Name">
+        <input class="form-control " id="edriver" name="edriver" type="text" placeholder="Driver Name">
         </div>
+
 		
-		<div class="form-group">
-        <input class="form-control " type="text" placeholder="Out Date" id="datepicker">
-        </div>
 		<script>
   $( function() {
     $( "#datepicker" ).datepicker();
 	$("#datepicker").datepicker({ minDate: 0 });
   } );
   </script> 
-  <div class="form-group">
-        <input class="form-control " type="text" placeholder="OutTime" id="timepicker1">
-        </div>
+ 
 		<script type="text/javascript">
             $('#timepicker1').timepicker();</script>
   
@@ -263,18 +261,14 @@ List<ReceptionistBean> rlist=(List) request.getAttribute("rambulancelist");
 		 
 		 
 		 
-		 <div class="form-group">
-        <input class="form-control " type="text" placeholder="In Date"id="datepicker1">
-        </div>
+		
 		<script>
   $( function() {
     $( "#datepicker1" ).datepicker();
 	$("#datepicker1").datepicker({ minDate: 0 });
   } );
   </script>
-   <div class="form-group">
-        <input class="form-control " type="text" placeholder="In Time" id="timepicker2">
-        </div>
+  
 		<script type="text/javascript">
             $('#timepicker2').timepicker();</script>
         
@@ -283,9 +277,10 @@ List<ReceptionistBean> rlist=(List) request.getAttribute("rambulancelist");
 			
      </div>
           <div class="modal-footer" style="text-align:center;">
-        <button type="button" class="btn btn-success">Update</button>
+        <button type="submit" class="btn btn-success">Update</button>
       </div>
         </div>
+        </form:form>
  <!-- /.modal-content --> 
   </div>
       <!-- /.modal-dialog --> 
@@ -308,8 +303,15 @@ List<ReceptionistBean> rlist=(List) request.getAttribute("rambulancelist");
        
       </div>
         <div class="modal-footer ">
-        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+  <form:form action="deleterambulance" class="form-horizontal"  >
+          <div>
+         <div>
+       <input type="hidden" id="aid" name="aid">
+      </div>
+        <button type="submit" class="btn btn-success" onclick="location.href='deleterambulance'" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+        </div>
+         </form:form>        
+         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
       </div>
         </div>
     <!-- /.modal-content --> 
@@ -467,4 +469,24 @@ $("#mytable #checkall").click(function () {
 </div>	
 <!--COPY rights end here-->
 </body>
+<script>
+function opendialog(valueString){
+	var values = valueString.split("~");
+	$("#eaid").val(values[0]);
+	$("#eanumber").val(values[1]);
+	$("#edriver").val(values[2]);
+
+	$("#edit").dialog("open");
+}
+function opendeldialog(valueString){
+	var values = valueString.split("~");
+	
+
+	$("#aid").val(values[0]);
+	
+	
+	$("#delete").dialog("open");
+}
+</script>
+
 </html>

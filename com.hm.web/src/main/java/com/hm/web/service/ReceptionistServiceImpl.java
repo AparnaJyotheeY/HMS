@@ -53,6 +53,20 @@ public class ReceptionistServiceImpl implements ReceptionistService {
 		return rbean;
 	}
 
+	public ReceptionistBean editRAmbulanceDetails(ReceptionistBean dbean){
+		Receptionist recep=receptionistBuilder.buildReceptionist(dbean);
+		recep=receptionistFunctionsFacade.editRAmbulanceDetails(recep);
+		dbean=receptionistBuilder.buildReceptionistBean(recep);
+		
+		return dbean;
+	}
 	
+	
+	public int deleteLaboratoristRecord(int aid){   
+		
+		receptionistFunctionsFacade.deleteRAmbulanceDetails(aid);
+
+		return aid;
+	}
 
 }

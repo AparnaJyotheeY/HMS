@@ -31,4 +31,6 @@ public class DBConstants {
     
     
     public final static String LOAD_RAMBULANCE_DETAILS="LOAD_RAMBULANCE_DETAILS";
+    public final static String EDIT_RAMBULANCE_DETAILS="EDIT_RAMBULANCE_DETAILS";
+    public final static String DELETE_RAMBULANCE_DETAILS="DELETE_RAMBULANCE_DETAILS";
 }

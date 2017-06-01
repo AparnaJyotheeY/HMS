@@ -10,5 +10,10 @@ public interface ReceptionistDAO {
 	public Receptionist saveRAmbulanceDetails(Receptionist recep) throws UnsupportedEncodingException;
 	public String saveRAmbulanceOutDetails(String anumber) throws UnsupportedEncodingException;
 	public List<Receptionist> loadRAmbulanceDetails();
+
+	public Receptionist editRAmbulanceDetails(Receptionist recep) throws UnsupportedEncodingException;
+	
+	public int deleteRAmbulanceRecord(int aid);
+	
 	
 }

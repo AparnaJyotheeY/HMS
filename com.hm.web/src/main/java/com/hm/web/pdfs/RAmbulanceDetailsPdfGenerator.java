@@ -36,7 +36,7 @@ public class RAmbulanceDetailsPdfGenerator extends AbstractPdfView{
 			List<ReceptionistBean> rlist = (List<ReceptionistBean>) model.get("rbean");
 			
 			
-		 PdfPTable table = new PdfPTable(5); // 3 columns.
+		 PdfPTable table = new PdfPTable(6); // 3 columns.
 	        table.setWidthPercentage(100); //Width 100%
 	        table.setSpacingBefore(20f); //Space before table
 	        table.setSpacingAfter(10f); //Space after table

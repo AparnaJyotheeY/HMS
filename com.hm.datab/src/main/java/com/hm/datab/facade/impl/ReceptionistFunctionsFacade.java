@@ -42,5 +42,23 @@ public class ReceptionistFunctionsFacade implements ReceptionistFunctions{
 	public List<Receptionist> loadRAmbulanceDetails(){
 		return receptionistDAOImpl.loadRAmbulanceDetails();
 	}
-
+	public Receptionist editRAmbulanceDetails(Receptionist recep){
+		Receptionist rec=null;
+	
+		try {
+			rec= receptionistDAOImpl.editRAmbulanceDetails(recep);
+		} catch (UnsupportedEncodingException e) {
+			// TODO AureceptionistDAOImpl.saveRAmbulanceDetails(recep)to-generated catch block
+			e.printStackTrace();
+		}
+		return rec;
+	}
+	
+	public int deleteRAmbulanceDetails(int aid)
+	{
+		
+		int i =receptionistDAOImpl.deleteRAmbulanceRecord(aid);
+		return i;
+		
+	}
 }

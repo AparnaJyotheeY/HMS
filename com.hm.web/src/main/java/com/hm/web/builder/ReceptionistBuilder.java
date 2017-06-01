@@ -11,6 +11,7 @@ public class ReceptionistBuilder {
 	public ReceptionistBean buildReceptionistBean(Receptionist recep){
 		
 		ReceptionistBean rbean= new ReceptionistBean();
+		rbean.setAmbulanceid(recep.getAmbulanceid());
 		rbean.setAmbulancenumber(recep.getAmbulancenumber());
 		rbean.setDriver(recep.getDriver());
 		rbean.setIntime(recep.getIntime());
@@ -25,6 +26,7 @@ public class ReceptionistBuilder {
 public Receptionist buildReceptionist(ReceptionistBean recep){
 		
 		Receptionist  rbean= new Receptionist();
+		rbean.setAmbulanceid(recep.getAmbulanceid());
 		rbean.setAmbulancenumber(recep.getAmbulancenumber());
 		rbean.setDriver(recep.getDriver());
 		rbean.setIntime(recep.getIntime());
