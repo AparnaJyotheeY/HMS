@@ -50,8 +50,8 @@ CREATE TABLE `hotelmanagement`.`pharmacist` (
   `image` BLOB NULL,
    `addeddate` DATE NULL,
   PRIMARY KEY (`lid`));
-  #accountist table,Created By:Aparna,Date:25-05-2017.
-CREATE TABLE `hotelmanagement`.`accountist` (
+  #accountant table,Created By:Aparna,Date:25-05-2017.
+CREATE TABLE `hotelmanagement`.`accountant` (
   `accountantid` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
@@ -61,3 +61,23 @@ CREATE TABLE `hotelmanagement`.`accountist` (
   `addeddate` DATE NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`accountantid`));
+    #ambulance table,Created By:Aparna,Date:31-05-2017.
+  CREATE TABLE `hotelmanagement`.`ambulancedetails` (
+  `ambulanceid` INT NOT NULL AUTO_INCREMENT,
+  `ambulancenumber` VARCHAR(45) NOT NULL,
+  `driver` VARCHAR(45) NOT NULL,
+  `intime` VARCHAR(45) NOT NULL,
+  `outtime` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(45) NULL,
+  `addeddate` DATE NOT NULL,
+  PRIMARY KEY (`ambulanceid`));
+   #appointmentlist table,Created By:Rajamohan,Date:01-06-2017.
+  CREATE TABLE `hotelmanagement`.`appointmentlist` (
+  `aid` INT(11) NOT NULL AUTO_INCREMENT,
+  `pid` VARCHAR(45) NOT NULL,
+  `apdate` DATE NOT NULL,
+  `aptime` VARCHAR(45) NOT NULL,
+  `casehistory` VARCHAR(45) NOT NULL,
+  `medication` VARCHAR(45) NOT NULL,
+  `note` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`aid`));

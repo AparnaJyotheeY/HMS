@@ -23,16 +23,22 @@ import com.hm.web.service.ReceptionistServiceImpl;
 
 @Controller
 public class ReceptionistController {
+	
 	@Autowired
 	private AdminServiceImpl adminServiceImpl;
 	@Autowired
 	private ReceptionistServiceImpl receptionistServiceImpl;
+
 	@RequestMapping("/receptionist")
-	public String showDoctor(HttpServletRequest req){
+	public String showReceptionist(HttpServletRequest req){
 		
 
 				return "hreceptionist";
 	}
+	
+	
+	
+	
 	@RequestMapping("/addrpatient")
 	public String showPatient(HttpServletRequest req)
 	{
@@ -134,13 +140,13 @@ public class ReceptionistController {
 		return "rpatient";
 		
 	}
-	
 
 	
 	@RequestMapping("rambulance")
 	public String showRAmbulance(HttpServletRequest req){
 		
-
+		List<ReceptionistBean> rbean=receptionistServiceImpl.loadRAmbulanceDetails();
+		req.setAttribute("rambulancelist",rbean);
 				return "ramubulance";
 	}
 	
@@ -149,7 +155,7 @@ public class ReceptionistController {
 	public String addRAmbulance(HttpServletRequest req){
 		
 		ReceptionistBean rbean=buildRAmbulance(req);
-		
+		String anumber=rbean.getAmbulancenumber();
 		if(req.getParameter("time").equals("out")){
 		
 		rbean=receptionistServiceImpl.saveRAmbulanceDetails(rbean);
@@ -158,7 +164,7 @@ public class ReceptionistController {
 		
 		}
 		else if(req.getParameter("time").equals("in")){
-			String anumber=receptionistServiceImpl.saveRAmbulanceOutDetails(req.getParameter("anumber"));
+			anumber=receptionistServiceImpl.saveRAmbulanceOutDetails(anumber);
 			req.setAttribute("successmessage", "Ambulance intime details added successfully");
 			return "ramubulance";
 		}
@@ -172,5 +178,58 @@ public class ReceptionistController {
 		
 		return rbean;
 	}
+	
+	@RequestMapping("/exportrambexcel")
+	public ModelAndView getRAmbulanceExcel(HttpServletRequest req,Model model){
+		List<ReceptionistBean> rlist=null;
+		rlist=receptionistServiceImpl.loadRAmbulanceDetails();
+		return new ModelAndView("RAmbulanceExcel", "rambulance",rlist);
+	}
 
+	@RequestMapping("/exportrambpdf")
+	public ModelAndView getRAmbulancePdf(HttpServletRequest req,Model model){
+		List<ReceptionistBean> rlist=null;
+		rlist=receptionistServiceImpl.loadRAmbulanceDetails();
+		return new ModelAndView("RAmbulancePdf", "rbean",rlist);
+	}
+	
+	@RequestMapping("/addrappointment")
+	public String showRAppointment(HttpServletRequest req)
+	{
+
+		List<DoctorBean> doctorbean=adminServiceImpl.loadDoctorDetails();
+		req.setAttribute("doctorlist",doctorbean);
+		
+		
+		List<DoctorBean> dbean=adminServiceImpl.loadPatientDetails();
+		req.setAttribute("patientlist",dbean);
+		return "rappointmentlist";	
+	}
+	@RequestMapping(value="/rprescriptiondetails",method=RequestMethod.POST)
+	public String addRPatientAppintment(HttpServletRequest req) throws Exception
+	{
+		ReceptionistBean dbean=buildRPatientAppintment(req);
+    
+     List<DoctorBean> dlist=adminServiceImpl.loadPatientDetails();
+     req.setAttribute("patientlist",dlist);
+	
+     dbean=receptionistServiceImpl.saveRPatientAppintmentDetails(dbean);
+     req.setAttribute("successmessage", "patient details added successfully");
+     return "rappointmentlist" ;
+	}
+	public ReceptionistBean buildRPatientAppintment(HttpServletRequest req) throws Exception
+	{
+		ReceptionistBean dbean =new ReceptionistBean();
+		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		dbean.setAddedDate(format.parse(req.getParameter("apdate")));
+		dbean.setAppTime(req.getParameter("aptime"));
+		dbean.setPid(Integer.parseInt(req.getParameter("apname")));
+		dbean.setCaseHistory(req.getParameter("achistory"));
+		dbean.setMedication(req.getParameter("amdedication"));
+		dbean.setNote(req.getParameter("anote"));
+		return dbean;
+		
+	}
+	
+	
 }

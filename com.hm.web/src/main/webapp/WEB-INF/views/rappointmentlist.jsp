@@ -107,7 +107,8 @@ String smessage=(String) request.getAttribute("successmessage");
 if(smessage==null){
 	smessage="";
 }
-List<DoctorBean> dlist=(List) request.getAttribute("appointmentlist");
+List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
+List<DoctorBean> doclist=(List) request.getAttribute("doctorlist");
 %>
 <body>
    <div class="page-container">
@@ -188,8 +189,10 @@ List<DoctorBean> dlist=(List) request.getAttribute("appointmentlist");
         
        <select class="form-control ">
 		<option>Select a Doctor</option>
-		<option>dsmcds</option>
-		<option>Fdmfcdsklm</option>
+		<%for(DoctorBean docbean:doclist){%>
+		<option value="<%=docbean.getDid() %>"><%=docbean.getName() %></option>
+
+		<%}%>
 		
 		</select> </div>
 	</td>
@@ -302,9 +305,10 @@ List<DoctorBean> dlist=(List) request.getAttribute("appointmentlist");
         
        <select class="form-control ">
 		<option>Select a Doctor</option>
-		<option>dsmcds</option>
-		<option>Fdmfcdsklm</option>
-		
+		<%for(DoctorBean docbean:doclist){%>
+		<option value="<%=docbean.getDid() %>"><%=docbean.getName() %></option>
+
+		<%}%>
 		</select> </div>
 		 <div class="form-group">
         
@@ -349,13 +353,12 @@ List<DoctorBean> dlist=(List) request.getAttribute("appointmentlist");
         <div class="form-group">
         
         <select class="form-control " name="apname">
+        
 		<option>Select Patient Name</option>
-		<option>dfclkdsjfdls</option>
-		<option>dfclkdsjfdls</option>
-		<option>dfclkdsjfdls</option>
-		<option>dfclkdsjfdls</option>
-		<option>dfclkdsjfdls</option>
+		<%for(DoctorBean bean:dlist){%>
+		<option value="<%=bean.getPid()%>"><%=bean.getName()%></option>
 		
+		<%} %>
 		</select>
         </div>
 		<div class="form-group">
