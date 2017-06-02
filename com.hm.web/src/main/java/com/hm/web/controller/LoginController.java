@@ -63,6 +63,9 @@ public class LoginController {
 						else if(desig.equals("doctor")){
 							resultPage="doctordashboard";
 						}
+						else if(desig.equals("Receptionist")){
+							resultPage="hreceptionist";
+						}
 						else{
 							request.getSession().setAttribute("message", "Please Enter Correct Credentials");
 						}

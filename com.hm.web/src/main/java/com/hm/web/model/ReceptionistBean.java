@@ -11,11 +11,32 @@ public class ReceptionistBean {
 	private String outtime;
 	private String status;
 	private Date addedDate;
+	private String fueldate;
+	public String getFueldate() {
+		return fueldate;
+	}
+	public void setFueldate(String fueldate) {
+		this.fueldate = fueldate;
+	}
 	private int pid;
 	private String appTime;
 	private String caseHistory;
 	private String medication;
 	private String note;
+	private int fuelquantity;
+	private int fuelamount;
+	public int getFuelquantity() {
+		return fuelquantity;
+	}
+	public void setFuelquantity(int fuelquantity) {
+		this.fuelquantity = fuelquantity;
+	}
+	public int getFuelamount() {
+		return fuelamount;
+	}
+	public void setFuelamount(int fuelamount) {
+		this.fuelamount = fuelamount;
+	}
 	public int getPid() {
 		return pid;
 	}
@@ -92,10 +113,8 @@ public class ReceptionistBean {
 	public String toString() {
 		return "ReceptionistBean [ambulanceid=" + ambulanceid + ", ambulancenumber=" + ambulancenumber + ", driver="
 				+ driver + ", intime=" + intime + ", outtime=" + outtime + ", status=" + status + ", addedDate="
-				+ addedDate + ", pid=" + pid + ", appTime=" + appTime + ", caseHistory=" + caseHistory + ", medication="
-				+ medication + ", note=" + note + "]";
+				+ addedDate + ", fueldate=" + fueldate + ", pid=" + pid + ", appTime=" + appTime + ", caseHistory="
+				+ caseHistory + ", medication=" + medication + ", note=" + note + ", fuelquantity=" + fuelquantity
+				+ ", fuelamount=" + fuelamount + "]";
 	}
-	
-	
-
 }

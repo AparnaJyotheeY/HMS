@@ -59,5 +59,28 @@ public Receptionist buildRPatientAppintmentbeanDetails(ReceptionistBean bean){
 	model.setNote(bean.getNote());
 	return model;
 }
+public ReceptionistBean buildRAmbulanceFuelExp(Receptionist bean)
+{
+	ReceptionistBean model= new ReceptionistBean();
+	model.setAmbulancenumber(bean.getAmbulancenumber());
+	model.setDriver(bean.getDriver());
+	model.setAddedDate(bean.getAddedDate());
+	model.setAppTime(bean.getAppTime());
+	model.setFuelquantity(bean.getFuelquantity());
+	model.setFuelamount(bean.getFuelamount());
+	return model;
+}
+public Receptionist buildRbeanAmbulanceFuelExp(ReceptionistBean bean)
+{
+	Receptionist model= new Receptionist();
+	model.setAmbulancenumber(bean.getAmbulancenumber());
+	model.setDriver(bean.getDriver());
+	model.setAddedDate(bean.getAddedDate());
+	model.setAppTime(bean.getAppTime());
+	model.setFuelquantity(bean.getFuelquantity());
+	model.setFuelamount(bean.getFuelamount());
+	return model;
+
+}
 
 }

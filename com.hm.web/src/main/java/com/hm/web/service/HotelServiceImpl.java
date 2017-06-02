@@ -36,7 +36,7 @@ public class HotelServiceImpl {
 
 		return userBean;
 	}
-
+	
 	public List<LoginBean> loadLoginDetails(String email){
 		List<Login> login=hotelFunctionsFacade.loadLoginDetails(email);
 		List<LoginBean> lbean= new ArrayList<LoginBean>();
@@ -47,5 +47,7 @@ public class HotelServiceImpl {
 		}
 		return lbean;
 	}
+
+	
 
 }

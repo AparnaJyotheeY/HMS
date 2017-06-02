@@ -196,8 +196,8 @@ box-shadow: 0px 0px 21px 2px rgba(0,0,0,0.18);
 									 
 									 <li><a href="#"><i class="fa fa-edit" aria-hidden="true"></i><span> Appointment</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
 										   <ul id="menu-academico-sub" >
-										   <li><a href="receptionistappointmentlist.html">List Of Appointments</a></li>
-											<li id="menu-academico-avaliacoes" ><a href="receptionistrequestedapp.html">Request To Appointment</a></li>
+										   <li><a href="<%=request.getContextPath( )%>/addrappointment">List Of Appointments</a></li>
+											<li id="menu-academico-avaliacoes" ><a href="receptionistrequestedapp.html">Book Appointment</a></li>
 											
 										  </ul>
 										</li>
@@ -209,7 +209,7 @@ box-shadow: 0px 0px 21px 2px rgba(0,0,0,0.18);
 									 
 									  <li><a href="<%=request.getContextPath( )%>/rambulance"><i class="fa fa-ambulance" aria-hidden="true"></i> <span>Ambulance availability</span><div class="clearfix"></div></a></li>
 									 
-									 <li><a href="receambulancefuel.html"><i class="fa fa-money" aria-hidden="true"></i><span>Ambulance Fuel <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expenses</span><div class="clearfix"></div></a></li>  
+									 <li><a href="<%=request.getContextPath( )%>/addrambulanceexp"><i class="fa fa-money" aria-hidden="true"></i><span>Ambulance Fuel <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expenses</span><div class="clearfix"></div></a></li>  
 									<li id="menu-academico" ><a href="receptionistprofile.html"><i class="fa fa-lock"></i><span>Profile</span>
 									
 									<div class="clearfix"></div></a></li>

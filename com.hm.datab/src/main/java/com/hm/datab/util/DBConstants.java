@@ -4,6 +4,7 @@ public class DBConstants {
 
 	public final static String LOAD_USER_LOGIN = "LOAD_USER_LOGIN";
 	public final static String LOAD_LOGIN_DETAILS = "LOAD_LOGIN_DETAILS";
+	public final static String SAVE_OUTTIME = "SAVE_OUTTIME";
 	public final static String LOAD_DOCTOR_DETAILS = "LOAD_DOCTOR_DETAILS";
 	public final static String EDIT_DOCTOR_DETAILS = "EDIT_DOCTOR_DETAILS";
 
@@ -27,5 +28,11 @@ public class DBConstants {
     public final static String LOAD_LABORATORIST_DETAILS="LOAD_LABORATORIST_DETAILS";
     public final static String EDIT_LABORATORIST_DETAILS="EDIT_LABORATORIST_DETAILS";
     public final static String DELETE_LABORATORIST_DETAILS="DELETE_LABORATORIST_DETAILS";
+    
+    
+    public final static String LOAD_RAMBULANCE_DETAILS="LOAD_RAMBULANCE_DETAILS";
+    public final static String LOAD_RAMBULANCEFUEL_DETAILS="LOAD_RAMBULANCEFUEL_DETAILS";
+   public final static String UPDATE_RAMBULANCEFUEL_DETAILS="UPDATE_RAMBULANCEFUEL_DETAILS";
+   public final static String DELETE_RAMBULANCEFUEL_DETAILS="DELETE_RAMBULANCEFUEL_DETAILS";
 
 }

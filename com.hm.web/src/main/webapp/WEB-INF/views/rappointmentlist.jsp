@@ -169,6 +169,7 @@ List<DoctorBean> doclist=(List) request.getAttribute("doctorlist");
 <div class="col-md-6"><h3> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;&nbsp; Appointment List</h3></div>
 </div>
 <div class="col-md-offset-9 col-md-3"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#add">Add Appointment</button></div>
+<span> <h4 style="color:red;text-align:center"><%=message %></h4><h4 style="color:green;text-align:center"><%=smessage %></h4></span>
 <div class="clear"></div>
    <table  class="table table-responsive">
                    

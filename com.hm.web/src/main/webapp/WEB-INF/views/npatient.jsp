@@ -363,23 +363,23 @@ List<DoctorBean> dlist=(List) request.getAttribute("nurselist");
   } );
   </script>
 		 <div class="form-group">
-        <input class="form-control " type="text" placeholder="Name">
+        <input class="form-control "  name="npname" type="text" placeholder="Name">
         </div>
 		<div class="form-group">
-        <input class="form-control " type="text" placeholder="Email">
+        <input class="form-control " name="npemial" type="text" placeholder="Email">
         </div>
 		<div class="form-group">
-        <input class="form-control " type="text" placeholder="password">
+        <input class="form-control " name="nppassword" type="text" placeholder="password">
         </div>
 		<div class="form-group">
-        <input class="form-control " type="text" placeholder="Address">
+        <input class="form-control " name="npaddress" type="text" placeholder="Address">
         </div>
 		 <div class="form-group">
-        <input class="form-control " type="text" placeholder="Phone Number">
+        <input class="form-control " name="npphoneno" type="text" placeholder="Phone Number">
         </div>
         <div class="form-group">
         
-        <select class="form-control ">
+        <select class="form-control " name="npgender">
 		<option>Gender</option>
 		<option>Male</option>
 		<option>Female</option>
@@ -388,7 +388,7 @@ List<DoctorBean> dlist=(List) request.getAttribute("nurselist");
         </div>
 		
 		<div class="form-group">
-        <input class="form-control " type="text" placeholder="Birthdate" id="datepicker">
+        <input class="form-control " name="npdob" type="text" placeholder="Birthdate" id="datepicker">
         </div>
 			<script>
   $( function() {
@@ -397,11 +397,11 @@ List<DoctorBean> dlist=(List) request.getAttribute("nurselist");
   } );
   </script>
   <div class="form-group">
-        <input class="form-control " type="text" placeholder="Age" id="datepicker">
+        <input class="form-control " name="npage" type="text" placeholder="Age" id="datepicker">
         </div>
 		<div class="form-group">
         
-        <select class="form-control ">
+        <select class="form-control " name="npbloodgroup">
 		<option>Blood Group</option>
 		<option>A+</option>
 		<option>A-</option>
@@ -414,14 +414,10 @@ List<DoctorBean> dlist=(List) request.getAttribute("nurselist");
 		
 		</select>
         </div>
-       <div class="form-group">
-        <label>Upload Image</label>
-        <input type="file">
-		
-        </div>
+       
       </div>
           <div class="modal-footer" style="text-align:center;">
-        <button type="button" class="btn btn-success"> Submit</button>
+        <button type="submit" class="btn btn-success"> Submit</button>
       </div>
         </div>
     <!-- /.modal-content --> 
@@ -510,8 +506,14 @@ List<DoctorBean> dlist=(List) request.getAttribute("nurselist");
        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
        
       </div>
-        <div class="modal-footer ">
-        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+         <div class="modal-footer ">
+        <form:form action="deletelaboratorist">
+        <div>
+
+        <input type="text" id="pemail" name="pemail">
+        <button type="button" class="btn btn-success" onclick="location.href='deletenursepatient'" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+       </div>
+        </form:form>
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
       </div>
         </div>

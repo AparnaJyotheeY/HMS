@@ -81,3 +81,18 @@ CREATE TABLE `hotelmanagement`.`accountant` (
   `medication` VARCHAR(45) NOT NULL,
   `note` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`aid`));
+  
+  #ambulancefueldetails table,Created By:Rajamohan,Date:02-06-2017.
+  CREATE TABLE `hotelmanagement`.`ambulancefueldetails` (
+  `ambulanceid` INT(45) NOT NULL AUTO_INCREMENT,
+  `ambulancenumber` VARCHAR(45) NOT NULL,
+  `driver` VARCHAR(45) NOT NULL,
+  `fueldate` DATE NOT NULL,
+  `fueltime` VARCHAR(45) NOT NULL,
+  `fuelquantity` INT(45) NOT NULL,
+  `fuelamount` INT(45) NOT NULL,
+  PRIMARY KEY (`ambulanceid`));
+
+  
+  
+  

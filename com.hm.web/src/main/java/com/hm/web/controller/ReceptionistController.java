@@ -1,6 +1,7 @@
 package com.hm.web.controller;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -230,6 +231,112 @@ public class ReceptionistController {
 		return dbean;
 		
 	}
+	@RequestMapping("/exportdrappointexcel")
+	public ModelAndView getRPatientAppointDetailsExcel(HttpServletRequest req,Model model){
+		List<DoctorBean> dlist=null;
+		dlist=adminServiceImpl.loadPatientDetails();
+		return new ModelAndView("RPatientAppExcel", "patient",dlist);
+	}
+
+	@RequestMapping("/exportrappointpdf")
+	public ModelAndView getRPatientAppointDetailspdf(HttpServletRequest req,Model model){
+		List<DoctorBean> dlist=null;
+		dlist=adminServiceImpl.loadPatientDetails();
+		return new ModelAndView("RPatientAppPd", "patient",dlist);
+	}
+	@RequestMapping("/addrambulanceexp")
+	public String showRAmbulanceFuelExp(HttpServletRequest req)
+	{  List<ReceptionistBean> fueldetails=receptionistServiceImpl.loadRAmbulanceFuelDetails();
+	req.setAttribute("fuelexpen",fueldetails);
+		
+		return "rambulancefuel";	
+	}
+	@RequestMapping(value="/addfuelexpenses")
+	public String addRAmbulanceFuel(HttpServletRequest req)throws ParseException{
+		
+		ReceptionistBean rbean=buildRAmbulanceFuel(req);
+		rbean=receptionistServiceImpl.saveRAmbulanceFuelExpenses(rbean);	 
+		req.setAttribute("successmessage", "fuel details added successfully");
+		
+		List<ReceptionistBean> fueldetails=receptionistServiceImpl.loadRAmbulanceFuelDetails();
+		req.setAttribute("fuelexpen",fueldetails);
+		return "rambulancefuel";
+	}
+	private ReceptionistBean buildRAmbulanceFuel(HttpServletRequest req) throws ParseException{
+		ReceptionistBean rbean=new ReceptionistBean();
+		rbean.setAmbulancenumber(req.getParameter("ambno"));
+		rbean.setDriver(req.getParameter("ambname"));
+		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		rbean.setAddedDate(format.parse(req.getParameter("ambdate")));
+		rbean.setAppTime(req.getParameter("ambtime"));
+		rbean.setFuelquantity(Integer.parseInt(req.getParameter("ambquantity")));
+		rbean.setFuelamount(Integer.parseInt(req.getParameter("ambamount")));
+		
+		return rbean;
+	}
+	
+	
+	@RequestMapping(value="/efuelexpenses",method=RequestMethod.POST)
+	public String editRAmbulanceFuelExpensesDetails(HttpServletRequest req)throws ParseException
+	{  
+ 		List<ReceptionistBean> fueldetails=receptionistServiceImpl.loadRAmbulanceFuelDetails();
+		
+ 		
+		req.setAttribute("fuelexpen",fueldetails);
+		
+		ReceptionistBean dbean=buildEditRAmbulanceFuelDetails(req);
+		
+		receptionistServiceImpl.editRAmbulanceFuelDetails(dbean);
+		req.setAttribute("successmessage", "fuel details updated successfully");
+		return "rambulancefuel";
+	}
+	
+	public ReceptionistBean buildEditRAmbulanceFuelDetails(HttpServletRequest req)throws ParseException
+	{
+		ReceptionistBean dbean=new ReceptionistBean();
+		dbean.setAmbulancenumber(req.getParameter("ambnumber"));
+		dbean.setDriver(req.getParameter("ambdrvr"));
+		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		dbean.setAddedDate(format.parse(req.getParameter("ambfilldate")));
+		dbean.setFuelquantity(Integer.parseInt(req.getParameter("ambfuel")));
+		dbean.setFuelamount(Integer.parseInt(req.getParameter("fuelamnt")));		
+		return dbean;
+	}
+	
+	@RequestMapping("/exportrafexcel")
+	public ModelAndView getRAmbulanceFuelExpExcel(HttpServletRequest req,Model model){
+		List<ReceptionistBean> fueldetails=receptionistServiceImpl.loadRAmbulanceFuelDetails();
+		return new ModelAndView("RAmbulanceFuelExcel", "fueldet",fueldetails);
+	}
+
+	@RequestMapping("/exportrafpdf")
+	public ModelAndView getRAmbulanceFuelExpPdf(HttpServletRequest req,Model model){
+		List<ReceptionistBean> fueldetails=receptionistServiceImpl.loadRAmbulanceFuelDetails();
+		return new ModelAndView("RAmbulanceFuelPdf", "fueldet",fueldetails);
+	}
+	
+	@RequestMapping("/deleteambfuelexp")
+	public String deleteRAmbulanceFuelRecord(HttpServletRequest req)
+	{
+		String email=req.getParameter("demail");
+List<ReceptionistBean> fueldetails=receptionistServiceImpl.loadRAmbulanceFuelDetails();
+		
+ 		
+		req.setAttribute("fuelexpen",fueldetails);
+		receptionistServiceImpl.deleteRAmbulanceFuelRecordDetails(email);
+		
+		return "rambulancefuel";
+		
+	}
+	
+	@RequestMapping("/apple")
+	public String showdctr(HttpServletRequest req){
+		
+
+				return "Dctrapp";
+	}
+	
+	
 	
 	
 }

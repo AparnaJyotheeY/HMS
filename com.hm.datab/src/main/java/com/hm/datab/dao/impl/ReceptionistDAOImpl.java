@@ -20,6 +20,8 @@ import org.springframework.stereotype.Repository;
 import com.hm.datab.beans.Receptionist;
 import com.hm.datab.dao.ReceptionistDAO;
 import com.hm.datab.impls.mappers.RAmbulanceDetailsRowMapper;
+import com.hm.datab.impls.mappers.RAmbulanceFuelDetailsRowMapper;
+import com.hm.datab.impls.stmtsetter.RAmbulanceFuelDetailsUpdateStmtSetter;
 import com.hm.datab.util.DBConstants;
 
 @Repository
@@ -91,5 +93,51 @@ public Receptionist saveRPatientAppointmentDetails(Receptionist recep)
 		
 	return recep;
 }
+public Receptionist saveRAmbulanceFuelExpensesDetails(Receptionist recep)
+{
+	DataSource dataSource = jdbcTemplate.getDataSource();
+	SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(dataSource);
+	Map<String,Object> recordParameters = new HashMap<String,Object>();
+	recordParameters.put("ambulancenumber",recep.getAmbulancenumber());
+    recordParameters.put("driver", recep.getDriver());
+    recordParameters.put("fueldate", recep.getAddedDate());
+    recordParameters.put("fueltime", recep.getAppTime());
+    recordParameters.put("fuelquantity", recep.getFuelquantity());
+    recordParameters.put("fuelamount", recep.getFuelamount());
+    
+    jdbcInsert.withTableName("ambulancefueldetails")
+	.usingGeneratedKeyColumns("ambulanceid");	
+	recep.setAmbulanceid(jdbcInsert.executeAndReturnKey(recordParameters).intValue());
+
+	return recep;
 	
+}
+
+public List<Receptionist> loadRAmbulacneFuelDetails()
+{
+
+	String fuelquery=dbProps.getProperty(DBConstants.LOAD_RAMBULANCEFUEL_DETAILS);
+	List<Receptionist> fueldetails=jdbcTemplate.query(fuelquery,new RAmbulanceFuelDetailsRowMapper());
+	return fueldetails;
+}
+
+public Receptionist updateRAmbulanceFuelDetails(Receptionist recep)
+{
+	
+String updateFuel=dbProps.getProperty(DBConstants.UPDATE_RAMBULANCEFUEL_DETAILS);
+int updaterecords=jdbcTemplate.update(updateFuel, new RAmbulanceFuelDetailsUpdateStmtSetter(recep));
+
+return recep;
+}
+public String deleteRAmbulanceFuelRecordDetails(String ambno)
+{     
+	
+	 
+	 String deleteFuel=dbProps.getProperty(DBConstants.DELETE_RAMBULANCEFUEL_DETAILS);
+    int deleteRecords=jdbcTemplate.update(deleteFuel, new Object[]{ambno}); 
+
+    return ambno;
+}
+
+
 }

@@ -10,4 +10,8 @@ public interface ReceptionistFunctions {
 	public String saveRAmbulanceOutDetails(String anumber);
 	public List<Receptionist> loadRAmbulanceDetails();
 	public Receptionist saveRPatientAppointmentDetails(Receptionist recep);
+    public Receptionist saveRAmbulanceFuelExpensesDetails(Receptionist recep);
+    public List<Receptionist> loadRAmbulanceFuelDetails();
+    public Receptionist updateRAmbulanceFuelRecordDetails(Receptionist recep);
+    public String deleteRAmbulanceFuelRecord(String ambno);
 }

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
-import com.hm.web.model.DoctorBean;
+import com.hm.web.model.ReceptionistBean;
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
 import com.lowagie.text.Element;
@@ -19,8 +19,7 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
-public class AccountantDetailsPdfGenerator extends AbstractPdfView{
-
+public class RPatientAppointmentDetailsPdfGenerator extends AbstractPdfView{
 
 	@Override
 	 protected void buildPdfDocument(Map model,
@@ -28,11 +27,11 @@ public class AccountantDetailsPdfGenerator extends AbstractPdfView{
 	   HttpServletResponse resp) throws Exception {
 		
 		
-		Paragraph header = new Paragraph(new Chunk("Accountant Details",FontFactory.getFont(FontFactory.HELVETICA, 30)));
+		Paragraph header = new Paragraph(new Chunk("Ambulance Details",FontFactory.getFont(FontFactory.HELVETICA, 30)));
 		  document.add(header);
 		 
 
-			List<DoctorBean> dlist = (List<DoctorBean>) model.get("abean");
+			List<ReceptionistBean> rlist = (List<ReceptionistBean>) model.get("rbean");
 			
 			
 		 PdfPTable table = new PdfPTable(5); // 3 columns.
@@ -41,7 +40,7 @@ public class AccountantDetailsPdfGenerator extends AbstractPdfView{
 	        table.setSpacingAfter(10f); //Space after table
 	 
 	        //Set Column widths
-	        float[] columnWidths = {1f, 1f, 1f, 1f, 1f};
+	        float[] columnWidths = {1f, 1f, 1f, 1f, 1f,1f};
 	        table.setWidths(columnWidths);
 	        
 	        
@@ -54,54 +53,40 @@ public class AccountantDetailsPdfGenerator extends AbstractPdfView{
 	       
 	        
 	        
-	        cell.setPhrase(new Phrase("ACCOUNTANT ID"));
+	        cell.setPhrase(new Phrase("Appointment Id"));
 	        table.addCell(cell);
 
 	        
 	        
-	        cell.setPhrase(new Phrase("NAME"));
+	        cell.setPhrase(new Phrase("Appointment Date"));
 	        table.addCell(cell);
 	        
-	        cell.setPhrase(new Phrase("EMAIL"));
+	        cell.setPhrase(new Phrase("Doctor"));
 	        table.addCell(cell);
 	        
-	        cell.setPhrase(new Phrase("ADDRESS"));
+	        cell.setPhrase(new Phrase("Patient"));
 	        table.addCell(cell);
-	        
-	        cell.setPhrase(new Phrase("PHONE"));
-	        table.addCell(cell);
-	        
-	        
-	        
-	         	 
-	       for(DoctorBean bean:dlist) {
+	     	 
+	       for(ReceptionistBean bean:rlist) {
 	       
 	    	PdfPCell rowcell = new PdfPCell();
 	    	rowcell.setPaddingLeft(10);
 	    	rowcell.setHorizontalAlignment(Element.ALIGN_CENTER);
 	    	rowcell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 	    	
-	    	rowcell.setPhrase(new Phrase(bean.getAccountantid()));
+	    	rowcell.setPhrase(new Phrase(bean.getAmbulanceid()));
 	        table.addCell(rowcell);
 	        
 	        
 	        
-	        rowcell.setPhrase(new Phrase(bean.getName()));
+	        rowcell.setPhrase(new Phrase(bean.getAmbulancenumber()));
 	        table.addCell(rowcell);
 	        
-	        rowcell.setPhrase(new Phrase(bean.getEmail()));
+	        rowcell.setPhrase(new Phrase(bean.getDriver()));
 	        table.addCell(rowcell);
 	        
-	        rowcell.setPhrase(new Phrase(bean.getAddress()));
+	        rowcell.setPhrase(new Phrase(bean.getOuttime()));
 	        table.addCell(rowcell);
-	        
-	        rowcell.setPhrase(new Phrase(bean.getPhone()));
-	        table.addCell(rowcell);
-	        
-	        
-	        
-	        
-	       
 	        
 	        }
 	  
@@ -112,4 +97,5 @@ public class AccountantDetailsPdfGenerator extends AbstractPdfView{
 	
 	 
 	}
+	
 }

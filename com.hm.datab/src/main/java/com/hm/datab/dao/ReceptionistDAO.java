@@ -11,5 +11,8 @@ public interface ReceptionistDAO {
 	public String saveRAmbulanceOutDetails(String anumber) throws UnsupportedEncodingException;
 	public List<Receptionist> loadRAmbulanceDetails();
 	public Receptionist saveRPatientAppointmentDetails(Receptionist recep);
-	
+	public Receptionist saveRAmbulanceFuelExpensesDetails(Receptionist recep);
+	public List<Receptionist> loadRAmbulacneFuelDetails();
+	public Receptionist updateRAmbulanceFuelDetails(Receptionist recep);
+	public String deleteRAmbulanceFuelRecordDetails(String ambno);
 }

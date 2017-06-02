@@ -1,5 +1,6 @@
 package com.hm.web.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,12 @@ public class AdminServiceImpl implements AdminService{
 	
 	public DoctorBean saveDoctorDetails(DoctorBean dbean){
 		Doctor doctor=doctorBuilder.buildDocotor(dbean);
-		doctor=doctorFunctionsFacade.saveDoctorDetails(doctor);
+		try {
+			doctor=doctorFunctionsFacade.saveDoctorDetails(doctor) ;
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		dbean=doctorBuilder.buildDocotorBean(doctor);
 		return dbean;
 	}
@@ -151,7 +157,7 @@ return pemail;
 }
 public DoctorBean saveAccountantDetails(DoctorBean dbean){
 	Doctor doctor=doctorBuilder.buildDocotor(dbean);
-	doctor=doctorFunctionsFacade.saveAccountantetails(doctor);
+	doctor=doctorFunctionsFacade.saveAccountantDetails(doctor);
 	dbean=doctorBuilder.buildDocotorBean(doctor);
 	
 	return dbean;
@@ -163,7 +169,7 @@ public List<DoctorBean> loadAccountantDetails(){
 	List<DoctorBean> dbean=new ArrayList<DoctorBean>();
 	for(Doctor doc:dlist){
 		DoctorBean bean=new DoctorBean();
-		bean.setAccountantid(doc.getAccountantid());
+		bean.setAccountatid(doc.getAccountantid());
 		bean.setName(doc.getName());
 		bean.setEmail(doc.getEmail());
 		
@@ -193,7 +199,6 @@ String pemail=doctorFunctionsFacade.deleteAccountantDetails(email);
 
 return pemail;
 }
-
 
 public DoctorBean savePatientDetails(DoctorBean dbean)
 {
@@ -284,6 +289,5 @@ public String deleteLaboratoristRecord(String email){
 
 	return email;
 }
-
 
 }

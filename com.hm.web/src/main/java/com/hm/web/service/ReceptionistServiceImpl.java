@@ -1,5 +1,7 @@
 package com.hm.web.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +67,51 @@ public ReceptionistBean saveRPatientAppintmentDetails(ReceptionistBean  bean)
     return bean;
 }
 
+public ReceptionistBean saveRAmbulanceFuelExpenses(ReceptionistBean dbean)
+{
+	Receptionist rbean=receptionistBuilder.buildRbeanAmbulanceFuelExp(dbean);
+      rbean=receptionistFunctionsFacade.saveRAmbulanceFuelExpensesDetails(rbean);
+     dbean=receptionistBuilder.buildReceptionistBean(rbean);
+     return dbean;
+}
+public List<ReceptionistBean> loadRAmbulanceFuelDetails()
+{
+	 
+	List<Receptionist> ralist=receptionistFunctionsFacade.loadRAmbulanceFuelDetails();
+	List<ReceptionistBean> rbean=new ArrayList<ReceptionistBean>();
+	for(Receptionist list:ralist){
+		ReceptionistBean bean=new ReceptionistBean();
+		bean.setAmbulanceid(list.getAmbulanceid());
+		bean.setAmbulancenumber(list.getAmbulancenumber());
+		bean.setDriver(list.getDriver());
+		bean.setAddedDate(list.getAddedDate());
+		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		String d=format.format(bean.getAddedDate());
+		bean.setFueldate(d);
+		bean.setFuelquantity(list.getFuelquantity());
+		bean.setFuelamount(list.getFuelamount());
+		rbean.add(bean);
+	}
+	return rbean;
+	
 
+}
+
+public 	ReceptionistBean editRAmbulanceFuelDetails(ReceptionistBean dbean)
+{
+	Receptionist rbean=receptionistBuilder.buildRbeanAmbulanceFuelExp(dbean);
+    rbean=receptionistFunctionsFacade.updateRAmbulanceFuelRecordDetails(rbean);
+	dbean=receptionistBuilder.buildReceptionistBean(rbean);
+ return dbean;
+}
+
+public String deleteRAmbulanceFuelRecordDetails(String ambno)
+{
+	Receptionist rbean=null;
+  
+	 receptionistFunctionsFacade.deleteRAmbulanceFuelRecord(ambno);
+ 
+	 return ambno;
+}
 
 }

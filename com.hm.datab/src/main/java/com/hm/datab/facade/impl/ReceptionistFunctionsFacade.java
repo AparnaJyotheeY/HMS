@@ -52,4 +52,31 @@ public class ReceptionistFunctionsFacade implements ReceptionistFunctions{
 		
 		
 	}
+    @Override
+    public Receptionist saveRAmbulanceFuelExpensesDetails(Receptionist recep)
+    {
+    	return receptionistDAOImpl.saveRAmbulanceFuelExpensesDetails(recep);
+    }
+    @Override
+    public List<Receptionist> loadRAmbulanceFuelDetails()
+    {
+    	
+    	return receptionistDAOImpl.loadRAmbulacneFuelDetails();
+    	
+    }
+    @Override
+    public Receptionist updateRAmbulanceFuelRecordDetails(Receptionist recep)
+    {
+    	
+    	return receptionistDAOImpl.updateRAmbulanceFuelDetails(recep);
+    	
+    }
+    @Override
+    public String deleteRAmbulanceFuelRecord(String ambno)
+    {
+    	return receptionistDAOImpl.deleteRAmbulanceFuelRecordDetails(ambno);
+    	
+    	
+    }
+    
 }

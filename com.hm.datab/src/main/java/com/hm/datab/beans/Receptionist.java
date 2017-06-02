@@ -19,6 +19,21 @@ public class Receptionist {
 	private String caseHistory;
 	private String medication;
 	private String note;
+    private int fuelquantity;
+    private int fuelamount;
+	public int getFuelquantity() {
+		return fuelquantity;
+	}
+	public void setFuelquantity(int fuelquantity) {
+		this.fuelquantity = fuelquantity;
+	}
+	public int getFuelamount() {
+		return fuelamount;
+	}
+	public void setFuelamount(int fuelamount) {
+		this.fuelamount = fuelamount;
+	}
+	
 	public int getPid() {
 		return pid;
 	}
@@ -93,11 +108,12 @@ public class Receptionist {
 	}
 	@Override
 	public String toString() {
-		return "ReceptionistBean [ambulanceid=" + ambulanceid + ", ambulancenumber=" + ambulancenumber + ", driver="
+		return "Receptionist [ambulanceid=" + ambulanceid + ", ambulancenumber=" + ambulancenumber + ", driver="
 				+ driver + ", intime=" + intime + ", outtime=" + outtime + ", status=" + status + ", addedDate="
 				+ addedDate + ", pid=" + pid + ", appTime=" + appTime + ", caseHistory=" + caseHistory + ", medication="
-				+ medication + ", note=" + note + "]";
+				+ medication + ", note=" + note + ", fuelquantity=" + fuelquantity + ", fuelamount=" + fuelamount + "]";
 	}
+	
 	
 	
 

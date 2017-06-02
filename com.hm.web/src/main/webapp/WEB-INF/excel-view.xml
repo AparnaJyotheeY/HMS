@@ -50,5 +50,26 @@
            class="com.hm.web.pdfs.LaboratoristDetailsPdfGenerator">
     </bean>
     
-	
+    <bean id="RAmbulanceExcel"
+           class="com.hm.web.files.RAmbulanceDetailsXLGenerator">
+    </bean>
+    
+    <bean id="RAmbulancePdf"
+           class="com.hm.web.pdfs.RAmbulanceDetailsPdfGenerator">
+    </bean>
+    
+	 <bean id="RPatientAppExcel"
+           class="com.hm.web.files.RPatientAppointmentDetailsXLGenerator">
+    </bean>
+    
+    <bean id="RPatientAppPdf"
+           class="com.hm.web.pdfs.RPatientAppointmentDetailsPdfGenerator">
+    </bean>
+     <bean id="RAmbulanceFuelExcel"
+           class="com.hm.web.files.RAmbulanceFuelDetailsXLGenerator">
+    </bean>
+    
+    <bean id="RAmbulanceFuelPdf"
+           class="com.hm.web.pdfs.RAmbulanceFuelDetailsPdfGenerator">
+    </bean>
 </beans>

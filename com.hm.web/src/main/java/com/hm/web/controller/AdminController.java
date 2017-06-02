@@ -1,7 +1,9 @@
 package com.hm.web.controller;
 
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hm.web.model.DoctorBean;
 import com.hm.web.service.AdminServiceImpl;
+
 
 @Controller
 public class AdminController {
@@ -554,12 +557,13 @@ public class AdminController {
 	public String editLaboratoristDetails(HttpServletRequest req)
 	{
 		DoctorBean dbean=buildEditLaboratoristDetails(req);
-		
+
 		List<DoctorBean> dlist=adminServiceImpl.loadLaboratoristDetails();
 		req.setAttribute("patientlist",dlist);
 		
 		dbean=adminServiceImpl.editLaboratoristDetails(dbean);
 		req.setAttribute("successmessage", "laboratorist details updated successfully");
+		
 		return "addlaboratorist";
 	}
 	
@@ -591,11 +595,10 @@ public class AdminController {
 	@RequestMapping("/deletelaboratorist")
 	public String deleteLaboratoristRecord(HttpServletRequest req)
 	{
-		String email=req.getParameter("demail");
-		adminServiceImpl.deleteLaboratoristRecord(email);
+		String email=req.getParameter("labemail");
 		List<DoctorBean> dlist=adminServiceImpl.loadLaboratoristDetails();
 		req.setAttribute("laboratoristlist",dlist);
-		
+		adminServiceImpl.deleteLaboratoristRecord(email);
 		return "addlaboratorist";
 		
 	}

@@ -124,7 +124,9 @@ List<DoctorBean> dlist=(List) request.getAttribute("laboratoristlist");
 					 
                </thead>
     <tbody>
-    <%for(DoctorBean bean:dlist) {%>
+    
+    <%if(null != dlist){
+    for(DoctorBean bean:dlist) {%>
     <tr>
     <td><%=bean.getLid() %></td>
     <td>	<img id="profileImage" style="height:50px;width:70px" src="<%=bean.getImages() %>"></td>
@@ -136,7 +138,7 @@ List<DoctorBean> dlist=(List) request.getAttribute("laboratoristlist");
     <td><a data-placement="top" data-toggle="tooltip" title="Edit" onclick="opendialog('<%=bean.getPid() %>~<%=bean.getName()%>~<%=bean.getEmail() %>~<%=bean.getAddress() %>~<%=bean.getPhone() %>')"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a>
     <a data-placement="top" data-toggle="tooltip" title="Delete" onclick="deldialog('<%=bean.getEmail() %>')"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></a></td>
     </tr>
-  <%} %>
+  <%} }%>
     </tbody>
         
 </table>
@@ -233,8 +235,8 @@ List<DoctorBean> dlist=(List) request.getAttribute("laboratoristlist");
         <form:form action="deletelaboratorist">
         <div>
 
-        <input type="text" id="lemail" name="lemail">
-        <button type="button" class="btn btn-success" onclick="location.href='deletepatient'" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+        <input type="text" id="labemail" name="labemail">
+        <button type="button" class="btn btn-success" onclick="location.href='deletelaboratorist'" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
        </div>
         </form:form>
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
@@ -254,7 +256,7 @@ List<DoctorBean> dlist=(List) request.getAttribute("laboratoristlist");
         <h4 class="modal-title custom_align" id="Heading">Add Laboratorist</h4>
       </div>
           <div class="modal-body">
-           <form:form action="addlaboratorist" method="post" class="form-horizontal" enctype="multipart/form-data" modelAttribute="userRegDetails" >
+           <form:form action="laboratoristdetails" method="post" class="form-horizontal" enctype="multipart/form-data" modelAttribute="userRegDetails" >
 		  <div class="col-md-offset-1 col-md-10">
          
 		 <div class="form-group">
@@ -362,16 +364,16 @@ $("#mytable #checkall").click(function () {
 									     <li><a href="addepartment.html"><i class="fa fa-sitemap"></i><span>Department</span><div class="clearfix"></div></a></li>
 										 
 										 
-									    <li id="menu-academico" ><a href="addoctor.html"><i class="fa fa-user-md" aria-hidden="true"></i><span>Doctor</span><div class="clearfix"></div></a></li>
+									  	 
+									    <li id="menu-academico" ><a href="<%=request.getContextPath( )%>/addoctor"><i class="fa fa-user-md" aria-hidden="true"></i><span>Doctor</span><div class="clearfix"></div></a></li>
 									 
-									 <li id="menu-academico" ><a href="adpatient.html"><i class="fa fa-user " aria-hidden="true"></i><span> Patient</span> <div class="clearfix"></div></a></li>
+									 <li id="menu-academico" ><a href="<%=request.getContextPath( )%>/addpatient"><i class="fa fa-user " aria-hidden="true"></i><span> Patient</span> <div class="clearfix"></div></a></li>
 									
-									<li id="menu-academico" ><a href="adnurse.html"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Nurse</span><div class="clearfix"></div></a></li>
-									 
+									<li id="menu-academico" ><a href="<%=request.getContextPath( )%>/adnurse"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Nurse</span><div class="clearfix"></div></a></li>
 									 <li id="menu-academico" ><a href="adpharmacist.html"><i class="fa fa-medkit" aria-hidden="true"></i><span>Pharmacist</span> <div class="clearfix"></div></a>
 										  
 										</li>
-									 <li class="active"><a href="adlaboratoris.html"><i class="fa fa-flask" aria-hidden="true"></i>  <span>Laboratorist</span><div class="clearfix"></div></a></li>
+									 <li class="active"><a href="<%=request.getContextPath( )%>/addlaboratorist"><i class="fa fa-flask" aria-hidden="true"></i>  <span>Laboratorist</span><div class="clearfix"></div></a></li>
 									
 							       
 									<li><a href="adaccount.html"><i class="fa fa-money" aria-hidden="true"></i><span>Accountant</span> <div class="clearfix"></div></a>
@@ -464,7 +466,7 @@ function opendialog(valueString){
 }
 function deldialog(valueString){
 	var values = valueString.split("~");
-	$("#lemail").val(values[0]);
+	$("#labemail").val(values[0]);
 
 	}
 </script>

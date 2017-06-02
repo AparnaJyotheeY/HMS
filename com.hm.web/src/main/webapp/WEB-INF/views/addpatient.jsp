@@ -127,8 +127,8 @@ List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
 <div class="btn-toolbar">
     <button class="btn btn-primary">Copy</button>
     
-    <button onclick="location.href='./exportdexcel'" class="btn btn-warning">Excel</button>
-    <button onclick="location.href='./exportdpdf'" class="btn btn-danger">PDF</button>
+    <button onclick="location.href='./exportpexcel'" class="btn btn-warning">Excel</button>
+    <button onclick="location.href='./exportppdf'" class="btn btn-danger">PDF</button>
 </div>
 <div class="well  table-responsive">
      <table id="mytable" class="table table-bordred table-striped">

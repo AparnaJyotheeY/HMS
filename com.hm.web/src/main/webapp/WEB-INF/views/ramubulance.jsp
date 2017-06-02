@@ -3,12 +3,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@page import="com.hm.web.model.DoctorBean"%>
-<%@page import="com.hm.web.model.ReceptionistBean" %>
 <%@page import="java.util.List"%>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Receptionist-Ambulance Fuel expenses.</title>
+<title>Receptionist-Ambulance availability</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Pooled Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -38,8 +37,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    <link href='<c:url value="/static/css/jquery-ui.css"/>' >
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.css">
    <script src='<c:url value="/static/tinymce/tinymce.min.js"/>'></script>
-   
-
 <style>
 .modal-footer {
     
@@ -105,8 +102,7 @@ String smessage=(String) request.getAttribute("successmessage");
 if(smessage==null){
 	smessage="";
 }
-List<ReceptionistBean> dlist=(List) request.getAttribute("fuelexpen");
-
+List<DoctorBean> dlist=(List) request.getAttribute("patientlist");
 %>
 <body>
    <div class="page-container">
@@ -133,7 +129,7 @@ List<ReceptionistBean> dlist=(List) request.getAttribute("fuelexpen");
 											</div>	
 										</a>
 										<ul class="dropdown-menu drp-mnu">
-											<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+											<li> <a href="login.jsp"><i class="fa fa-sign-out"></i> Logout</a> </li>
 										</ul>
 									</li>
 								</ul>
@@ -142,9 +138,8 @@ List<ReceptionistBean> dlist=(List) request.getAttribute("fuelexpen");
 						  
 				</div><!--heder end here-->
 		<ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="<%=request.getContextPath( )%>/">Home</a> <i class="fa fa-angle-right"></i></li>
-				<li class="breadcrumb-item"><a href="<%=request.getContextPath( )%>/receptionist">Dashboard</a> <i class="fa fa-angle-right"></i></li>
-				<span> <h4 style="color:red;text-align:center"><%=message %></h4><h4 style="color:green;text-align:center"><%=smessage %></h4></span>
+                <li class="breadcrumb-item"><a href="<%=request.getContextPath( )%>/">Home</a> <i class="fa fa-angle-right"></i></li>
+                <li class="breadcrumb-item"><a href="<%=request.getContextPath( )%>/receptionist">Dashboard</a> <i class="fa fa-angle-right"></i></li>
             </ol>
 			<!-- script-for sticky-nav -->
 			
@@ -165,47 +160,50 @@ List<ReceptionistBean> dlist=(List) request.getAttribute("fuelexpen");
 		<!-- /script-for sticky-nav -->
 <!--inner block start here-->
 
-<div class="col-md-6"><h3> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;&nbsp;Ambulance Fuel Expenses.</h3></div>
-<div class="col-md-offset-9 col-md-3"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#add">Add Fuel Expenses.</button></div>
+<div class="col-md-6"><h3> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;&nbsp;Ambulance availability</h3></div>
+<div class="col-md-offset-9 col-md-3"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#add">Add Ambulance appointment</button></div>
 
 <div class="btn-toolbar">
     <button class="btn btn-primary">Copy</button>
-    <button onclick="location.href='./exportrafexcel'" class="btn btn-warning">Excel</button>
-    <button onclick="location.href='./exportrafpdf'" class="btn btn-danger">PDF</button>
+    <button class="btn">CSV</button>
+    <button class="btn">Excel</button>
+    <button class="btn">PDF</button>
+    <button class="btn">Print</button>
 </div>
-<div class="well table-responsive ">
+<div class="well table-responsive">
      <table id="mytable" class="table table-bordred table-striped">
                    
                    <thead>
                    
-                    <th>aid</th>
+                    <th>#</th>
                    <th>Ambulance Number</th>
                     <th>Driver</th>
-                    <th>Fuel Filling Date</th>
-                     <th>Quantity</th>
-                     <th>Amount</th>
+                     <th>Out Time</th>
+                     <th>In Time</th>
+                     <th>Status</th>
                      <th>Options</th>
                </thead>
     <tbody>
-    <%if(dlist!=null){
-    for(ReceptionistBean bean:dlist){%>
+    
     <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
     
-    <td><%=bean.getAmbulanceid() %></td>
-    <td><%=bean.getAmbulancenumber() %></td>
-    <td><%=bean.getDriver() %></td>
-    <td><%=bean.getFueldate() %></td>
-    <td><%=bean.getFuelquantity() %></td>
-    <td><%=bean.getFuelamount() %></td>
+    <td><a data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a>
+    <a data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></a></td>
     
-    <td><a data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" onclick="opendialog('<%=bean.getAmbulancenumber() %>~<%=bean.getDriver() %>~<%=bean.getFueldate() %>~<%=bean.getFuelquantity() %>~<%=bean.getFuelamount() %>')" ><span class="glyphicon glyphicon-pencil"></span></button></a>
-    <a data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" onclick="deldialog('<%=bean.getAmbulancenumber() %>')" ><span class="glyphicon glyphicon-trash"></span></button></a></td>
+    
+   
     </tr>
-  <%}}%>
+  
     </tbody>
         
 </table>
-
+  </div>
 <div class="clearfix"></div>
 <ul class="pagination pull-right">
   <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
@@ -217,7 +215,7 @@ List<ReceptionistBean> dlist=(List) request.getAttribute("fuelexpen");
   <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
 </ul>
                 
-            </div>
+          
             
        
 
@@ -230,22 +228,21 @@ List<ReceptionistBean> dlist=(List) request.getAttribute("fuelexpen");
     <div class="modal-content">
           <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-        <h4 class="modal-title custom_align" id="Heading">Edit  Fuel Expenses.</h4>
+        <h4 class="modal-title custom_align" id="Heading">Edit  Ambulance  Scheduling</h4>
       </div>
 		  
          <div class="modal-body">
-         <form:form action="efuelexpenses" method="post" class="form-horizontal"  modelAttribute="userRegDetails" >
-			   <div class="col-md-offset-1 col-md-10">
+		   <div class="col-md-offset-1 col-md-10">
           
 		 <div class="form-group">
-        <input class="form-control " id="ambno" name="ambnumber" type="text" placeholder=" Ambulance  Number">
+        <input class="form-control " type="text" placeholder=" Ambulance  Number">
         </div>
 		<div class="form-group">
-        <input class="form-control " id="drvrname" name="ambdrvr"  type="text" placeholder="Driver Name">
+        <input class="form-control " type="text" placeholder="Driver Name">
         </div>
 		
 		<div class="form-group">
-        <input class="form-control " id="filldate" name="ambfilldate" type="text" placeholder="Fuel Filling Date" id="datepicker">
+        <input class="form-control " type="text" placeholder="Out Date" id="datepicker">
         </div>
 		<script>
   $( function() {
@@ -254,24 +251,42 @@ List<ReceptionistBean> dlist=(List) request.getAttribute("fuelexpen");
   } );
   </script> 
   <div class="form-group">
-        <input class="form-control " id="quantity" name="ambfuel"  type="text" placeholder="Quantity">
+        <input class="form-control " type="text" placeholder="OutTime" id="timepicker1">
         </div>
 		<script type="text/javascript">
             $('#timepicker1').timepicker();</script>
   
-  <div class="form-group">
-        <input class="form-control " id="amount" name="fuelamnt" type="text" placeholder="Amount" >
+  
+		 
+		 
+		 
+		 
+		 <div class="form-group">
+        <input class="form-control " type="text" placeholder="In Date"id="datepicker1">
         </div>
-	
+		<script>
+  $( function() {
+    $( "#datepicker1" ).datepicker();
+	$("#datepicker1").datepicker({ minDate: 0 });
+  } );
+  </script>
+   <div class="form-group">
+        <input class="form-control " type="text" placeholder="In Time" id="timepicker2">
         </div>
-		<div class="modal-footer" style="text-align:center;">
-        <button type="submit" class="btn btn-success"> Update</button>
+		<script type="text/javascript">
+            $('#timepicker2').timepicker();</script>
+        
+		
+		
+			
+     </div>
+          <div class="modal-footer" style="text-align:center;">
+        <button type="button" class="btn btn-success">Update</button>
       </div>
-      </form:form>
-   <!-- /.modal-content --> 
+        </div>
+ <!-- /.modal-content --> 
   </div>
       <!-- /.modal-dialog --> 
-    </div>
     </div>
     </div>
    
@@ -291,13 +306,8 @@ List<ReceptionistBean> dlist=(List) request.getAttribute("fuelexpen");
        
       </div>
         <div class="modal-footer ">
-        <form:form action="deleteambfuelexp">
-        <div>
-        <input type="text" id="demail" name="demail">
-        <button type="button" class="btn btn-success" onclick="location.href='deleteambfuelexp'" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
-       </div>
-        </form:form>
-        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
       </div>
         </div>
     <!-- /.modal-content --> 
@@ -311,48 +321,36 @@ List<ReceptionistBean> dlist=(List) request.getAttribute("fuelexpen");
     <div class="modal-content">
           <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-        <h4 class="modal-title custom_align" id="Heading">Add Fuel Expenses.</h4>
+        <h4 class="modal-title custom_align" id="Heading">Add Ambulance Details</h4>
       </div>
+      <form:form action="rambulancedetails" method="get">
           <div class="modal-body">
-          <form:form action="addfuelexpenses" method="post" class="form-horizontal" modelAttribute="userRegDetails" >
-		   <div class="col-md-offset-1 col-md-10">
+			   <div class="col-md-offset-1 col-md-10">
           
 		 <div class="form-group">
-        <input class="form-control " name="ambno" type="text" placeholder=" Ambulance  Number">
+        <input class="form-control " name="anumber" type="text" placeholder=" Ambulance  Number">
         </div>
 		<div class="form-group">
-        <input class="form-control " name="ambname" type="text" placeholder="Driver Name">
+        <input class="form-control " name="driver" type="text" placeholder="Driver Name">
         </div>
 		
 		<div class="form-group">
-        <input class="form-control " name="ambdate" type="text" placeholder="Fuel Filling Date" id="datepicker">
-        </div>
-		<script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-	$("#datepicker").datepicker({ minDate: 0 });
-  } );
-  </script> 
-  <div class="form-group">
-        <input class="form-control " name="ambtime" type="text" placeholder="Time" id="timepicker1">
-        </div>
-		<script type="text/javascript">
-            $('#timepicker1').timepicker();</script>
-  <div class="form-group">
-        <input class="form-control " name="ambquantity" type="text" placeholder="Quantity" >
-        </div>
-	
-  
-  <div class="form-group">
-        <input class="form-control " name="ambamount" type="text" placeholder="Amount" >
-        </div>
-	
-        </div>
-    <div class="modal-footer" style="text-align:center;">
-        <button type="submit" class="btn btn-success"> Submit</button>
+        
+       <select name="time" class="form-control ">
+		<option value="">Select Timing</option>
+		<option value="in">In</option>
+		<option value="out">Out</option>
+		
+		</select> </div>
+		
+		
+			
+     </div>
+         <div class="modal-footer" style="text-align:center;">
+        <button type="submit" class="btn btn-success"> Submit</button>
       </div>
-      </form:form>
         </div>
+        </form:form>
     <!-- /.modal-content --> 
   </div>
       <!-- /.modal-dialog --> 
@@ -419,9 +417,9 @@ $("#mytable #checkall").click(function () {
 									 
 									  <li ><a href="receptionistoperationtheaters.html"><i class="fa fa-hospital-o"></i><span>Operation Theatre List</span><div class="clearfix"></div></a></li> 
 									
-									 <li ><a href="receambulanceavailability.html"><i class="fa fa-ambulance" aria-hidden="true"></i> <span>Ambulance availability</span><div class="clearfix"></div></a></li>
+									 <li class="active"><a href="receambulanceavailability.html"><i class="fa fa-ambulance" aria-hidden="true"></i> <span>Ambulance availability</span><div class="clearfix"></div></a></li>
 									 
-									 <li class="active"><a href="receambulancefuel.html"><i class="fa fa-money" aria-hidden="true"></i><span>Ambulance Fuel <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expenses</span><div class="clearfix"></div></a></li> 
+									 <li><a href="receambulancefuel.html"><i class="fa fa-money" aria-hidden="true"></i><span>Ambulance Fuel <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expenses</span><div class="clearfix"></div></a></li> 
 									
 									 
 									 <li><a href="receptionistpayroll.html"><i class="fa fa-money"></i><span>Payroll</span><div class="clearfix"></div></a></li> 
@@ -467,21 +465,4 @@ $("#mytable #checkall").click(function () {
 </div>	
 <!--COPY rights end here-->
 </body>
-<script>
-function opendialog(valueString){
-	var values = valueString.split("~");
-	
-	$("#ambno").val(values[0]);
-	$("#drvrname").val(values[1]);
-	$("#filldate").val(values[2]);
-	$("#quantity").val(values[3]);
-	$("#amount").val(values[4]);
-	$("#edit").dialog("open");
-}
-function deldialog(valueString){
-	var values = valueString.split("~");
-	$("#demail").val(values[0]);
-	
-	}
-</script>
 </html>

@@ -1,12 +1,13 @@
 package com.hm.datab.facade;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import com.hm.datab.beans.Doctor;
 
 public interface DoctorFunctions {
 
-	public Doctor saveDoctorDetails(Doctor doctor);
+	public Doctor saveDoctorDetails(Doctor doctor) throws UnsupportedEncodingException;
 	public List<Doctor> loadDoctorDetails();
 	public Doctor editDoctorDetails(Doctor doctor);
 	public Doctor saveNurseDetails(Doctor doctor);
@@ -30,6 +31,7 @@ public Doctor saveAccountantDetails(Doctor doctor);
 	public Doctor editAccountantDetails(Doctor doctor);
 	public String deleteAccountantDetails(String email);
 
+	
 	public Doctor savePatientDetails(Doctor doctor);
 	public List<Doctor> loadPatientDetails();
 	public Doctor editPatientDetails(Doctor doctor);
@@ -39,4 +41,6 @@ public Doctor saveAccountantDetails(Doctor doctor);
 	public Doctor editLaboratoristDetails(Doctor doctor);
 	public String deleteLaboratoristDetails(String email);
 	
+
+
 }

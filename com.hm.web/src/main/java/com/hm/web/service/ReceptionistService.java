@@ -10,7 +10,8 @@ public interface ReceptionistService {
 	public String saveRAmbulanceOutDetails(String anumber);
 	public List<ReceptionistBean> loadRAmbulanceDetails();
 	public ReceptionistBean saveRPatientAppintmentDetails(ReceptionistBean  bean);
-
-
-	
+    public ReceptionistBean saveRAmbulanceFuelExpenses(ReceptionistBean dbean);
+    public List<ReceptionistBean> loadRAmbulanceFuelDetails();
+    public 	ReceptionistBean editRAmbulanceFuelDetails(ReceptionistBean dbean);
+    public String deleteRAmbulanceFuelRecordDetails(String ambno);
 }

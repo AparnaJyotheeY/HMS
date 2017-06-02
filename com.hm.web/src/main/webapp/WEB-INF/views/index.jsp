@@ -231,7 +231,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--four-grids here-->
 		<div class="four-grids">
 					<div class="col-md-3 four-grid">
-						<a href="<%=request.getContextPath( )%>/alogin"><div class="four-agileits">
+						<a href="login.jsp"><div class="four-agileits">
 						<div class="icon">
 								<i class="fa fa-female" aria-hidden="true"></i>
 							</div>

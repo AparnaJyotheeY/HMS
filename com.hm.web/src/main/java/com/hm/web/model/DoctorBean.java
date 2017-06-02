@@ -8,6 +8,7 @@ public class DoctorBean {
 	private int did;
 	private int nurseid;
 	private int pharmacistid;
+	private int accountatid;
 	private String name;
 	private String email;
 	private String password;
@@ -25,6 +26,21 @@ public class DoctorBean {
 	private int pid;
 	private String bloodgroup;
 	private int lid;
+
+	
+	public String getBloodgroup() {
+		return bloodgroup;
+	}
+	public void setBloodgroup(String bloodgroup) {
+		this.bloodgroup = bloodgroup;
+	}
+	public int getLid() {
+		return lid;
+	}
+	public void setLid(int lid) {
+		this.lid = lid;
+
+	}
 	private int accountantid;
 	public int getAccountantid() {
 		return accountantid;
@@ -32,18 +48,7 @@ public class DoctorBean {
 	public void setAccountantid(int accountantid) {
 		this.accountantid = accountantid;
 	}
-	public int getLid() {
-		return lid;
-	}
-	public void setLid(int lid) {
-		this.lid = lid;
-	}
-	public String getBloodgroup() {
-		return bloodgroup;
-	}
-	public void setBloodgroup(String bloodgroup) {
-		this.bloodgroup = bloodgroup;
-	}
+	
 	public int getPid() {
 		return pid;
 	}
@@ -155,13 +160,22 @@ public class DoctorBean {
 	public void setDesig(String desig) {
 		this.desig = desig;
 	}
+	
+	public int getAccountatid() {
+		return accountatid;
+	}
+	public void setAccountatid(int accountatid) {
+		this.accountatid = accountatid;
+	}
 	@Override
 	public String toString() {
-		return "Doctor [did=" + did + ", nurseid=" + nurseid + ", pharmacistid=" + pharmacistid + ", name=" + name
-				+ ", email=" + email + ", password=" + password + ", address=" + address + ", phone=" + phone
-				+ ", dept=" + dept + ", profile=" + profile + ", image=" + Arrays.toString(image) + ", addeddate="
-				+ addeddate + ", desig=" + desig + ", images=" + images + ", age=" + age + ", gender=" + gender
-				+ ", dob=" + dob + ", pid=" + pid + ", bloodgroup=" + bloodgroup + ", lid=" + lid + ", accountantid="
-				+ accountantid + "]";
+
+		return "DoctorBean [did=" + did + ", nurseid=" + nurseid + ", pharmacistid=" + pharmacistid + ", accountatid="
+				+ accountatid + ", name=" + name + ", email=" + email + ", password=" + password + ", address="
+				+ address + ", phone=" + phone + ", dept=" + dept + ", profile=" + profile + ", image="
+				+ Arrays.toString(image) + ", addeddate=" + addeddate + ", desig=" + desig + ", images=" + images
+				+ ", age=" + age + ", gender=" + gender + ", dob=" + dob + ", pid=" + pid + ", bloodgroup=" + bloodgroup
+				+ ", lid=" + lid + "]";
+
 	}
 }
